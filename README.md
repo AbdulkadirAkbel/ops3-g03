@@ -4,10 +4,10 @@
 
 | Naam     | GitHub gebruikersnaam                   |
 | :---     | :---                                    |
-| Abdülkadir Akbel | [student1](https://github.com/abdulkadirakbel) |
-| Andy Nelis | [student2](https://github.com/andynelis) |
-| Anthony Bracke | [student3](https://github.com/BrackeA) |
-| Nicolai Saliën | [student4](https://github.com/nicolaisalien) |
+| Abdülkadir Akbel | [abdulkadirakbel](https://github.com/abdulkadirakbel) |
+| Andy Nelis | [andynelis](https://github.com/andynelis) |
+| Anthony Bracke | [BrackeA](https://github.com/BrackeA) |
+| Nicolai Saliën | [nicolaisalien](https://github.com/nicolaisalien) |
 
 ## Gebruikte tools
 
