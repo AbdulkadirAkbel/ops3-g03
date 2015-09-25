@@ -15,7 +15,8 @@
 * testplan opstellen
 * testrapport opstellen
 * verslag opstellen
-* 
+* opstelling 1: lamp stack
+* opstelling 2: multi-tier webserver
 
 ### Kanban-bord
 
