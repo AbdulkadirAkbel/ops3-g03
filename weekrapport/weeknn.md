@@ -1,14 +1,14 @@
 # Voortgangsrapport week nn
 
-* Groep:
-* Datum:
+* Groep: 03
+* Datum: 
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| student1 |       |           |
-| student2 |       |           |
-| student3 |       |           |
-| student4 |       |           |
+| Abdülkadir |       |           |
+| Anthony |       |           |
+| Andy |       |           |
+| Nicolai |       |           |
 
 ## Wat heb je deze week gerealiseerd?
 

@@ -1,15 +1,21 @@
 ## Lastenboek Taak 1: (titel)
 
-* Verantwoordelijke uitvoering: `studentx`
-* Verantwoordelijke testen: `studenty`
+* Verantwoordelijke uitvoering: `Andy`
+* Verantwoordelijke testen: `Anthony`
 
 ### Deliverables
 
-* ...
+* demo van de opstelling
+* testplan
+* testrapport
+* verslag
 
 ### Deeltaken
 
-* ...
+* testplan opstellen
+* testrapport opstellen
+* verslag opstellen
+* 
 
 ### Kanban-bord
 
@@ -19,9 +25,9 @@
 
 | Student  | Geschat | Gerealiseerd |
 | :---     |    ---: |         ---: |
-| student1 |         |              |
-| student2 |         |              |
-| student3 |         |              |
-| student4 |         |              |
+| Abdülkadir |         |              |
+| Anthony |         |              |
+| Andy |         |              |
+| Nicolai |         |              |
 
 (na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
