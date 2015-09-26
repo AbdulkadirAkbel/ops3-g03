@@ -46,8 +46,4 @@
 - -confirm (powershell vraagt bevestiging voor de uitvoering)
 - get-module (actieve modules)
 - get-adcomputer -filter * (laadt de module ad automatisch op)
-<<<<<<< HEAD
-- 
-=======
-- 
->>>>>>> 7834852fd5fe18928968e86abaabbf1977c5fbc8
+
