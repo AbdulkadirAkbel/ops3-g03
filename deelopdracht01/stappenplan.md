@@ -21,6 +21,11 @@ Nu moeten nog de ansible roles gëinstalleerd worden.
 - Voer het "vagrant up" commando uit.
 
 
+### CollectD
+- http://www.tecmint.com/install-collectd-and-collectd-web-to-monitor-server-resources-in-linux/
+- verder uitwerken
+
+
 
 
 
