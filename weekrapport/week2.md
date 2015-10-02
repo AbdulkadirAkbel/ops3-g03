@@ -16,10 +16,7 @@
 
 ![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_kanban.PNG)
 
-* ...
-* ...
-
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+![toggl algemeen](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_algemeen.PNG)
 
 ### Abdülkadir
 
