@@ -12,14 +12,15 @@
 ### Deeltaken
 
 * testplan opstellen
-* testrapport opstellen
-* verslag opstellen
 * opstelling 1: lamp stack
 * opstelling 2: multi-tier webserver
+* testrapport opstellen
+* testen
+* verslag opstellen
 
 ### Kanban-bord
 
-(schermafbeeldingen van de toestand van het Kanban-bord invoegen elke week voor de samenkomst met de begeleider, tot oplevering van de opdracht)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_kanban.PNG)
 
 ### Tijdbesteding
 
