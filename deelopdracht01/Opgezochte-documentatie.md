@@ -10,3 +10,5 @@
 * How to install and use **Graphite**: http://kaivanov.blogspot.be/2012/02/how-to-install-and-use-graphite.html
 * **Lamp stack**: https://github.com/bertvv/lampstack 
 *  **Collectd role**: https://github.com/bertvv/ansible-role-collectd#Testing
+*  **Graphite on CentOS**: http://www.ozmonet.com/projects/graphite.html
+*  **CPU Metrics in Collectd**: http://blog.librato.com/posts/unified-cpu-metrics-in-collectd
