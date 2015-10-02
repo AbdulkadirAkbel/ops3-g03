@@ -8,3 +8,5 @@
 * How To Use **Apache** **JMeter** To Perform Load Testing on a Web Server: https://www.digitalocean.com/community/tutorials/how-to-use-apache-jmeter-to-perform-load-testing-on-a-web-server
 * Download **Graphite**: http://graphite.wikidot.com/
 * How to install and use **Graphite**: http://kaivanov.blogspot.be/2012/02/how-to-install-and-use-graphite.html
+* **Lamp stack**: https://github.com/bertvv/lampstack 
+*  **Collectd role**: https://github.com/bertvv/ansible-role-collectd#Testing

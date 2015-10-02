@@ -9,8 +9,8 @@ Om ansible te installeren moet je volgende commando's ingeven in een terninalven
 
 Nu moeten nog de ansible roles geïnstalleerd worden.
 
-- Open een terminalvenster en navigeer in de repomap naar de map /scripts.
-- Voer nu het script role-deps.sh uit.
+- Open een terminalvenster en navigeer naar de repomap.
+- Voer nu het script sh scripts/role-deps.sh uit.
 - De roles worden gedownload en toegevoegd.
 
 
@@ -22,6 +22,7 @@ Nu moeten nog de ansible roles geïnstalleerd worden.
 
 
 ### CollectD
+- Download de CollectD repo op volgende link
 - http://www.tecmint.com/install-collectd-and-collectd-web-to-monitor-server-resources-in-linux/
 - verder uitwerken
 
