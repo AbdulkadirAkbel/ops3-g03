@@ -14,18 +14,20 @@
 
 ### Algemeen
 
-![kanban-bord](https://github.com/HoGentTIN/ops-g-03/blob/master/weekrapport/img/week1_kanban.PNG)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_kanban.PNG)
 
 * ...
 * ...
 
 [Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
 
-### Student 1
+### Abdülkadir
 
-* ...
+* werkomgeving opgezet
+* informatie opgezocht over collectd
+* eerste 3 hoofdstukken bekeken van opleiding powershell
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_abdulkadir.PNG)
 
 ### Student 2
 
@@ -49,6 +51,9 @@
 
 ### Algemeen
 ### Student 1
+* collectd proberen verbinden met lamp
+* collectd de metrieken laten capteren
+* verder kijken naar opleiding powershell
 ### Student 2
 ### Student 3
 ### Student 4
