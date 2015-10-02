@@ -11,7 +11,7 @@ Auteur(s) testplan: Andy
 - Monitoring server kan metrieken capteren van lamp.
 - Metrieken worden gevisualiseerd op dashboard.
 - Framework voor load testing kan load creëren op lamp. Monitoring server capteert hier ook metrieken van.
-- 
+
 
 ### Testrapport
 
