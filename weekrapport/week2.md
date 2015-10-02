@@ -50,7 +50,7 @@
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
-### Student 1
+### Abdülkadir
 * collectd proberen verbinden met lamp
 * collectd de metrieken laten capteren
 * verder kijken naar opleiding powershell
