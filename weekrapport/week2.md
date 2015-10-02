@@ -45,7 +45,7 @@
 * Zorgen voor plug-in voor het toevoegen van een groot aantal van posts voor Wordpress
 * Informatie opgezocht
 
-![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_nicolai.PNG)
+![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_nicolai.PNG)
 
 ### Student 3
 
