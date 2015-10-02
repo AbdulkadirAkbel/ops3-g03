@@ -58,7 +58,11 @@
 * collectd proberen verbinden met lamp
 * collectd de metrieken laten capteren
 * verder kijken naar opleiding powershell
-### Student 2
+### Andy
+* collectd installeren op nieuwe server
+* collectd de nodige gegevens laten weergeven
+* hoofdstuk 2-5 bekijken van powershell cursus
+* eventueel load testing van servers
 ### Student 3
 ### Student 4
 
