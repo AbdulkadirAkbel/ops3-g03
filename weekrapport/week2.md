@@ -33,11 +33,19 @@
 
 * Huboard, github, toggl, etc. in orde gebracht
 * Lamp stack aangemaakt
-* informatie opgezocht
+* Informatie opgezocht
 * Hoofdstuk 1 van powershellcursus bekeken en notities genomen
 
-
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_andy.PNG)
+
+### Nicolai
+
+* Administratie in orde brengen (huboard, github, toggl, vagrant updates, sourcetree updates)
+* Hoofdstuk 1 - 4 van Powershell doornemen
+* Zorgen voor plug-in voor het toevoegen van een groot aantal van posts voor Wordpress
+* Informatie opgezocht
+
+![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_nicolai.PNG)
 
 ### Student 3
 
@@ -66,6 +74,9 @@
 * eventueel load testing van servers
 
 ### Nicolai
+* Verder kijken naar powershell + starten met informatie uit powershell boek
+* Verder werken aan eerste opdracht (collectd, load testing, graphite, ...)
+
 ### Anthony
 
 ## Waar hebben jullie nog problemen mee?
