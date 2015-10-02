@@ -63,7 +63,7 @@
 * collectd de nodige gegevens laten weergeven
 * hoofdstuk 2-5 bekijken van powershell cursus
 * eventueel load testing van servers
-### Student 3
+### Nicolai
 ### Student 4
 
 ## Waar hebben jullie nog problemen mee?
