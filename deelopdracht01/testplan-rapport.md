@@ -1,16 +1,16 @@
-## Testplan en -rapport taak 1: (titel)
+## Testplan en -rapport taak 1: lamp-stack
 
-* Verantwoordelijke uitvoering: NAAM
-* Verantwoordelijke testen: NAAM
+* Verantwoordelijke uitvoering: Andy
+* Verantwoordelijke testen: Anthony
 
 ### Testplan
 
-Auteur(s) testplan: NAAM
+Auteur(s) testplan: Andy
 
-- ...
+- 
 
 ### Testrapport
 
-Uitvoerder(s) test: NAAM
+Uitvoerder(s) test: Anthony
 
 - ...
