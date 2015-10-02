@@ -64,7 +64,7 @@
 * hoofdstuk 2-5 bekijken van powershell cursus
 * eventueel load testing van servers
 ### Nicolai
-### Student 4
+### Anthony
 
 ## Waar hebben jullie nog problemen mee?
 
