@@ -6,8 +6,7 @@
 ### Deliverables
 
 * demo van de opstelling
-* testplan
-* testrapport
+* testplan-rapport
 * verslag
 
 ### Deeltaken

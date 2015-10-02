@@ -7,7 +7,7 @@ Om ansible te installeren moet je volgende commando's ingeven in een terninalven
 - sudo pip install ansible
 - sudo pip install ansible --upgrade
 
-Nu moeten nog de ansible roles gëinstalleerd worden.
+Nu moeten nog de ansible roles geïnstalleerd worden.
 
 - Open een terminalvenster en navigeer in de repomap naar de map /scripts.
 - Voer nu het script role-deps.sh uit.
