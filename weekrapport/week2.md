@@ -29,11 +29,15 @@
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_abdulkadir.PNG)
 
-### Student 2
+### Andy
 
-* ...
+* Huboard, github, toggl, etc. in orde gebracht
+* Lamp stack aangemaakt
+* informatie opgezocht
+* Hoofdstuk 1 van powershellcursus bekeken en notities genomen
 
-[Afbeelding individueel rapport tijdregistratie]
+
+![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_andy.PNG)
 
 ### Student 3
 
