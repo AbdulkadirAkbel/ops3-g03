@@ -47,3 +47,23 @@
 - get-module (actieve modules)
 - get-adcomputer -filter * (laadt de module ad automatisch op)
 
+### Objects for the Admin
+
+- objecten vergemakkelijken je leven
+- get-process | where handles -gt 900 (geeft de processen waarvan de handles goter is dan 900)
+- get-process | where handles -gt 900 | sort handles (zelfde als hierboven, maar gesorteerd volgens handles)
+- -get-member geeft informatie over object 
+- get-service -name bits | get-member (alias: gm)
+- get-service | select -property name,status (geeft enkel de naam ens tatus van de services)
+- voorbeeld: get-childitem | select -property name, length | sort -property length -descending
+- alles waar er property in staat kan je gebruiken met select, sort...
+- get-eventlog -logname system -newest 5 | select -property eventid, timewritten, message | sort -property timewritten | convertto-html | out-file c:error.html
+- $x = [xml]\(cat .\bestand.xml) <br/> xml-bestand ophalen en in variabele x steken <br/> zo kan je in een xml-bestand gegevens opvragen: $x.PLAY.ACT[0].SCENE[0].SPEECH
+- get-history
+- $_ = huidig object in de pipeline
+- get-service | where {$_.status -eq "Running}
+- get-service | where {$_.status = "Running}
+- get-service | where {$PSItem_.status = "Running} <br/> alle 3 zijn hetzelfde
+- get-process (alias: gps)
+- gps | where {$_.handles -ge 1000}
+
