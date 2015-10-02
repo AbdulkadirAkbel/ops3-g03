@@ -9,8 +9,8 @@ Om ansible te installeren moet je volgende commando's ingeven in een terninalven
 
 Nu moeten nog de ansible roles geïnstalleerd worden.
 
-- Open een terminalvenster en navigeer in de repomap naar de map /scripts.
-- Voer nu het script role-deps.sh uit.
+- Open een terminalvenster en navigeer naar de repomap.
+- Voer nu het script sh scripts/role-deps.sh uit.
 - De roles worden gedownload en toegevoegd.
 
 
@@ -21,6 +21,7 @@ Nu moeten nog de ansible roles geïnstalleerd worden.
 - Voer het "vagrant up" commando uit.
 
 
+<<<<<<< HEAD
 ### Collectd
 - Download de repo voor de lampstack.
 - verwijder alle rollen buiten bertvv.el7.
@@ -28,6 +29,13 @@ Nu moeten nog de ansible roles geïnstalleerd worden.
 - Pas het bestand "main.yml" in de vars folder aan, voeg "collectd_server: 192.168.56.78" toe aan "main.yml".
 - Pas het bestand "all.yml" in de de group_vars folder aan, voeg "collectd_server: 192.168.56.78" toe aan "all.yml".
 - Open git-bash in de collectd folder en voer in: "vagrant up --provision".
+=======
+### CollectD
+- Download de CollectD repo op volgende link
+- http://www.tecmint.com/install-collectd-and-collectd-web-to-monitor-server-resources-in-linux/
+- verder uitwerken
+
+>>>>>>> fc9b17dd550021adcdd0371cfb73289584a07ccc
 
 
 
