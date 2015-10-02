@@ -47,11 +47,14 @@
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_nicolai.PNG)
 
-### Student 4
+### Anthony
 
-* ...
+* Overhead in orde gemaakt
+* Lampstack opgezet
+* Collectd op de lampstack gezet
+* Ainsible documentatie bekeken
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week2_toggl_anthony.PNG)
 
 ## Wat plan je volgende week te doen?
 
@@ -72,6 +75,10 @@
 * Verder werken aan eerste opdracht (collectd, load testing, graphite, ...)
 
 ### Anthony
+* Collectd volledig werkend krijgen op aparte server
+* Windows powershell video's bekijken
+* Boek zoeken powershell
+* Eventueel al Graphite bekijken en opzetten
 
 ## Waar hebben jullie nog problemen mee?
 
