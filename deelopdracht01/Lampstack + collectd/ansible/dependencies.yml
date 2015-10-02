@@ -5,4 +5,4 @@
 - src: bertvv.httpd
 - src: bertvv.mariadb
 - src: bertvv.wordpress
-
+- src: ansible-role-collectd-master

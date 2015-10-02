@@ -1,9 +1,0 @@
-# site.yml
----
-- hosts: collectd
-  sudo: true
-  
-  roles: 
-    - bertvv.el7
-    - ansible-role-collectd-master
-

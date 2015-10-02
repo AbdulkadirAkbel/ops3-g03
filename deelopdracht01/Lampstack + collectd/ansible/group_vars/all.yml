@@ -1,5 +1,4 @@
 # group_vars/all.yml
 # Variables visible to all nodes
 ---
-
 collectd_server: 192.168.56.78

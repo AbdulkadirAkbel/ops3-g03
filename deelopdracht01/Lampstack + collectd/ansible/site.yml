@@ -10,4 +10,13 @@
     - bertvv.mariadb
     - bertvv.wordpress
     - phpmyadmin
+
+- hosts: collectd
+  sudo: true
+
+  vars:
+    collectd_server: 192.168.56.78
     
+  roles: 
+    - bertvv.el7
+    - ansible-role-collectd-master    
