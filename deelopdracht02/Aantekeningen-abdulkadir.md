@@ -58,7 +58,7 @@
 - voorbeeld: get-childitem | select -property name, length | sort -property length -descending
 - alles waar er property in staat kan je gebruiken met select, sort...
 - get-eventlog -logname system -newest 5 | select -property eventid, timewritten, message | sort -property timewritten | convertto-html | out-file c:error.html
-- $x = [xml](cat .\bestand.xml) <br/> xml-bestand ophalen en in variabele x steken <br/> zo kan je in een xml-bestand gegevens opvragen: $x.PLAY.ACT[0].SCENE[0].SPEECH
+- $x = [xml]\(cat .\bestand.xml) <br/> xml-bestand ophalen en in variabele x steken <br/> zo kan je in een xml-bestand gegevens opvragen: $x.PLAY.ACT[0].SCENE[0].SPEECH
 - get-history
 - $_ = huidig object in de pipeline
 - get-service | where {$_.status -eq "Running}
