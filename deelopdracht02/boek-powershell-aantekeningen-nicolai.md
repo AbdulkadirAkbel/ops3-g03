@@ -1,4 +1,4 @@
-# Windows  #
+# Windows Server 2012 Automation with PowerShell Cookbook  #
 
 ## Notities door Nicolai Saliën ##
 
