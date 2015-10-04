@@ -34,7 +34,10 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - get-help get-service -Online om online de help file te bekijken met een mooie lay-out.
 - get-help get-service -Showwindow opent een appart venster met daar de help file die je kan filteren.
 - Copy en paste in de shell gebeurd met de rechtermuisknop.
-- 
+- get-service -DisplayName bit* geeft de mogelijk cmdlets met als displayname bit...
+- get-service -name bits kan ingekort worden tot 'gsv bits'.
+- Tab toets kan je gebruiken om je commando's automatisch aan te vullen.
+- Je kan meerdere commando's tegelijk uitvoeren door ze te scheiden met een ';'.
 
 
 
