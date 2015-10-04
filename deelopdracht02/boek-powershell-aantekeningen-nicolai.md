@@ -1,0 +1,494 @@
+# Windows  #
+
+## Notities door Nicolai Saliën ##
+
+Voor het werken met Powershell help eerst updaten:
+
+    Update-Help -Module * -Force
+
+Ipconfig naar textfile:
+
+    ipconfig /all > ipconfig.txt
+	notepad ipconfig.txt
+
+Toestemming vragen voor het uitvoeren van een commando adhv parameter
+
+	Stop-Process -Name *bits* -Confirm
+
+
+Voorbeelden zien van een commando in help:
+
+    Get-Help Get-Process -Examples
+
+Aanmaken van een alias voor iets waar nog geen alias voor is:
+
+    Get-Help New-Alias -full
+	New-Alias gh Get-Help
+
+Volledige hulp pagina krijgen:
+
+    Get-Help Get-Process -full
+
+**Security**: welke scripts mogen worden uitgevoerd?
+
+    Set-ExecutionPolicy Restricted | AllSigned | RemoteSigned | Bypass | Undefined
+
+Restrictued: geen scripts mogen worden uitgevoerd<br>
+AllSigned: enkel uitvoeren door vertrouwde<br>
+Unrestricted: toegang om alle scripten uit te voeren<br>
+
+**Functies maken**: aantal dagen tot een bepaald moment (hier Kerstmis). Tussen de <# #> kan informatie meegegeven worden over de functie.
+
+    Function Get-DaysTilChristmas
+	{
+	<#
+	.Synopsis
+	This function calculates the number of days until Christmas
+	.Description
+	This function calculates the number of days until Christmas
+	.Example
+	DaysTilChristmas
+	.Notes
+	Ed is really awesome
+	.Link
+	Http://blog.edgoad.com
+	#>
+	$Christmas=Get-Date("25 Dec " + (Get-Date).Year.ToString() + "
+	7:00 AM")
+	$Today = (Get-Date)
+	$TimeTilChristmas = $Christmas - $Today
+	Write-Host $TimeTilChristmas.Days "Days 'til Christmas"
+	}
+
+**Zelf modules maken** die we eventueel kunnen importeren in Powershell
+
+1. Functies maken die we samen kunnen groeperen
+
+        Function Get-Hello
+   		 {
+    	Write-Host "Hello World!"
+    	}
+    	Function Get-Hello2
+    	{
+    	Param($name)
+    	Write-Host "Hello $name"
+    	}
+    	www.it-ebooks.info
+    	Understanding PowerShell Scripting
+    	16
+
+2. Slaag op in een bestand
+    
+    	`name Hello.PSM1`
+
+3. Als de folder nog niet bestaat, maak een nieuwe aan
+   
+    	$modulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\
+    	Modules\Hello"
+    	if(!(Test-Path $modulePath))
+   		 {
+   		 New-Item -Path $modulePath -ItemType Directory
+   		 }
+    	Copy Hello.PSM1 to the new module folder.
+    	$modulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\
+    	Modules\Hello"
+    	Copy-Item -Path Hello.PSM1 -Destination $modulePath
+
+4. execute Get-Module –ListAvailable om ze op te noemen
+
+
+**Variabelen in functies** [] geeft aan welk type $ geeft de naam van de var aan.
+
+    Function Add-Numbers
+    {
+    Param(
+    [int]$FirstNum = $(Throw "You must supply at least 1 number")
+    , [int]$SecondNum = $FirstNum
+    )
+    Write-Host ($FirstNum + $SecondNum)
+    }
+
+Oproepen door:
+
+	Add-Numbers 7 5
+	Add-Numbers -FirstNum 7 -SecondNum 5
+
+**Resultaat van functie opslaan in variabele**
+
+    $foo = Add-Numbers 7 5
+
+**Functie voor testen of input geldige telefoonnummer is**: moet zijn "3decimalen-4decimalen" 
+
+    Function Test-PhoneNumber
+    {
+    param([ValidatePattern("\d{3}-\d{4}")] $phoneNumber)
+    Write-Host "$phoneNumber is a valid number"
+    }
+
+**Functie parameter van pipeline laten aanvaarden**: parameter ValueFromPipeline
+
+    Function Square-Num
+    {
+    Param([float]
+    [Parameter(ValueFromPipeline = $true)]
+    $FirstNum )
+    Write-Host ($FirstNum * $FirstNum)
+    }
+
+
+   Uitvoeren als:
+
+	5 | Square-Num
+
+**Opnemen van alle commando's tijdens powershell sessie** in apart document om later terug te kunnen bekijken
+
+    Start-Transcript -Path C:\Gebruikers/Nicolai/Documenten
+	Stop-Transcript
+
+**Email laten sturen als er bijvoorbeeld een bepaalde taak achter de rug is**
+
+   Maak volgende functie aan:
+    
+    function Send-SMTPmail($to, $from, $subject, $smtpServer, $body)
+    {
+    $mailer = new-object Net.Mail.SMTPclient($smtpServer)
+    $msg = new-object Net.Mail.MailMessage($from, $to, $subject,
+    $body)
+    $msg.IsBodyHTML = $true
+    $mailer.send($msg)
+    }
+
+Oproepen door:
+
+    Send-SMTPmail -to "admin@contoso.com" -from "mailer@contoso.com" `
+    -subject "test email" -smtpserver "mail.contoso.com" -body
+    "testing"
+
+**Sorteren**
+
+    Get-Process | Where-Object {$_.Name -eq "chrome"} --> $. komt uit pipe
+    Get-Process | Where-Object Name -eq "chrome" --> equals
+    Get-Process | Where-Object Name -like "*hrom*" --> komt voor
+    Get-Process | Where-Object Handles -gt 1000 --> greater then
+    Get-Process | Sort-Object Handles -Descending --> dalend sorteren op handles
+
+**Werken met errors**: try catching: bij 2 nummers --> correct, bij 2 strings --> error boodschop wordt weergegeven in de catch
+    
+    Function Multiply-Numbers
+    {
+    Param($FirstNum, $SecNum)
+    Try
+    {
+    Write-Host ($FirstNum * $SecNum)
+    }
+    Catch
+    {
+    Write-Host "Error in function, present two numbers to
+    multiply"
+    }
+    }
+
+**Performantie**: meet hoe lang het duurt om iets uit te voeren
+
+    Measure-Command { opvolging van verschillende commando's }
+
+**Configureren van statisch netwerking**
+
+
+1: Interfaces vinden
+
+	Get-NetIPInterface
+
+2: IP info instellen
+
+	New-NetIPAddress -AddressFamily IPv4 -IPAddress 10.10.10.10 -PrefixLength 24 -InterfaceAlias Ethernet
+
+3: DNS instellen
+
+	Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses "10.10.10.10","10.10.10.11"
+
+4: Default route instellen: nieuw netwerk route --> default gateway instellen 10.10.10.1 is router address
+
+	New-NetRoute -DestinationPrefix "0.0.0.0/0" -NextHop "10.10.10.1" -InterfaceAlias Ethernet
+
+   Resultaat: IPv4 instellingen:<br>
+   Use the following IP address:<br>
+   - IP Address: 10.10.10.11<br>
+   - Subnet mask: 255.255.255.0<br>
+   - Default gateway: 10.10.10.1<br>
+   Use the following DNS server addresses:<br>
+   - Preferred DNS: 10.10.10.10<br>
+   - Alternate DNS: 10.10.10.11<br>
+
+**Installeren van domain controllers** eens ip configuratie in orde is
+
+1. Open powershell als admin
+
+2. Identify Windows Features om te installen
+
+    	Get-WindowsFeature | Where-Object Name -like *domain*
+    	Get-WindowsFeature | Where-Object Name -like *dns*
+
+3. installeer de nodige features
+
+    	Install-WindowsFeature AD-Domain-Services, DNS –
+    	IncludeManagementTools
+
+4. configureer het domein
+
+    	$SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText -Force
+    	Install-ADDSForest -DomainName corp.contoso.com –
+    	SafeModeAdministratorPassword $SMPass –Confirm:$false
+
+5. Indien we nog een pc hebben die we lid willen maken van het domein: CORPDC2 wordt lid van domain
+
+    	$secString = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText
+    	-Force
+    	$myCred = New-Object -TypeName PSCredential -ArgumentList "corp\
+    	administrator", $secString
+    	Add-Computer -DomainName "corp.contoso.com" -Credential $myCred –
+    	NewName "CORPDC2" –Restart
+
+6. Willen we deze CORPDC2 instellen als domain controller:
+
+    	Install-WindowsFeature –Name AD-Domain-Services, DNS
+    	-IncludeManagementTools –ComputerName CORPDC2
+    	Invoke-Command –ComputerName CORPDC2 –ScriptBlock {
+    	$secPass = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText –Force
+    	$myCred = New-Object -TypeName PSCredential -ArgumentList "corp\
+    	administrator", $secPass
+    	$SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText –Force
+    	Install-ADDSDomainController -DomainName corp.contoso.com –
+    	SafeModeAdministratorPassword $SMPass -Credential $myCred –
+    	Confirm:$false
+    	}
+
+**Werken met Private Key Infrastructure en CA's** waarbij we certificaten gaan vertrouwen die certificaten gaat uitdelen aan users en computers die hen toegang zullen geven
+
+1. Installeer certificaat server:
+
+	    Get-WindowsFeature | Where-Object Name -Like *cert*
+	    Install-WindowsFeature AD-Certificate -IncludeManagementTools
+	    -IncludeAllSubFeature
+
+2. Configure de server als enterprise CA:
+
+	    Install-AdcsCertificationAuthority -CACommonName corp.contoso.com
+	    -CAType EnterpriseRootCA -Confirm:$false
+
+3. Install root certificate to trusted root certification authorities store:
+
+   		Certutil –pulse
+
+4. Request machine certificate from CA:
+
+	    Set-CertificateAutoEnrollmentPolicy -PolicyState Enabled -Context
+	    Machine -EnableTemplateCheck
+
+**Users in AD aanmaken**
+
+    New-ADUser -Name JSmith -....
+
+Je kan ook gebruiken maken van een functie om eenvoudig users aan te maken waarbij users uit csv file worden gemaakt
+
+    Function Create-Users{
+    param($fileName, $emailDomain, $userPass, $numAccounts=10)
+    if($fileName -eq $null ){
+    [array]$users = $null
+    for($i=0; $i -lt $numAccounts; $i++){
+    $users += [PSCustomObject]@{
+    FirstName = 'Random'
+    LastName = 'User' + $i
+    }
+    }
+    } else {
+    $users = Import-Csv -Path $fileName
+    }
+
+Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv csv file:
+
+	Import-Module ActiveDirectory
+    
+    $ADUsers = Import-Csv werknemers.csv
+    
+    if ([ADSI]::Exists("LDAP://OU=Technical,DC=Projecten2,DC=be") -eq $false) {
+    	New-ADOrganizationalUnit -Name Technical -ProtectedFromAccidentalDeletion $false
+    }
+    
+    if ([ADSI]::Exists("LDAP://OU=HR,DC=Projecten2,DC=be") -eq $false) {
+    	New-ADOrganizationalUnit -Name HR -ProtectedFromAccidentalDeletion $false
+    }
+    
+    if ([ADSI]::Exists("LDAP://OU=Sales,DC=Projecten2,DC=be") -eq $false) {
+    	New-ADOrganizationalUnit -Name Sales -ProtectedFromAccidentalDeletion $false
+    }
+    
+    
+    foreach ($User in $ADUsers)
+    {
+    	$Name = $User.GivenName + " " + $User.Surname
+    	$OU = $User.ParentOU
+    	$Username = $User.GivenName.Substring(0,2) + $User.Surname.Substring(0,3) + $User.Number
+    	$City = $User.City
+    	$Title = $User.Title
+    	$GivenName = $User.GivenName
+    	$Surname = $User.Surname
+    	$StreetAddress = $User.StreetAddress
+    	$Postcode = $User.Postcode
+    	$Country = $User.Country
+    	$Telefoon = $User.Telefoon
+    	$Gender = $User.Gender
+    	$Birthday = $User.Birthday
+    	$CountryFull = $User.CountryFull
+    	
+    if (Get-ADUser -F {SamAccountName -eq $Username})
+    {
+    	Write-Warning "A user with $Username already exists in your Active Directory."
+    
+    }
+    else
+    {
+    	New-ADUser -SamAccountName $Username -Name $Name -Path $OU -City $City -Title $Title -GivenName $GivenName -Surname $Surname -StreetAddress $StreetAddress -PostalCode $Postcode -Country $Country -MobilePhone $Telefoon -AccountPassword (ConvertTo-SecureString "Projecten2" -AsPlainText -Force) -Description "Gender: $Gender, birthday: $Birthday, country: $CountryFull" -ScriptPath logon.vbs -PassThru | Enable-ADAccount
+    }
+    
+    	Get-ADUser -Filter * -SearchBase "OU=HR,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    	Get-ADUser -Filter * -SearchBase "OU=Sales,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    	Get-ADUser -Filter * -SearchBase "OU=Technical,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    }
+
+**Installeren en configureren van Hyper-V**
+
+1. Folders aanmaken voor de VM en VHDX bestanden
+
+	    New-Item E:\VM -ItemType Directory
+	    New-Item E:\VHD -ItemType Directory
+
+2. Indien je geen gebruik maakt van gratis Hyper V server, installeer de role (enkel als WS 2012)
+
+    	Install-WindowsFeature Hyper-V -IncludeManagementTools -Restart
+
+3. Indien je de server vanop afstand beheertd, installeer hypver-v management tools op een ander systeem. Dit zal zowel de GUI als de Powershell administratie tools installeren
+	    
+	    Install-WindowsFeature RSAT-Hyper-V-Tools
+
+4. Configureer hyper-v om de geselecteerde folders te gebruiken
+
+	    Set-VMHost -ComputerName HV01 -VirtualHardDiskPath E:\vhd `
+	    -VirtualMachinePath E:\vm
+
+5. bevestig de settings voor het volgende uit te voeren:
+	    
+	    Get-VMHost -ComputerName HV01| Format-List *
+
+**NUMA configureren (Non-Uniform Memory Architecture)** zorgt ervoor dat het systeem geheugen zich gaat splitsen tussen de verschillende beschikbare processor (NUMA zones). Wanneer een processor toegang nodig heeft tot het geheugen van een andere processor moet de processor aan de andere processor een request sturen. Default is dit enabled op Hypver-V.
+
+1. Disable NUMA spanning:
+
+	    Invoke-Command -ComputerName HV01 -ScriptBlock {
+	    Set-VMHost -NumaSpanningEnabled $false
+	    Restart-Service vmms
+	    }
+
+2. Bekijk de NUMA status:
+
+    	Get-VMHost -ComputerName HV01 | Format-List *
+
+3. Enable NUMA opnieuw
+
+	    Invoke-Command -ComputerName HV01 -ScriptBlock {
+    	Set-VMHost -NumaSpanningEnabled $true
+    	Restart-Service vmms
+    	}
+
+**Hyper-V VM's aanmaken (wanneer je er meerdere wilt aanmaken)**
+
+1. Maak een nieuwe VM aan
+
+	    New-VM -ComputerName HV01 -Name Accounting02 -MemoryStartupBytes
+	    512MB `
+	    -NewVHDPath "e:\VM\Virtual Hard Disks\Accounting02.vhdx" `
+	    -NewVHDSizeBytes 100GB -SwitchName Production
+
+2. Configureer voor dynamisch geheugen:
+
+	    Set-VMMemory -ComputerName HV01 -VMName Accounting02 `
+	    -DynamicMemoryEnabled $true -MaximumBytes 2GB
+
+3. Bekijk de VM configuratie:
+
+ 	  	Get-VM -ComputerName HV01 -Name Accounting02 | Format-List *
+
+**De status van een of meerdere VM's eenvoudig beheren**: interessant voor scripting waarbij je bv een lijst opvraagt van de mogelije (inactieve) VM's en waarbij er input wordt gegeven waar je kan opgeven welke VM je wilt selecteren en welke actie je wilt laten gelden voor deze VM('s)
+
+1. Bekijk de status van de huidige VM
+
+    	Get-VM -ComputerName HV01 -Name Accounting02
+
+2. Start de VM (indien nog niet gestart)
+
+		Start-VM -ComputerName HV01 -Name Accounting02
+
+3. Opslaan van de staat van VM
+
+		Save-VM -ComputerName HV01 -Name Accounting02
+
+4. Resume de VM
+
+		Start-VM -ComputerName HV01 -Name Accounting02
+
+5. Shut down VM
+
+		Stop-VM -ComputerName HV01 -Name Accounting02
+
+6. Sluit af 
+
+		Stop-VM -ComputerName HV01 -Name Accounting02 -TurnOff
+
+**Aanpassingen maken aan instellingen van een VM** (RAM, dynamisch geheugen, CPU's)
+
+1. Verander het RAM geheugen (oorspronkelijk 512MB)
+
+		Set-VMMemory -ComputerName HV01 -VMName Accounting02 -StartupBytes 1GB
+
+2. Enable dynamisch geheugen
+
+		Set-VMMemory -ComputerName HV01 -VMName Accounting02 
+		-DynamicMemoryEnabled $true -MaximumBytes 2GB -MinimumBytes 128MB -StartupBytes 1GB
+	
+3. Virtuele CPU's aanpassen (aantal)
+
+		Set-VMProcessor -ComputerName HV01 -VMName Accounting02 -Count 4
+
+**Snapshots** voor de wijzigingen te ontdoen
+
+1. Maak een snapshot
+
+	    Checkpoint-VM -ComputerName HV01 -VMName Accounting02 
+	    -SnapshotName "First Snap"		
+
+2. Maak wijzigingen en maak een nieuwe snapshot
+
+	    Checkpoint-VM -ComputerName HV01 -VMName Accounting02 
+	    -SnapshotName "Second Snap"
+
+3. Bekijk de snapshots
+
+    	Get-VMSnapshot -ComputerName HV01 -VMName Accounting02
+
+4. Rollback naar vorige snapshot
+
+	    Restore-VMSnapshot -ComputerName HV01 -VMName Accounting02 
+	    -Name "Second Snap" -Confirm:$false		
+
+5. Verwijder alle snapshots van de VM
+
+   		 Remove-VMSnapshot -ComputerName HV01 -VMName Accounting02 -Name *
+
+**Migreren van geheugenopslag tussen hosts**
+
+1. Log in op server en open PowerShell console
+
+2. Voer het volgende uit:
+
+	    Move-VM -Name VM1 -DestinationHost HV02 
+	    -DestinationStoragePath E:\vm -IncludeStorage
