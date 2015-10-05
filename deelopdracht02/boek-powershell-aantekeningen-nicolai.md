@@ -1,4 +1,4 @@
-# Windows  #
+# Windows Server 2012 Automation with PowerShell Cookbook #
 
 ## Notities door Nicolai Saliën ##
 
@@ -492,3 +492,193 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 
 	    Move-VM -Name VM1 -DestinationHost HV02 
 	    -DestinationStoragePath E:\vm -IncludeStorage
+
+**Permissies wijzigen op een bestand (NTFS)**
+
+1. Lees permissie van bestand en schrijf naar bestand
+
+    	$acl = Get-Acl M:\Sales\goals.xls
+
+2. Maak nieuw FileSystemAccessRule voor de gebruiker met de juiste permissies --> joe.smith heeft volledige controle in ace variabele
+
+    	$ace = New-Object System.Security.AccessControl.
+    	FileSystemAccessRule "joe.smith","FullControl","Allow"
+
+3. Voeg de permissie toe
+	    
+	    $acl.SetAccessRule($ace)
+
+4. Pas de permissie toe
+
+  		$acl | Set-Acl M:\Sales\goals.xls
+
+**Ownership nemen over file/directory en permissie aanpassen**: bv iemand heeft iets nodig waar 1 iemand toegang tot heeft maar die is op vakantie.
+
+1. Open Powershell en neem de ownership van het bestand (in dit geval bestand)
+
+	    $folder = "M:\Groups\Projections"
+	    takeown /f $folder /a /r /d Y
+	    
+2. Voeg permissie toe voor diegene die het bestand nodig heeft (hier Joe)
+
+	    $acl = Get-Acl $folder
+	    $ace = New-Object System.Security.AccessControl.
+	    FileSystemAccessRule `
+	    "joe.smith","FullControl","Allow"
+	    $acl.SetAccessRule($ace)
+	    Set-Acl $folder $acl
+
+3. Recursief overschrijven van permissie
+
+	    Get-ChildItem $folder -Recurse -Force |`
+	    ForEach {
+	    Get-Acl $acl | Set-Acl -Path $_.FullName
+	    }
+
+**Deduplication enablen voor het besparen van geheugen**
+
+1. Installeer de feature
+	    
+	    Add-WindowsFeature FS-Data-Deduplication
+
+2. Voer ddpeval uit om de mogelijke besparingen te evalueren
+	    
+	    ddpeval.exe M:\
+
+3. Configureer de schijf voor deduplicatie
+
+   	 	Enable-DedupVolume M:\
+
+4. Set de age (hoe lang een file onveranderd moet blijven vooraleer we gaan dedupliceren)
+	    
+	    Set-DedupVolume M: -MinimumFileAgeDays 0
+
+5. Start de deduplicatie
+	    
+	    Start-DedupJob M: -type Optimization
+
+6. Bekijk de status en besparingen 
+
+		Get-DedupJob
+		Get-DedupStatus
+
+**Disk quota (hard en soft)**: in voorbeeld soft quota voor e-mail settings met alerts
+
+1. Installeer File System Resource Manager:
+
+  	  	Install-WindowsFeature FS-Resource-Manager -IncludeManagementTools
+
+2. Ga de huidge e-mail config na, en configureer e-mail alerts voor soft en harde quota's.
+
+	    Get-FsrmSetting
+	    Set-FsrmSetting -SmtpServer mail.corp.contoso.com `
+	    -FromEmailAddress FSAdmin@corp.contoso.com
+
+3. Maak een template gebaseerd op een reeds bestaande template
+
+	    $myQuota = Get-FsrmQuotaTemplate -Name "Monitor 500 MB Share" //gebruik maken van template
+	    $myQuota | New-FsrmQuotaTemplate -Name HomeFolders
+	    Set-FsrmQuotaTemplate -Name HomeFolders -Threshold $myQuota.
+	    Threshold
+
+4. Voer quota toe
+	    
+	    New-FsrmAutoQuota -Path E:\Users -Template HomeFolders
+
+5. Creeër quota:
+	    
+	    New-FsrmQuota -Path E:\Groups -Template HomeFolders
+
+6. Genereer quota gebruik report dat naar mail wordt verzonden:
+
+	    New-FsrmStorageReport -Name "Quota Report" -Namespace "E:\" `
+	    -ReportTypeQuotaUsage -Interactive -MailTo fsadmin@corp.contoso.
+	    com
+
+**Aanmaken van shares**
+
+1. Bekijk de huidige shares op de server
+
+		Get-SmbShare
+
+2. Maak de eerste basis bestand share aan
+
+		New-Item -Path E:\Share1 -ItemType Directory
+		New-SmbShare -Name Share1 -Path E:\share1
+
+3. Maak een tweede share aan die iedereen read access geeft
+	    
+	    New-Item -Path E:\Share2 -ItemType Directory
+	    New-SmbShare -Name Share2 -Path E:\share2 -ReadAccess Everyone `
+	    -FullAccess Administrator -Description "Test share"
+
+4. Lijst de share permissies op
+	    
+	    Get-SmbShare | Get-SmbShareAccess
+
+5. Geef full control aan de eerste share aan Joe Smith
+
+	    Grant-SmbShareAccess -Name Share1 -AccountName CORP\Joe.Smith `
+	    -AccessRight Full -Confirm:$false
+
+6. We kunnen ook de toegang blokken tot een gebruiker
+
+		Block-SmbShareAccess -Name Share2 -AccountName CORP\joe.smith `
+		-Confirm:$false
+
+**Share mappen in de windows file explorer vanuit Powershell**
+
+1. Use Get-ChildItem to view the contents of a share:
+	    
+	    Get-ChildItem \\server1\share2
+
+2. Map the share as persistent:
+
+	    New-PSDrive -Name S -Root \\server1\share1 -Persist -PSProvider
+	    FileSystem
+
+**NFS remote computer toegang geven tot een directory**
+
+1. Installeer NFS server service
+	    
+	    Add-WindowsFeature FS-NFS-Service –IncludeManagementTools
+
+2. Maak een NFS share aan
+	    
+	    New-Item C:\shares\NFS1 -ItemType Directory
+	    New-NfsShare -Name NFS1 -Path C:\shares\NFS1
+
+3. Geeft toegang aan remote computer
+	    
+	    Grant-NfsSharePermission -Name NFS1 -ClientName Server1 `
+	    -ClientType host -Permission readwrite -AllowRootAccess $true
+
+**Installeren van WSUS (Windows Server Update Services)**
+
+1. Installeer de UpdateServices feature:
+	    
+	    Install-WindowsFeature UpdateServices -IncludeManagementTools
+
+2. Voer de basis config uit
+
+	    New-Item E:\MyContent -ItemType Directory
+	    & 'C:\Program Files\Update Services\Tools\WsusUtil.exe'
+	    postinstall contentdir=e:\Mycontent
+
+3. Bekijk de huidige synhronization instellingen:
+
+	    $myWsus = Get-WsuscServer
+	    $myWsus.GetSubscription()
+
+4. Indien internet via proxy is en niet rechtstreeks kunnen we configureren om onze proxy te gebruiken (optioneel)
+
+	    $wuConfig = $myWsus.GetConfiguration()
+	    $wuConfig.ProxyName = "proxy.corp.contoso.com"
+	    $wuConfig.ProxyServerPort = 8080
+	    $wuConfig.UseProxy = $true
+	    $wuConfig.Save()
+
+5. Voer de initiële synchronisatie uit
+	    
+	    $mySubs = $myWsus.GetSubscription()
+	    $mySubs.StartSynchronizationForCategoryOnly()
