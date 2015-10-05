@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Windows Server 2012 Automation with PowerShell Cookbook #
+=======
+# Windows Server 2012 Automation with PowerShell Cookbook  #
+>>>>>>> f1eb4aa0b650c09520e12aa546ba2b9cfe42fdb6
 
 ## Notities door Nicolai Saliën ##
 
@@ -492,6 +496,7 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 
 	    Move-VM -Name VM1 -DestinationHost HV02 
 	    -DestinationStoragePath E:\vm -IncludeStorage
+<<<<<<< HEAD
 
 **Permissies wijzigen op een bestand (NTFS)**
 
@@ -682,3 +687,5 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 	    
 	    $mySubs = $myWsus.GetSubscription()
 	    $mySubs.StartSynchronizationForCategoryOnly()
+=======
+>>>>>>> f1eb4aa0b650c09520e12aa546ba2b9cfe42fdb6
