@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 # Windows Server 2012 Automation with PowerShell Cookbook #
-=======
-# Windows Server 2012 Automation with PowerShell Cookbook  #
->>>>>>> f1eb4aa0b650c09520e12aa546ba2b9cfe42fdb6
+
 
 ## Notities door Nicolai Saliën ##
 
