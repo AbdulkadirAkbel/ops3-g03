@@ -45,14 +45,13 @@
 - -whatif (wat gaat er gebeuren als ik dit doe?)
 - -confirm (powershell vraagt bevestiging voor de uitvoering)
 - get-module (actieve modules)
-- get-adcomputer -filter * (laadt de module ad automatisch op)
 
 ### Objects for the Admin
 
 - objecten vergemakkelijken je leven
 - get-process | where handles -gt 900 (geeft de processen waarvan de handles goter is dan 900)
 - get-process | where handles -gt 900 | sort handles (zelfde als hierboven, maar gesorteerd volgens handles)
-- -get-member geeft informatie over object 
+- -get-member toont welke type object door de pipeline gaat 
 - get-service -name bits | get-member (alias: gm)
 - get-service | select -property name,status (geeft enkel de naam ens tatus van de services)
 - voorbeeld: get-childitem | select -property name, length | sort -property length -descending
@@ -67,3 +66,19 @@
 - get-process (alias: gps)
 - gps | where {$_.handles -ge 1000}
 
+### The pipeline: deeper
+
+- get-service | stop-service zal werken <br/>maar get-service | stop-process zal niet werken omdat niet de juiste parameter wordt doorgegeven
+- get-adcomputer -filter * (geeft alle info van alle computers die in AD zitten)
+- get-adcomputer -filter * | select -property name, @{name='ComputerName' ;expression={$_.name}} <br/>zet de property name om naar ComputerName <br/> korter: get-adcomputer -filter * | select -property name, @{n='ComputerName' ;e={$_.name}} 
+- get-adcomputer -filter * | select -property @{n='ComputerName' ;e={$_.name}} | get-service -name bits
+- get-wmiobject -class win32_bios (geeft bios info)
+- get-wmiobject -class win32_bios -cumputername dc,s1,s2 (geeft bios info van computers dc,s1,s2)
+- get-adcomputer -filter * | gm
+- geen pipeline input mogelijk voor get-wmiobject -class win32_bios
+- get-wmiobject -class win32_bios -computername (get-adcomputer -filter *) (wat tussen haakjes staat wordt eerst uitgevoerd, daarna wordt het meegegeven aan -computername)
+- get-adcomputer -filter * | select -property name (type is adcomputer)
+- get-adcomputer -filter * | select -expandproperty name (geeft geen titel, de type is ook string en geen adcomputer, dat bekom je na | gm)
+- get-wmiobject -class win32_bios -computername (get-adcomputer -filter * | select -expandproperty name)
+- korter: get-wmiobject -class win32_bios -computername (get-adcomputer -filter * ).name
+- get-adcomputer -filter * | get-wmiobject -class win32_bios -computername {$_.name}
