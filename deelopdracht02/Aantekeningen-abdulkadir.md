@@ -82,3 +82,25 @@
 - get-wmiobject -class win32_bios -computername (get-adcomputer -filter * | select -expandproperty name)
 - korter: get-wmiobject -class win32_bios -computername (get-adcomputer -filter * ).name
 - get-adcomputer -filter * | get-wmiobject -class win32_bios -computername {$_.name}
+
+### The PowerShell in the shell: remoting
+
+- PowerShell Remoting activeren: (Group Policy Management Editor) Computer Configuration/Policies/Administrative Templates/Windows Components/Windows Remote Management <br/> Op Windows Server 2012 is het standaard geactiveerd.
+- enter-pssession -computername dc (opent een powershell sessie op dc)
+- invoke-command -computername dc,s1,s2 {get-eventlog -logname system -new 3} <br/> invoke-command runs commands on local and remote computers. **alias = icm**
+- invoke-command -computername dc,s1,s2 {restart-computer}
+- invoke-command -computername dc,s1,s2 {get-service -name bits}
+- invoke-command {get-service -name bits} <br/> runt het lokaal
+- enter-pssession pwa (ps sessie op pwa)
+-  [pwa] (sessie op pwa): get-windowsfeature (toont een lijst van alle rollen en features, er staat een x als het is geïnstalleerd)
+-  [pwa]: get-windowsfeature \*powershell\*
+-  [pwa]: install-windowsfeature windowspowershellwebaccess
+-  [pwa]: get-help \*pswa\*
+-  [pwa]: install-pswebapplication -usertestcertification (maakt een webapp aan)
+-  [pwa]: add-pswaauthorizationrule * * * (betekent dat iedereen alles kan doen)
+-  start iexplore https://pwa/pswa (pwoershell in een browser)
+-  invoke-command -computername dc,s1,s2 {get-eventlog -logname system -new 3} | sort timewritten | format-table -property timewritten, message -autosize
+-  get-volume
+-  icm dc,s1,s2 {get-volume} | sort sizeremaining
+-  icm dc,s1,s2 {get-volume} | sort sizeremaining | select -last 3
+-  hoe een script maken? commando opslaan in bv kladblok, opslaan als naam.ps1
