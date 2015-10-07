@@ -51,4 +51,14 @@ Vb: Get-Service |export-csv –Path c:\service.csv --> exporteert alle services 
 - XML bestand ophalen en in var steken --> $x = [xml](cat .\r_and_J.xml)
 	--> dan kan je de parents en childs doorgaan van de XML file, vb:
 		$x.PLAY.ACT[0].SCENE[0].SPEECH
--  Get-Service | where {$_.status –eq “Running”} --> $_ = huidig object in pipeline, status = property
+-  Get-Service | where {$\_.status –eq “Running” -and $_.name -like "b*"} --> $_ = huidig object in pipeline, status = property
+-  Performantie: zover mogelijk rechts proberen filteren (zoals sort), duurt minder lang om uit te voeren
+-  Eenvoudigere versie van where zonder {}: Get-Service | where status -eq "Running"
+
+
+## Chapter 5: The pipeline: deeper  ##
+
+- Pipeline stuurt een object tegelijkertijd doorheen de pipeline. 
+- Als de nouns matchen zullen ze waarschijnlijk gepiped kunnen worden by value (get-service |stop-service)
+- Maar wat bij get-service | stop-process? get-service | gm --> alle nodige info over get-service object
+- ByValue ondersteuning --> moet het exact hetzelfde geschreven zijn om te kunnen matchen in pipelines
