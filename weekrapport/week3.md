@@ -27,7 +27,9 @@
 
 ### Andy
 
-* 
+* Hoofdstuk 2, 3 en 4 bekeken van powershell en notities genomen
+* Role collectd proberen installeren 
+* Graphite proberen configureren
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week3_toggl_andy.PNG)
 
@@ -56,7 +58,9 @@
 * Boek powershell beginnen doornemen
 
 ### Andy
-* 
+* Collectd volledig laten werken
+* Graphite in orde brengen
+* load testen servers opdracht 1
 
 ### Nicolai
 * Boek Powershell afwerken + notities
@@ -68,8 +72,7 @@
 
 ## Waar hebben jullie nog problemen mee?
 
-* ...
-* ...
+* We kregen verscheidene problemen bij het installeren van de role CollectD en Graphite.
 
 ## Feedback technisch luik
 
