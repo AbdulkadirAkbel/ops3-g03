@@ -20,7 +20,8 @@
 
 ### Abdülkadir
 
-* 
+* Opleiding powershell hoofdstukken 4, 5, 6 en 7 bekeken
+* Geprobeerd om collectd werkende te krijgen
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week3_toggl_abdulkadir.PNG)
 
@@ -49,7 +50,10 @@
 
 ### Algemeen
 ### Abdülkadir
-* 
+* Opleiding powershell voltooien
+* Collectd proberen werkende te krijgen
+* Indien collectd werkt, metrieken visualiseren a.d.h.v. Graphite
+* Boek powershell beginnen doornemen
 
 ### Andy
 * 
