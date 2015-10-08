@@ -60,7 +60,9 @@
 ### Andy
 * Collectd volledig laten werken
 * Graphite in orde brengen
-* load testen servers opdracht 1
+* Load testen servers opdracht 1
+* Boek Powershell starten
+* Hoofdstuk 4, 5 en 6 bekijken + notities nemen
 
 ### Nicolai
 * Boek Powershell afwerken + notities
