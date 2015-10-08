@@ -59,8 +59,26 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 
 ### Chapter 4: Objects for the Admin
 
--
-
+- 'get-process |where -gt 900' geeft alles processen met Handles kleiner dan 900.
+- 'get-process |where -gt 900 |sort handles' doet hetzelfde dan vorig commando, maar sorteert nog eens op Handles.
+- 'get-service -name bits | get-member(gm)' geeft de members van service bits weer.
+- 'get-service | Select -Property name,status' selecteert de properties name en status van get-service.
+- 'get-childitem | Select -Prorperty name, length | sort -Property length -Descending' 
+- 'get-eventlog -Logname System -Newest 5 | Select -Property EventId, TimeWritten, Message | sort -Property timewritten | ConvertTo-html | out-file c:\error.htm' dingen selecteren, sorteren, opslaan in html file.
+- '$x = xml(cat .\r_and_j.xml)' plaatst xml file in object $x. 'xml' moet tussen [].
+- '$x' Geeft de inhoud weer van de xml file van vorig commando.
+- '$x.gettype()' dan krijg je het type van $x.
+- '$x.PLAY'geeft de verschillende onderdelen van het xml bestand weer.
+- '$x.PLAY.ACT' geeft de verschillende onderdelen van ACT weer.
+- '$x.PLAY.ACT[0]' geeft de eerste act weer.
+- '$x.PLAY.ACT.SCENE.SPEECH |group speaker |sort count' geeft alle rollen weer met hun aantal zinnen dat ze moeten zeggen.
+- 'get-history' geef de geschiedenis van de commando's weer die je getypt heb.
+- 'get-service | where -FilterScript {$_.status -eq "Running"}' filtert op status = Running. '-FilterScript' mag weggelaten worden.
+- '$_' is het object dat nu de pipeline kruist.
+- '-eq' = equals.
+- 'get-stuff | where -somestuff | sort|  out-file' het maakt uit dat je pas sorteert na je de where hebt gebruikt. Het is veel perfomanter.
+- 'gps |where {$_handles -ge 1000}'
+- 'gps |where
 
 
 
