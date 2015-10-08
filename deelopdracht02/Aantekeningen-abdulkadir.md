@@ -104,3 +104,53 @@
 -  icm dc,s1,s2 {get-volume} | sort sizeremaining
 -  icm dc,s1,s2 {get-volume} | sort sizeremaining | select -last 3
 -  hoe een script maken? commando opslaan in bv kladblok, opslaan als naam.ps1
+
+### Getting prepared for automation
+
+- get-psdrive (geeft de schijfstations) <br/>er is een drive met de naam Cert (certificate)
+- dir Cert:\CurrentUser -recurse -codesigningcert -outvariable a (zoekt recursief naar de codesigningcertificaten
+- $a (zet de output van hierboven in de variabele a)
+- $cert = $a[0]
+- get-executionpolicy (output: remotesigned)
+- set-executionpolicy "allsigned"
+- dir (kijkt naar de mappen in de directory)
+- er is een testscript: test.ps1 <br/>opent de script met: notepad .\test.ps1 (inhoud van de script: Write-Output "Hello world")
+- cat .\test.ps1
+- als je het runt gaat het niet omdat het niet digitally signed is: .\test.ps1
+- set-authenticodesignature -certificatert -filepath .\test.ps1 <br/> als je hierna `cat .\test.ps1` opent, lukt het wel
+- .\test.ps1 (je kan het runnen)
+- set-executionpolicy remotesigned
+- .\test.ps1 (runnen lukt)
+- notepad .\test.ps1 (restart-computer toevoegen aan de script -> proberen runnen: lukt niet: executable script code found in signature block)
+- allsigned = ieder script dat je downloadt of dat je aanmaakt lokaal moet signed zijn
+- remotesigned = alles dat je downloadt van het internet moet signed zijn (powershell weet of je het hebt gedownloadt hebt of zelf aangemaakt hebt adhv een tag)
+- remotesigned is goed om te starten, allsigned is het beste
+- remotesigned is defaultwaarde
+- get-help *variable
+- $myvar="Hello"
+- $myvar (output: Hello)
+- $myvar=get-service bits
+- $myvar (output: get-service bits)
+- $myvar.status (output: running)
+- $myvar.stop()
+- $myvar.status (output: running)
+- $myvar.refresh()
+- $myvar.status (output: stopped)
+- myvar = get-service bits (error: the term myvar is not recognized as the name of a cmdlet, dus zonder $ zijn het commando's, variabelen altijd met $)
+- $var=read-host "Enter a computername" (vraagt computer name, vb dc ingeven)
+- $var (output: dc)
+- get-service -name bits -computername $var
+- write-host $var (output: dc)
+- write-host $var -foregroundcolor red -backgroundcolor green
+- write-host $var | gm (output: er passeert geen object de pipeline)
+- write-output $var | gm (er is nu wel een output, write-output passeert we de pipeline)
+- write-warning "Please..don't do that"
+- write-error "Stop touching me!"
+- ${this is a test} = 4
+- ${this is a test} (output: 4)
+- ${this is a test61671515135gd} = "WOOW"
+- ${this is a test61671515135gd} (output: WOOW)
+- 1..5 (output: 1 2 3 4 5)
+- 1..5 >test.txt
+- ${C:\jumpstart\test.txt} (output: 1 2 3 4 5)
+- ${C:\jumpstart\test.txt} = "are you freaking kidding me?" (output: are you freaking kidding me?)
