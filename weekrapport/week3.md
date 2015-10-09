@@ -44,7 +44,9 @@
 
 ### Anthony
 
-* 
+* Exra informatie opgezocht over ansible en collectd
+* Collectd beginnen configureren
+* Collectd beginnen configureren met ansible
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week3_toggl_anthony.PNG)
 
@@ -70,11 +72,13 @@
 * Troubleshooting Graphite + verder trachten uit te werken voor monitoring van LAMP stack
 
 ### Anthony
-* 
+* Collectd volledig configureren met ansible en eventueel al graphite
+* Beginnen met Powershell
 
 ## Waar hebben jullie nog problemen mee?
 
 * We kregen verscheidene problemen bij het installeren van de role CollectD en Graphite.
+* Syntax fouten in git bash bij het configureren van collectd met ansible.
 
 ## Feedback technisch luik
 
