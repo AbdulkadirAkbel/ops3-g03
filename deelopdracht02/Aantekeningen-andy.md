@@ -77,9 +77,15 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - '$_' is het object dat nu de pipeline kruist.
 - '-eq' = equals.
 - 'get-stuff | where -somestuff | sort|  out-file' het maakt uit dat je pas sorteert na je de where hebt gebruikt. Het is veel perfomanter.
-- 'gps |where {$_handles -ge 1000}'
-- 'gps |where
+- 'gps |where {$_.handles -ge 1000}' '-ge' staat voor greater than.
 
+### Chapter 5: The pipeline: deeper
+
+- 'get-process calc | dir' geeft het pad weer van calc.
+- 'Get -AdComputer -filter *' geft alle ad computer weer 
+- 'Get-adcomputer -filter * | Select -Property name, @{name='ComputerName';expression={$_.name}}' maak een nieuwe property ComputerName aan die gelijkaardig is aan name.
+- Get-adcomputer -filter * | Select -Property name, @{name='ComputerName';expression={$_.name}} | Get-service -name bits'
+- 
 
 
 
