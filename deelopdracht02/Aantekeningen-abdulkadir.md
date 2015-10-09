@@ -154,3 +154,58 @@
 - 1..5 >test.txt
 - ${C:\jumpstart\test.txt} (output: 1 2 3 4 5)
 - ${C:\jumpstart\test.txt} = "are you freaking kidding me?" (output: are you freaking kidding me?)
+
+### Automation in scale: remoting
+
+- icm -comp dc {$var=2} (maakt een variabele var aan op dc
+- icm -comp dc {write-output $var} (we krijgen geen output omdat de console dood gaat na het uitvoeren van de eerste commando) <br/> oplossing: een verbinding maken, alles uitvoeren, verbinding verbreken = powershell sessie)
+- $sessions=new-pssession -computername dc
+- get-pssession
+- icm -session $sessions {$var=2}
+- icm -session $sessions {$var} (nu krijgen we wel output)
+- measure-command {icm -computername dc {get-process}}<br/>toont hoe lang de commando nodig heeft om uitgevoerd te worden
+- measure-command {icm -session $sessions {get-process}} <br/>op deze manier gaat het sneller
+- $servers='s1', 's2'
+- $servers | foreach{start iexplore http://$_}<br/>voor elk object dat de pipeline passeert wordt de code tussen {} uitgevoerd (nu kan de pagina nog niet worden weergegeven omdat s1 en s2 geen webserver zijn)
+- $s = new-pssession -computername $servers
+- $s (output: 2 sessies, s1 en s2)
+- icm -session $s {install-windowsfeature web-server} (installeert web-server op s1 en s2, zo kan je bv met zeer weinig werk iets installeren op 100 computers tegelijk)
+- $servers | foreach{start iexplore http://$_}<br/>startpagina iis wordt geopend 
+- notepad c:\default.html <br/>De tekst "MVA and PowerShell Rocks!" ingeven in het aangemaakte bestand
+- $servers | foreach{copy-item c:\default.html -destination \\$_\c$\inetpub\wwwroot} <br/>aangemaakte webpagina plaatsen op de webserver
+- $servers | foreach{start iexplore http://$_}
+- $s=new-pssession -computername dc
+- import-pssession -session $s -module activedirectory -prefix remote <br/> installeerd de module activedirectory op de remote computer, zo kan je alle commando's van de remote computer gebruiken zonder dat je ze lokaal moet installeren
+- get-help \*remotead\*
+- get-remoteadcomputer -filter *
+- $c = get-command get-process (geeft meer info over de commando)
+- $c.parameters
+- $c.parameters["Name"]
+- get-command get-*adcomputer (toont een functie en een commando)
+- (get-command get-remoteadcomputer).definition (toont de functie)
+
+### Introducing scripting and toolmaking
+
+- PowerShell ISE: scriptpagina en powershell tegelijk
+- ctrl+R wisselt tussen scriptpagina en powershell
+- get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" <br/>info over drive c
+- get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" | select freespace <br/> geeft de vrije ruimte in bytes
+- als je bij het ingeven van een commando/parameter ctrl+spatie doet, krijg je een lijst met de mogelijke combinaties
+- get-wmiobject win32\_logicaldisk -filter "DeviceID='c:'" | select @{n='freegb'; e={$\_.freespace / 1gb -as [int]}}
+- -get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" <br/> dit opslaan in ise als een script en dan runnen in powershell venster <br/>
+- `function get-diskinfo{`<br/>
+`[cmdletbinding()]`<br/>
+`param(`<br/>
+`[Parameter(Mandatory=$True)]`<br/>
+`[string[]]$computername,}`<br/>
+`$bogus`<br/>
+`)`<br/>
+`get-wmiobject -computername $computername -class win32_logicaldisk -filter "DeviceID='c:'"}`
+- dit kan je dan uitvoeren met .\diskinfo.ps1 -computername dc of gewoon .\diskinfo.ps1, dan vraagt de prompt naar een computernaam
+- <# .... #> = commentaar
+- een script opslaan als een module: diskinfo.psm1
+- import-module .\diskinfo.psm1 -force -verbose
+- dan kan je het zo gebruiken: get-diskinfo -computername dc
+- $env:PSModulePath -split ";" <br/>je kan je eigen modules opslaan in de eerste pad dat wordt weergegeven in de output (met dezelfde naam!)
+- remove-module diskinfo
+- import-module diskinfo
