@@ -1,4 +1,4 @@
-## Aantekeningen Boek en Opleiding Abdülkadir
+## Aantekeningen Opleiding Abdülkadir
 
 
 ### Don't fear the shell
