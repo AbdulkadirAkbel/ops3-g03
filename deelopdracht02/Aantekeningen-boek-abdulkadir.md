@@ -469,7 +469,7 @@ multiple users:
     return $newPass
     }
 
-own script made in Projecten2 last year (creates also OU's en puts the users in the correct OU) (from a csv file):
+own script made in Projecten2 last year (creates also OU's and puts the users in the correct OU) (from a csv file):
 
 	Import-Module ActiveDirectory
     
