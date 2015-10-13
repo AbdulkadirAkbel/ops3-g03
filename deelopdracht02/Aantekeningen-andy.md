@@ -85,8 +85,15 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - 'Get -AdComputer -filter *' geft alle ad computer weer 
 - 'Get-adcomputer -filter * | Select -Property name, @{name='ComputerName';expression={$_.name}}' maak een nieuwe property ComputerName aan die gelijkaardig is aan name.
 - Get-adcomputer -filter * | Select -Property name, @{name='ComputerName';expression={$_.name}} | Get-service -name bits'
+- 'get-wmiobject -Class win32 -Computername dc,s1,..' geeft gegevens van de opgegeven computernamen
+- 'Get-ADComputer -filter * | Get-WmiObject -class win32_bios'
+- Gebruik help om te kijken of iets een pipeline input ondersteund.
+- 'Get-WmiObject -class win32_bios -ComputerName (Get-Adcomputer -filter *)' tussen haakjes moet eerst uitgevoerd worden.
+- 'getADComputer -filter * | Select -Property name' geeft alleen naam weer
+- 'getADComputer -filter * | Select -ExpandProperty name' geeft alleen de namen weer zonder een titel.
+- 'Get-WmiObject -class win32_bios -ComputerName (Get-Adcomputer -filter * | Select -ExpandProperty name)' of in PS V3: 'Get-WmiObject -class win32_bios -ComputerName (Get-Adcomputer -filter * ).name' of nog korter 'Get-ADComputer -filter * |get-wmiobject win32_bios -ComputerName {$_.Name}'
+- 'Get-help Get-CimInstance' is zelfde dan WmiObject maar ondersteund wel pipeline input.
+
+### Chapter 6: The PowerShell in the shell: remoting
+
 - 
-
-
-
-
