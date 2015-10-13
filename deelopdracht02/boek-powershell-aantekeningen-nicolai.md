@@ -4,6 +4,9 @@
 
 ## Notities door Nicolai Saliën ##
 
+
+**Algemeen**
+
 Voor het werken met Powershell help eerst updaten:
 
     Update-Help -Module * -Force
@@ -685,5 +688,146 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 	    
 	    $mySubs = $myWsus.GetSubscription()
 	    $mySubs.StartSynchronizationForCategoryOnly()
-=======
->>>>>>> f1eb4aa0b650c09520e12aa546ba2b9cfe42fdb6
+
+**Instellen wat we juist willen updaten adhv WSUS**
+
+1. Instellen welke producten je wilt updaten
+
+	    $myProducts = Get-WsusProduct | `
+	    Where-Object {$_.Product.Title -in ('Forefront Client Security', `
+	    'SQL Server 2008 R2', 'Office', 'Windows')}
+	    $myProducts | Set-WsusProduct
+
+2. Instellen welke soort van updates je wilt toepassen
+
+	    $myClass = Get-WsusClassification | `
+	    Where-Object { $_.Classification.Title -in ('Update Rollups', `
+	    'Security Updates', 'Critical Updates', 'Definition Updates', `
+	    'Service Packs', 'Updates')}
+	    $myClass | Set-WsusClassification
+
+3. Start de synchronisatie
+
+		$mySubs = $myWsus.GetSubscription()
+		$mySubs.StartSynchronization()
+
+4. Configureer voor automatische synchronisatie (hier één per dag)
+
+	    $mysubs = $myWsus.GetSubscription()
+	    $mysubs.SynchronizeAutomatically = $true
+	    $mysubs.NumberOfSynchronizationsPerDay = 1
+	    $mysubs.Save()
+
+**Overzicht van beschikbare updates krijgen**
+
+1. Maak het object aan om te zoeken
+
+	    $searcher = New-Object -ComObject Microsoft.Update.Searcher
+	    $searcher.Online = $true
+	    $searcher.ServerSelection = 1
+
+2. Definieer op basis van wat je naar updates wil zoeken
+	    
+	    $results = $searcher.Search('IsInstalled=0')
+
+3. Toon de resultaten
+
+	    $results.Updates | `
+	    Select-Object @{Name="UpdateID"; `
+	    Expression={$_.Identity.UpdateID}}, Title
+
+**Een gedeelde printer opzetten** (in dit geval een HP LasterJet met IP van 10.0.0.200.)
+
+1. Installeer de print server
+	    
+	    Add-WindowsFeature Print-Server –IncludeManagementTools
+
+2. Creeër de poort voor de printer
+
+		Add-PrinterPort -Name Accounting_HP -PrinterHostAddress
+		"10.0.0.200"
+
+3. Voeg de driver van de printer toe
+
+		Add-PrinterDriver -Name "HP LaserJet 9000 PCL6 Class Driver"
+
+4. Voeg de printer toe met add-printer
+
+		Add-Printer -Name "Accounting HP" -DriverName "HP LaserJet 9000
+		PCL6 Class Driver" -PortName Accounting_HP
+
+5. Deel de printer zodat alle gebruikers (of wie hem nodig heeft) hem kunnen gebruiken
+
+		Set-Printer -Name "Accounting HP" -Shared $true -Published $true
+
+6. Check de werking
+
+		Get-Printer | Format-Table -AutoSize	
+
+
+**Verkrijgen van informatie over het gebruik van een printer** dit kan misschien helpen te detecteren dat er overbodige printers zijn of dat er bepaalde printers te vaak worden gebruikt met als gevolg dat we extra printers moeten toevoegen.
+
+1. Maak logging op de print server mogelijk adhv de wevutil.exe
+
+	    wevtutil.exe sl "Microsoft-Windows-PrintService/Operational" /
+	    enabled:true
+
+2. Maak een query voor succesvolle print opdrachten
+
+		Get-WinEvent -LogName Microsoft-Windows-PrintService/Operational |
+		`
+		Where-Object ID -eq 307
+
+3. Vervolgens kunnen we nog nagaan wie wanneer iets heeft geprint en hoeveel en op welke printer adhv volgende commando
+
+		Get-WinEvent -LogName Microsoft-Windows-PrintService/Operational |
+		`
+		Where-Object ID -eq 307 | `
+		Select-Object TimeCreated, `
+		@{Name="User";Expression={$_.Properties[2].Value}}, `
+		@{Name="Source";Expression={$_.Properties[3].Value}}, `
+		@{Name="Printer";Expression={$_.Properties[4].Value}}, `
+		@{Name="Pages";Expression={$_.Properties[7].Value}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
