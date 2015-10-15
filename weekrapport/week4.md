@@ -57,11 +57,15 @@
 * Boek powershell uitlezen en aantekeningen maken
 * Collectd volledig in orde brengen
 * Load testing framework opzetten
+
+
 ### Andy
 * Alle hoofdstukken van opleiding powershell afmaken
 * Alle verslagen schrijven opleiding powershell
 * Boek powershell beginnen lezen en aantekeningen maken
 * Verder werken een CollectD (loadtesting)
+
+
 ### Nicolai
 ### Anthony
 
