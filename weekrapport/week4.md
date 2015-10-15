@@ -1,4 +1,4 @@
-# Voortgangsrapport week nn
+# Voortgangsrapport week 4
 
 * Groep: 03
 * Datum: 16/10/2015
@@ -40,7 +40,9 @@
 
 ### Nicolai
 
-* ...
+* Vagrant troubleshooting bij 'vagrant up' van collectd server
+* Verder kijken naar Microsoft Virtual Academy (PowerShell) + verslag
+* Verder werken aan boek PowerShell + verslag
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_nicolai.PNG)
 
@@ -65,8 +67,12 @@
 * Boek powershell beginnen lezen en aantekeningen maken
 * Verder werken een CollectD (loadtesting)
 
-
 ### Nicolai
+- Opleiding van de hoofdstukken van PowerShell afwerken + verslag
+- Powershell boek + verslag afwerken
+- CollectD (loadtesting)
+- Uitbreiding testplan
+
 ### Anthony
 
 ## Waar hebben jullie nog problemen mee?
