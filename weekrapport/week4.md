@@ -71,6 +71,7 @@
 - Opleiding van de hoofdstukken van PowerShell afwerken + verslag
 - Powershell boek + verslag afwerken
 - CollectD (loadtesting)
+- Uitbreiding testplan
 
 ### Anthony
 
