@@ -96,4 +96,19 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 
 ### Chapter 6: The PowerShell in the shell: remoting
 
-- 
+- Eerst moet je PowerShell Remoting activeren: Group Policy Management Editor -> Computer Configuration/Policies/Administrative -> Templates/Windows -> Components/Windows Remote Management <br/> Op Windows Server 2012 is het standaard geactiveerd.
+- 'enter-pssession -computername dc' opent een powershell sessie op de domain controller.
+- 'invoke-command -computername dc,s1,s2 {get-eventlog -logname system -new 3}' voert commando's uit op de meegegeven pc's. 
+- 'invoke-command -computername dc,s1,s2 {restart-computer}' herstart de opgegeven computers.
+- 'invoke-command {get-service -name bits}' runt het commando op de lokale host.
+- 'enter-pssession pwa' start een ps sessie op pwa.
+-  '[pwa]: get-windowsfeature' toont een lijst van alle rollen en features, er staat een x als een rol of feature geïnstalleerd is.
+-  '[pwa]: get-windowsfeature \*powershell\*' 
+-  '[pwa]: install-windowsfeature windowspowershellwebaccess' installeerd de feature.
+-  '[pwa]: get-help \*pswa\*' geeft de nieuwe cmdlets weer van de webaccess.
+-  '[pwa]: install-pswebapplication -usertestcertification' nu kan je powershell gebruiken van in de browser.
+-  '[pwa]: add-pswaauthorizationrule * * *' aan iedereen alle rechten.
+-  'start iexplore https://pwa/pswa' start de powershell in een browser.
+-  'invoke-command -computername dc,s1,s2 {get-eventlog -logname system -new 3} | sort timewritten | format-table -property timewritten, message -autosize'
+-  'icm dc,s1,s2 {get-volume} | sort sizeremaining' invoke.
+-  Om een commando als script op te slaan, sla je het in notepad op met de extentie '.ps1'.
