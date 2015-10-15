@@ -1,7 +1,7 @@
 # Voortgangsrapport week nn
 
 * Groep: 03
-* Datum: 
+* Datum: 16/10/2015
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
@@ -14,44 +14,51 @@
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_kanban.PNG)
 
-* ...
-* ...
+![toggl algemeen](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_algemeen.PNG)
 
 [Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
 
-### Student 1
+### Abdülkadir
 
 * ...
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_abdulkadir.PNG)
 
-### Student 2
+### Andy
 
-* ...
+* Collectd afgewerkt
+* Hoofdstuk 5 en 6 bekeken cursus windows powershell
+* Verslag geschreven hoofdstuk 5 en 6 windows powershell
+* Troubleshooting Collectd
+* Boek gevonden powershell
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_andy.PNG)
 
-### Student 3
-
-* ...
-
-[Afbeelding individueel rapport tijdregistratie]
-
-### Student 4
+### Nicolai
 
 * ...
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_nicolai.PNG)
+
+### Anthony
+
+* ...
+
+![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_anthony.PNG)
 
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Abdülkadir
+### Andy
+* Alle hoofdstukken van opleiding powershell afmaken
+* Alle verslagen schrijven opleiding powershell
+* Boek powershell beginnen lezen en aantekeningen maken
+* Verder werken een CollectD (loadtesting)
+### Nicolai
+### Anthony
 
 ## Waar hebben jullie nog problemen mee?
 
