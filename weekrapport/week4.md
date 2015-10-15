@@ -67,10 +67,6 @@
 * Boek powershell beginnen lezen en aantekeningen maken
 * Verder werken een CollectD (loadtesting)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 282a4c1cd5c8af898c49e735f5086a7afdb3df89
 ### Nicolai
 - Opleiding van de hoofdstukken van PowerShell afwerken + verslag
 - Powershell boek + verslag afwerken
