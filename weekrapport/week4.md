@@ -18,11 +18,13 @@
 
 ![toggl algemeen](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_algemeen.PNG)
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+
 
 ### Abdülkadir
 
-* ...
+* Powershell opleiding hoofdstukken 8 en 9 bekeken en notities genomen
+* Boek powershell doorgenomen en notities genomen
+* Collectd geprobeerd werkende te krijgen
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_abdulkadir.PNG)
 
@@ -54,12 +56,21 @@
 
 ### Algemeen
 ### Abdülkadir
+* Boek powershell uitlezen en aantekeningen maken
+* Collectd volledig in orde brengen
+* Load testing framework opzetten
+
+
 ### Andy
 * Alle hoofdstukken van opleiding powershell afmaken
 * Alle verslagen schrijven opleiding powershell
 * Boek powershell beginnen lezen en aantekeningen maken
 * Verder werken een CollectD (loadtesting)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 282a4c1cd5c8af898c49e735f5086a7afdb3df89
 ### Nicolai
 - Opleiding van de hoofdstukken van PowerShell afwerken + verslag
 - Powershell boek + verslag afwerken
