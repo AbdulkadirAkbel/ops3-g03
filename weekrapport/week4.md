@@ -102,8 +102,8 @@ Windows
         ```
     * Let op indentatie en regeleindes. Ook in documentatie is correcte en leesbare code belangrijk!
 
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Abdülkadir
+### Andy
+### Nicolai
+### Anthony
 
