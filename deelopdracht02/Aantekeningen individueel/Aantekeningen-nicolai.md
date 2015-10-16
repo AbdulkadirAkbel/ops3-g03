@@ -1,4 +1,4 @@
-# Aantekeningen Boek en Online opleiding Nicolai Saliën #
+# Aantekeningen Online opleiding Nicolai Saliën #
 
 
 ## Chapter 1: Don't fear the shell  ##
