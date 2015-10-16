@@ -48,7 +48,9 @@
 
 ### Anthony
 
-* ...
+* Collectd geconfigureerd
+* Collectd geautomatiseerd met ansible
+* Verdiept in ansible
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_anthony.PNG)
 
@@ -74,6 +76,8 @@
 - Uitbreiding testplan
 
 ### Anthony
+- Powershell bijbenen
+- Collectd metrieken weergeven via graphite of graphana
 
 ## Waar hebben jullie nog problemen mee?
 
