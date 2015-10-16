@@ -18,8 +18,8 @@
 
 ### Chapter 2: The help system
 
-- Er zijn duizenden cmdlets die je nooit allemaal vanbuiten kan leren, daarom is help gemakkelijk om cmdlets te ontdekken.
-- Help system wordt regelmatig gëupdate.
+- Er zijn duizenden cmdlets die je nooit allemaal van buiten kan leren, daarom is help gemakkelijk om cmdlets te ontdekken.
+- Help system wordt regelmatig geüpdate.
 - 'update-help -Force' (help sytem updaten, hier heb je wel internet voor nodig)
 - 'Get-help' niet hetzelfde als 'help' en 'man'.
 Get-help gaat meteen naar onderaan de help file en moet je naar boven scrollen om de inhoud te bekijken.
