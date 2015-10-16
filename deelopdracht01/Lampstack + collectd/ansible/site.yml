@@ -28,7 +28,7 @@
    - bertvv.el7
    - { role: ansible-role-collectd-master,
              collectd_plugins:
-             [{ plugin: "logfile"},
+             [{ plugin: "logfile"}],
 
              collectd_plugins_multi:
              { rrdtool: { Datadir: '"/var/lib/collectd/rrd"' },
