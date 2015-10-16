@@ -20,4 +20,4 @@ Uitvoerder(s) test: Anthony
 
 - Na de 'vagrant up' van de collectd server en de 'vagrant ssh collectd' voeren we het volgende commando uit voor te pingen naar de LAMP stack: ping 192.168.56.77. De ping wordt succesvol uitgevoerd.
 - Na de 'vagrant up' van de LAMP stack en de 'vagrant ssh lamp' voeren we het volgende commando uit voor te pingen naar de collectd server: ping 192.168.56.78. De ping wordt succesvol uitgevoerd.
-- Ping naar collect: ping 192.168.56.78
+
