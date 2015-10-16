@@ -11,7 +11,7 @@ Auteur(s) testplan: Andy
 - We kunnen via de host de Wordpress-pagina bereiken van de LAMP stack.
 - We kunnen via de host de PhpMyAdmin pagina bereiken van de LAMP stack.
 - Nagaan of de collectd aan het draaien is.
-- Monitoring server schrijft de monitoring resultaten naar de rrd bestanden
+- Monitoring server schrijft de monitoring resultaten naar de rrd bestanden.
 - Metrieken worden gevisualiseerd aan de hand van Graphite? Graphana? 
 
 
@@ -26,3 +26,4 @@ Uitvoerder(s) test: Anthony
 - Wanneer we op de host surfen naar http://192.168.56.77/wordpress/ wanneer onze lampstack draait, komen we succesvol terecht op de Wordpress pagina van de lampstack.
 - Wanneer we op de host surfen naar http://192.168.56.77/phpmyadmin/ wanneer onze lampstack draait, komen we succesvol terecht op de PhpMyAdmin pagina van de lampstack. Ook wanneer we surfen naar http://192.168.56.77, komen we terecht op de infopagina van php die geconfigureerd staat in de www/index.php
 - Wanneer we ingelogd zijn op de collectd en we het volgende commando uitvoeren: 'service collectd status' zien we dat de collectd aan het draaien is (weergave: "active (running)").
+- Wanneer we naar de directory /var/lib/collectd/rrd (cd /var/lib/collectd/rrd) gaan zien we verschillende folders met een benaming die aangeeft wat voor montitoring informatie die zal bevatten. Collectd verzamelt dus succesvol de monitoring informatie over de LAMP stack in deze rrd files. 
