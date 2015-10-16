@@ -1,4 +1,4 @@
-## Testplan en -rapport taak 1: lamp-stack
+## Testplan en -rapport taak 1: lamp-stack met load testing
 
 * Verantwoordelijke uitvoering: Andy
 * Verantwoordelijke testen: Anthony
@@ -11,9 +11,8 @@ Auteur(s) testplan: Andy
 - We kunnen via de host de Wordpress-pagina bereiken van de LAMP stack.
 - We kunnen via de host de PhpMyAdmin pagina bereiken van de LAMP stack.
 - Nagaan of de collectd aan het draaien is.
-- Monitoring server kan metrieken capteren van lamp.
-- Metrieken worden gevisualiseerd op dashboard.
-- Framework voor load testing kan load creëren op lamp. Monitoring server capteert hier ook metrieken van.
+- Monitoring server schrijft de monitoring resultaten naar de rrd bestanden
+- Metrieken worden gevisualiseerd aan de hand van Graphite? Graphana? 
 
 
 ### Testrapport
