@@ -24,5 +24,5 @@ Uitvoerder(s) test: Anthony
 - Na de 'vagrant up' van de collectd server en de 'vagrant ssh collectd' voeren we het volgende commando uit voor te pingen naar de LAMP stack: ping 192.168.56.77. De ping wordt succesvol uitgevoerd.
 - Na de 'vagrant up' van de LAMP stack en de 'vagrant ssh lamp' voeren we het volgende commando uit voor te pingen naar de collectd server: ping 192.168.56.78. De ping wordt succesvol uitgevoerd.
 - Wanneer we op de host surfen naar http://192.168.56.77/wordpress/ wanneer onze lampstack draait, komen we succesvol terecht op de Wordpress pagina van de lampstack.
-- Wanneer we op de host surfen naar http://192.168.56.77/phpmyadmin/ wanneer onze lampstack draait, komen we succesvol terecht op de PhpMyAdmin pagina van de lampstack.
+- Wanneer we op de host surfen naar http://192.168.56.77/phpmyadmin/ wanneer onze lampstack draait, komen we succesvol terecht op de PhpMyAdmin pagina van de lampstack. Ook wanneer we surfen naar http://192.168.56.77, komen we terecht op de infopagina van php die geconfigureerd staat in de www/index.php
 
