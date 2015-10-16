@@ -24,8 +24,49 @@ Nu moeten nog de ansible roles geïnstalleerd worden.
 - Download de repo voor de lampstack.
 - verwijder alle rollen buiten bertvv.el7.
 - Download de repo voor collectd en pak deze uit in de "roles" folder van ainsible.
-- Pas het bestand "main.yml" in de vars folder aan, voeg "collectd_server: 192.168.56.78" toe aan "main.yml".
+- Pas het bestand "main.yml" in de vars folder aan van de collectd rol, voeg "collectd_server: 192.168.56.78" toe aan "main.yml".
+		`collectd_server: 192.168.56.78`
 - Pas het bestand "all.yml" in de de group_vars folder aan, voeg "collectd_server: 192.168.56.78" toe aan "all.yml".
+		`collectd_server: 192.168.56.78`
+- Definieer de collectd rol in de file "site.yml":
+				`# site.yml
+		---
+		- hosts: lampstack
+		  sudo: true
+		
+		  roles:
+		    - bertvv.el7
+		    - sepolicy
+		    - bertvv.httpd
+		    - bertvv.mariadb
+		    - bertvv.wordpress
+		    - phpmyadmin
+		    - { role: ansible-role-collectd-master,
+		             collectd_plugins:
+		             [{ plugin: "cpu" },
+		              { plugin: "logfile"},
+		              { plugin: "memory" }],
+		
+		             collectd_plugins_multi:
+		             {network: { Server: '192.168.56.78' }},
+		
+		            tags: ["collectd"] }
+		
+		- hosts: collectd
+		  sudo: true
+		  
+		  roles:
+		   - bertvv.el7
+		   - { role: ansible-role-collectd-master,
+		             collectd_plugins:
+		             [{ plugin: "logfile"}],
+		
+		             collectd_plugins_multi:
+		             { rrdtool: { Datadir: '"/var/lib/collectd/rrd"' },
+		               network: { Listen: '192.168.56.77'}},
+		
+		             tags: ["collectd"] }`
+
 - Open git-bash in de collectd folder en voer in: "vagrant up --provision".
 
 
