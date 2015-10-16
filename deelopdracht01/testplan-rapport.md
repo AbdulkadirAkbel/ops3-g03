@@ -8,6 +8,7 @@
 Auteur(s) testplan: Andy
 
 - Pingen van lamp naar collectd en omgekeerd lukt.
+- We kunnen via de host de Wordpress-pagina bereiken van de LAMP stack
 - Monitoring server kan metrieken capteren van lamp.
 - Metrieken worden gevisualiseerd op dashboard.
 - Framework voor load testing kan load creëren op lamp. Monitoring server capteert hier ook metrieken van.
