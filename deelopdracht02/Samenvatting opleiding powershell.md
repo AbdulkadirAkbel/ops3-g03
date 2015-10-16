@@ -1,7 +1,7 @@
 ## Aantekeningen Opleiding Abdülkadir
 
 
-### Don't fear the shell
+### Chapter 1: Don't fear the shell
 
 - Powershell altijd als administrator uitvoeren anders kan je errors krijgen in verband met toegang die gewijgerd wordt.
 - Commando's van zowel unix als windows kunnen gebruikt worden in powershell.
@@ -20,7 +20,7 @@
 - `ipconfig`, `ping`
 
 
-### The help system
+### Chapter 2: The help system
 
 - Er zijn duizenden cmdlets die je nooit allemaal van buiten kan leren, daarom is help gemakkelijk om cmdlets te ontdekken.
 - Help system wordt regelmatig geüpdate.
@@ -48,7 +48,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `cls ; help about_eventlogs` = doet 2 zaken in 1 keer
 
 
-### The pipeline: getting connected & extending the shell
+### Chapter 3: The pipeline: getting connected & extending the shell
 
 - Pipeline is heel krachtig dus wees voorzichtig welke commando's je uitvoerd.
 - Pipeline vraagt geen confirmatie, de commando's worden meteen uitgevoerd
@@ -67,7 +67,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `Import-Module ActiveDirectory` (importeert AD module)
 
 
-### Objects for the Admin
+### Chapter 4: Objects for the Admin
 
 - objecten vergemakkelijken je leven
 - `get-process | where handles -gt 900` (geeft de processen waarvan de handles goter is dan 900)
@@ -88,7 +88,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `get-process` (alias: `gps`)
 - `gps | where {$_.handles -ge 1000}`
 
-### The pipeline: deeper
+### Chapter 5: The pipeline: deeper
 
 - `get-service | stop-service` zal werken <br/>maar `get-service | stop-process` zal niet werken omdat niet de juiste parameter wordt doorgegeven
 - Als de nouns matchen zullen ze waarschijnlijk gepiped kunnen worden by value (`get-service |stop-service`)
@@ -106,7 +106,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - korter: `get-wmiobject -class win32_bios -computername (get-adcomputer -filter * ).name`
 - `get-adcomputer -filter * | get-wmiobject -class win32_bios -computername {$_.name}`
 
-### The PowerShell in the shell: remoting
+### Chapter 6: The PowerShell in the shell: remoting
 
 - PowerShell Remoting activeren: (Group Policy Management Editor) Computer Configuration/Policies/Administrative Templates/Windows Components/Windows Remote Management <br/> Op Windows Server 2012 is het standaard geactiveerd.
 - `enter-pssession -computername dc` (opent een powershell sessie op dc)
@@ -128,7 +128,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 -  `icm dc,s1,s2 {get-volume} | sort sizeremaining | select -last 3`
 -  hoe een script maken? commando opslaan in bv kladblok, opslaan als naam.ps1
 
-### Getting prepared for automation
+### Chapter 7: Getting prepared for automation
 
 - Kan script niet uitvoeren? --> `Set-ExecutionPolicy AllSigned` lost het probleem niet op --> moet gecertificeerd worden --> `Set-AuthenticodeSignature -Certificate CertName -FilePath PathOfCert`
 - `New-SelfSignedCertificate` --> om scripten te ondertekenen (zie vorige stap)
@@ -182,7 +182,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `${C:\jumpstart\test.txt}` (output: 1 2 3 4 5)
 - `${C:\jumpstart\test.txt} = "are you freaking kidding me?"` (output: are you freaking kidding me?)
 
-### Automation in scale: remoting
+### Chapter 8: Automation in scale: remoting
 
 - `icm -comp dc {$var=2}` (maakt een variabele var aan op dc)
 - `icm -comp dc {write-output $var}` (we krijgen geen output omdat de console dood gaat na het uitvoeren van de eerste commando) <br/> oplossing: een verbinding maken, alles uitvoeren, verbinding verbreken = powershell sessie)
@@ -211,7 +211,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `get-command get-*adcomputer` (toont een functie en een commando)
 - `(get-command get-remoteadcomputer).definition` (toont de functie)
 
-### Introducing scripting and toolmaking
+### Chapter 9: Introducing scripting and toolmaking
 
 - PowerShell ISE: scriptpagina en powershell tegelijk
 - ctrl+R wisselt tussen scriptpagina en powershell
