@@ -27,4 +27,3 @@ Uitvoerder(s) test: Anthony
 - Wanneer we op de host surfen naar http://192.168.56.77/wordpress/ wanneer onze lampstack draait, komen we succesvol terecht op de Wordpress pagina van de lampstack.
 - Wanneer we op de host surfen naar http://192.168.56.77/phpmyadmin/ wanneer onze lampstack draait, komen we succesvol terecht op de PhpMyAdmin pagina van de lampstack. Ook wanneer we surfen naar http://192.168.56.77, komen we terecht op de infopagina van php die geconfigureerd staat in de www/index.php
 - Wanneer we ingelogd zijn op de collectd en we het volgende commando uitvoeren: 'service collectd status' zien we dat de collectd aan het draaien is (weergave: "active (running)").
-- 
