@@ -3,6 +3,12 @@
 
 ### Don't fear the shell
 
+- Powershell altijd als administrator uitvoeren anders kan je errors krijgen in verband met toegang die gewijgerd wordt.
+- Commando's van zowel unix als windows kunnen gebruikt worden in powershell.
+- Meeste cmdlets zijn in de vorm werkwoord-naamwoord
+- Powershell V2 --> Windows 7 en Server 2008
+- Powershell V3 --> Windows 8 en Server 2012
+- Steeds de mogelijkheid om je Powershell aan te passen naargelang je eigen wensen (font, kleur,…)
 - `set-location c:\`
 - `get-childitem` OF `dir` OF `ls`
 - `clear` OF `cls` (=clear screen)
@@ -16,24 +22,36 @@
 
 ### The help system
 
+- Er zijn duizenden cmdlets die je nooit allemaal van buiten kan leren, daarom is help gemakkelijk om cmdlets te ontdekken.
+- Help system wordt regelmatig geüpdate.
 - `update-help -Force` (downloadt alle helpbestanden die je nodig hebt op je systeem)
+- 'Get-help' niet hetzelfde als 'help' en 'man'.<br/>
+Get-help gaat meteen naar onderaan de help file en moet je naar boven scrollen om de inhoud te bekijken.<br/>
+Help en man tonen het begin van de help file, je kan naar onder gaan door op spatie te duwen.
+- Als je het help systeem gebruikt om naar cmdlets te zoekenmet bv. wildcards, krijg je per cmdlet de categorie, de module en een korte beschrijving.
+- `get-verb` geeft je alle werkwoorden waarmee je een cmdlet kan vormen.
 - `get-help get-service` (geeft een deel van de helppagina)
 - `help get-service` geeft de volledige pagina
 - `get-help *service*` (geeft alles waar service voorkomt)
 - `get-help get-service -Online` (opent de helppagina online)
+- `get-help get-service -Full` (opent de volledige helppagina)
 - `get-help get-service -Example` (voorbeelden)
-- `get-help get-service -ShowWindow` (opent het in een venster) (handig om dingen te kopiëren)
+- `get-help get-service -ShowWindow` (opent een appart venster met daar de help file die je kan filteren of kopiëren)
 - om te kopiëren in powershell: selecteren, rechts klikken, op de plaats waar je het wil plakken opnieuw rechts klikken
+- commando aanvullen --> Tab, om terug te gaan --> Shift + tab
 - een woord voorafgegaan door een koppelteken = parameter vb: `-Name`, `-ComputerName` </br> voorbeeld: `get-service -Name bits` (geeft de services met de naam bits)
 - `-name` mag je weglaten </br> `get-service -name bits` = `get-service bits`
 - alias voor `get-service` = `gsv` </br> vb: `gsv bits`
 - 3 laatste errors weergeven: `get-eventlog -logname system -newest 3 -entrytype error`
 - 3 laatste errors van 3 computers weergeven: `get-eventlog -logname system -newest 3 -entrytype error -computername dc,s1,s2`
+- Je kan meerdere commando's tegelijk uitvoeren door ze te scheiden met een `;`.
 - `cls ; help about_eventlogs` = doet 2 zaken in 1 keer
 
 
 ### The pipeline: getting connected & extending the shell
 
+- Pipeline is heel krachtig dus wees voorzichtig welke commando's je uitvoerd.
+- Pipeline vraagt geen confirmatie, de commando's worden meteen uitgevoerd
 - pipeline = `|`
 - pipeline stuurt de output voor de pipeline naar na de pipeline, zo kan je meerdere taken uitvoeren in 1 lijn
 - vb: `get-service -name bits` (=toont de service) </br> `get-service -name bits | stop-service` (=toont en stopt de service)
@@ -44,7 +62,10 @@
 - `get-service | ConvertTo-html -Property name,status | out-file c:\test.html`
 - `-whatif` (wat gaat er gebeuren als ik dit doe?)
 - `-confirm` (powershell vraagt bevestiging voor de uitvoering)
+- Commando's om specifieke programma's te beheren, worden met behulp van modules meegelverd met het desbetrefende programma. De modules bevatten cmdlets die het programma kunnen beheren of aanpassen. Een voorbeeld van zo een programma is Active Directory.
 - `get-module` (actieve modules)
+- `Import-Module ActiveDirectory` (importeert AD module)
+
 
 ### Objects for the Admin
 
@@ -60,8 +81,9 @@
 - `$x = [xml]\(cat .\bestand.xml)` <br/> xml-bestand ophalen en in variabele x steken <br/> zo kan je in een xml-bestand gegevens opvragen: `$x.PLAY.ACT[0].SCENE[0].SPEECH`
 - `get-history`
 - `$_` = huidig object in de pipeline
-- `get-service | where {$_.status -eq "Running}`
+- `get-service | where {$_.status -eq "Running}` huidig object in pipeline, status = property
 - `get-service | where {$_.status = "Running}`
+- Eenvoudigere versie van where zonder {}: `Get-Service | where status -eq "Running"`
 - `get-service | where {$PSItem_.status = "Running} `<br/> alle 3 zijn hetzelfde
 - `get-process` (alias: `gps`)
 - `gps | where {$_.handles -ge 1000}`
@@ -69,6 +91,7 @@
 ### The pipeline: deeper
 
 - `get-service | stop-service` zal werken <br/>maar `get-service | stop-process` zal niet werken omdat niet de juiste parameter wordt doorgegeven
+- Als de nouns matchen zullen ze waarschijnlijk gepiped kunnen worden by value (`get-service |stop-service`)
 - `get-adcomputer -filter *` (geeft alle info van alle computers die in AD zitten)
 - `get-adcomputer -filter * | select -property name, @{name='ComputerName' ;expression={$_.name}}` <br/>zet de property name om naar ComputerName <br/> korter: `get-adcomputer -filter * | select -property name, @{n='ComputerName' ;e={$_.name}} `
 - `get-adcomputer -filter * | select -property @{n='ComputerName' ;e={$_.name}} | get-service -name bits`
@@ -107,6 +130,8 @@
 
 ### Getting prepared for automation
 
+- Kan script niet uitvoeren? --> `Set-ExecutionPolicy AllSigned` lost het probleem niet op --> moet gecertificeerd worden --> `Set-AuthenticodeSignature -Certificate CertName -FilePath PathOfCert`
+- `New-SelfSignedCertificate` --> om scripten te ondertekenen (zie vorige stap)
 - `get-psdrive` (geeft de schijfstations) <br/>er is een drive met de naam Cert (certificate)
 - `dir Cert:\CurrentUser -recurse -codesigningcert -outvariable a` (zoekt recursief naar de codesigningcertificaten
 - `$a` (zet de output van hierboven in de variabele a)
@@ -137,6 +162,8 @@
 - `$myvar.refresh()`
 - `$myvar.status` (output: stopped)
 - `myvar = get-service bits` (error: the term myvar is not recognized as the name of a cmdlet, dus zonder $ zijn het commando's, variabelen altijd met $)
+- `Read-host` input opvragen van gebruiker
+- `Write-Host` --> output, kan je dingen met wijzigen (kleuren,...), write host niet aan te raden --> WEL: `write-output`, `write-warning` --> in het oranje, `write-error` --> rood
 - `$var=read-host "Enter a computername"` (vraagt computer name, vb dc ingeven)
 - `$var` (output: dc)
 - `get-service -name bits -computername $var`
@@ -157,12 +184,12 @@
 
 ### Automation in scale: remoting
 
-- `icm -comp dc {$var=2}` (maakt een variabele var aan op dc
+- `icm -comp dc {$var=2}` (maakt een variabele var aan op dc)
 - `icm -comp dc {write-output $var}` (we krijgen geen output omdat de console dood gaat na het uitvoeren van de eerste commando) <br/> oplossing: een verbinding maken, alles uitvoeren, verbinding verbreken = powershell sessie)
 - `$sessions=new-pssession -computername dc`
 - `get-pssession`
 - `icm -session $sessions {$var=2}`
-- `icm -session $sessions {$var}` (nu krijgen we wel output)
+- `icm -session $sessions {$var}` (nu krijgen we wel output) var wordt onthouden door de sessie --> alles zal sneller werken
 - `measure-command {icm -computername dc {get-process}}`<br/>toont hoe lang de commando nodig heeft om uitgevoerd te worden
 - `measure-command {icm -session $sessions {get-process}}` <br/>op deze manier gaat het sneller
 - `$servers='s1', 's2'`
