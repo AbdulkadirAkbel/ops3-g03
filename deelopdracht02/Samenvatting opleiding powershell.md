@@ -1,4 +1,4 @@
-## Aantekeningen Opleiding Abdülkadir
+## Aantekeningen Opleiding Microsoft Virtual Academy
 
 
 ### Chapter 1: Don't fear the shell
