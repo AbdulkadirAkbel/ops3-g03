@@ -92,3 +92,18 @@ Vb: `Get-Service |export-csv –Path c:\service.csv` --> exporteert alle service
 - `$sessions = new-PSSession -computername dc` --> `icm -Session $Sessions {$var = 2} ` --> `icm -Session $sessions {$var}` --> var wordt onthouden door de sessie --> alles zal sneller werken
 - `$servers = 's1', 's2'` --> `$s = New-PSSession -ComputerName $servers` --> sessies van s1 en s2 worden gestart --> Web servers opstarten op elke server --> `icm -Session $s {Install-WindowsFeature web-server}` --> $servers | foreach{start iexplore https://$_} --> start de IIS op van de servers
 - Probleem dat we vaak modules opnieuw moeten importeren wanneer we ons op andere machines bevinden --> `$s = new-PSSession -computername dc` --> `import-pssession -session $s -module ActiveDirectory -Prefix remote` --> nu heb je de commandlets van de active directory van de domein controller!! --> commands worden uitgevoerd op dc maar resultaten komen op de eigen box
+
+## Chapter 9:  Introducing scripting and toolmaking ##
+
+- Windows Powershell ISE --> intellisense, color syntax
+- Copy paste, ctrl c, ctrl v
+- script maken met parameter:     
+    param($computername = 'localhost') Get-WmiObject -computername $computername -class win32_logicaldisk -Filter "deviceID='c:'".`
+- Oproepen door scriptnaam -computernaam cn
+- `[Parameter(mandatory=$true)` boven een parameter
+- In script info zetten tussen <# #> voor help pagina van het script. `.Synopsis, .description, .example`...
+- Script in functie steken `function functienaam {}`
+- Method wordt niet meer zelf opgeroepen dus: `. .\Diskinfo.ps1` --> `Get-diskinfo -ComputerName dc` --> nog altijd niet zo interessant om zo te moeten oproepen 
+- Dus module maken van script, ipv `ps1` extensie `psm1` noemen zodat je je module kan importen via `Import-Module .\DiskInfo.psm1`
+- Windows/system3/WindowsPowerShell/v1.0/Modules --> built in modules van Powershell, NIET IN TOEVOEGEN
+- Users/Nicolai/Mijn Documenten/WindowsPowerShell/Modules/Diskinfo (mapnaam moet zelfde naam zijn als de module) --> nu moet je niet meer handmatig de module importeren 
