@@ -63,9 +63,9 @@ Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
 ####Update Windows PowerShell help
 
-Voor je verder gaat is het best dat je de help files van Powershell update. De files worden namenlijk regelamtig aangepast.
+Voor je verder gaat is het best dat je de help files van Powershell update. De files worden namenlijk regelmatig aangepast.
 
-Om de files te updaten heb je administrator rechten nodig. Gebruik het volgende commando om de help files ip te daten.
+Om de files te updaten heb je administrator rechten nodig. Gebruik het volgende commando om de help files up te daten.
 
 ```
 Update-Help
@@ -107,12 +107,12 @@ Install-ADDSForest `
      -Force
 ```
 
-Het `-Force` commando zorgt er voor dat tijdens het aanmaken van het forrest geen confirmatie prompts tevoorschijn komen. Desalnietemin zal je toch een prompt krijgen om het Directory Services Restore Mode (DSRM) password in te geven. Bij het aanmaken van veel verschillende forests is dit niet zo interessant en kunnen we deze prompt ook vermijden door de DSMR al mee te geven. Dit doen we met volgend stukje code.
+Het `-Force` commando zorgt er voor dat tijdens het aanmaken van het forrest geen confirmatie prompts tevoorschijn komen. Desalniettemin zal je toch een prompt krijgen om het Directory Services Restore Mode (DSRM) password in te geven. Bij het aanmaken van veel verschillende forests is dit niet zo interessant en kunnen we deze prompt ook vermijden door de DSMR al mee te geven. Dit doen we met volgend stukje code.
 
 ```
 $pwdSS = ConvertTo-SecureString -String 'P@ssw0rd!' -AsPlainText -Force
 ```
-De waarde van parameters `DomainmMode` en `ForestMode` kunnen we met volgende tabel aantonen. 
+De waarde van parameters `DomainmMode` en `ForestMode` kunnen we met volgende tabel verklaren. 
 
 | Functional level        | Nummer        | String   |
 | -------------           |:-------------:| -----:   |
@@ -126,7 +126,7 @@ Het forest en domein hebben dus als functional level Windows Server 2012 R2.
 
 **Informatie bekijken domein en forest**
 
-Na het aanmaken van het domein en de forest kan je met volgen script de Forest Mode, Domain Mode, en Schema Version bekijken.
+Na het aanmaken van het domein en de forest kan je met volgend script de Forest Mode, Domain Mode, en Schema Version bekijken. Sla het script op als Get-myADVersion.ps1.
 
 ```
 <#
@@ -192,6 +192,9 @@ Where the Schema version is:
 13 = Windows 2000
 "@
 $VersionCodes
+```
+Als jet het script wil uitvoeren in Powershell geef je het volgende commando in.
 
 ```
-
+Get-myADVersion
+```
