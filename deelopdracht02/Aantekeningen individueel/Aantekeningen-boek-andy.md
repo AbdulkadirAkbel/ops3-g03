@@ -11,7 +11,7 @@
 Get-NetAdapter | Get-Member
 ```
 
-####Configureer een statich ip address
+####Configureer een statisch ip address
 
 Om een statisch ip address te gebruiken moeten we eerst DHCP uitzetten. Dan pas kunnen we de ipv4 en ipv6 adressen toekennen. In dit voorbeeld gebruiken we 192.168.10.0/24 als het ipv4 subnet, en 2001:db8:0:10::/64 als ipv6 subnet.
 
@@ -45,7 +45,6 @@ Set-DnsClientServerAddress -InterfaceAlias "10 Network" -ServerAddresses 192.168
 ```
 Get-NetIPAddress -InterfaceAlias "10 Network
 ```
-&lsquo;
 
 **Pas de servernaam aan.**
 
