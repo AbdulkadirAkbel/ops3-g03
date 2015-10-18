@@ -193,7 +193,7 @@ Where the Schema version is:
 "@
 $VersionCodes
 ```
-Als jet het script wil uitvoeren in Powershell geef je het volgende commando in.
+Als je het script wilt uitvoeren in Powershell geef je het volgende commando in.
 
 ```
 Get-myADVersion
