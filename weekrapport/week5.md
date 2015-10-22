@@ -24,7 +24,7 @@
 * testplan opleiding powershell
 * aantekeningen opleiding van iedereen samengevoegd
 
-![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_abdulkadir.PNG)
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_toggl_abdulkadir.PNG)
 
 ### Student 2
 
@@ -43,7 +43,7 @@
 * Collectd uitgelged, getoont en getest.
 * Powershell video's bekeken.
 
-![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_anthony.PNG)
+![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_toggl_anthony.PNG)
 
 ## Wat plan je volgende week te doen?
 
