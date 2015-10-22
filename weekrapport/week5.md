@@ -26,13 +26,18 @@
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_toggl_abdulkadir.PNG)
 
-### Student 2
+### Andy
 
-* ...
+* Verder gewerkt collectd
+* Informatie opgezocht graphite en grafan en metrieken proberen tonen collectd
+* Powershell cursus hoofdstuk 7 bekeken
+* Boek Powershell eerste hoofdstuk gelezen en verslag geschreven
+
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_toggl_andy.PNG)
 
 [Afbeelding individueel rapport tijdregistratie]
 
-### Student 3
+### Nicolai
 
 * ...
 
@@ -55,8 +60,13 @@
 * AD installeren
 * testplan opmaken
 
-### Student 2
-### Student 3
+### Andy
+* Powershell cursus afronden
+* Boek Powershell uitlezen en verslag schrijven
+* Windows deployment starten
+* Linux verder werken grafana/graphite.
+
+### Nicolai
 ### Anthony Bracke
 * Verder werken aan Linux: metrieken van collectd weergeven met grafana of graphite.
 * Powershell afwerken.
@@ -70,8 +80,8 @@
 
 ### Algemeen
 
-### Student 1
-### Student 2
-### Student 3
-### Student 4
+### Abdülkadir
+### Andy
+### Nicolai
+### Anthony
 
