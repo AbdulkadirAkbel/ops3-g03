@@ -14,18 +14,18 @@
 
 ### Algemeen
 
-[Afbeelding huidige toestand Kanban-bord(en) invoegen]
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_kanban1.PNG)
 
-* ...
-* ...
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_kanban2.PNG)
 
-[Afbeelding teamoverzicht tijdregistratie onderverdeeld per deelopdracht]
+![toggl algemeen](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_toggl_algemeen.PNG)
 
-### Student 1
+### Abdülkadir
 
-* ...
+* testplan opleiding powershell
+* aantekeningen opleiding van iedereen samengevoegd
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_abdulkadir.PNG)
 
 ### Student 2
 
@@ -44,12 +44,18 @@
 * Collectd uitgelged, getoont en getest.
 * Powershell video's bekeken.
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week4_toggl_anthony.PNG)
 
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
-### Student 1
+### Abdülkadir 
+
+* beginnen aan opdracht 3: windows installeren
+* windows basisinstellingen configureren
+* AD installeren
+* testplan opmaken
+
 ### Student 2
 ### Student 3
 ### Anthony Bracke
