@@ -34,6 +34,8 @@ Volledige hulp pagina krijgen:
 
     Get-Help Get-Process -full
 
+## Understanding PowerShell Scripting
+
 **Security**: welke scripts mogen worden uitgevoerd?
 
     Set-ExecutionPolicy Restricted | AllSigned | RemoteSigned | Bypass | Undefined
@@ -169,13 +171,43 @@ Oproepen door:
     -subject "test email" -smtpserver "mail.contoso.com" -body
     "testing"
 
-**Sorteren**
+**Sorteren** <br>
+Filtering:
 
     Get-Process | Where-Object {$_.Name -eq "chrome"} --> $. komt uit pipe
     Get-Process | Where-Object Name -eq "chrome" --> equals
     Get-Process | Where-Object Name -like "*hrom*" --> komt voor
     Get-Process | Where-Object Handles -gt 1000 --> greater then
     Get-Process | Sort-Object Handles -Descending --> dalend sorteren op handles
+
+Sorting:
+
+    Get-Process | Sort-Object Handles
+    Get-Process | Sort-Object Handles -Descending
+    Get-Process | Sort-Object Handles, ID –Descending
+
+Selecting:
+
+    Select-String -Path C:\Windows\WindowsUpdate.log -Pattern
+    "Installing updates"
+    Get-Process | Select-Object Name -Unique
+
+Grouping:
+
+    Get-Process | Format-Table -GroupBy ProcessName
+
+Formatting numbers:
+
+    $jenny = 1206867.5309
+    Write-Host "Original:`t`t`t" $jenny
+    Write-Host "Whole Number:`t`t" ("{0:N0}" -f $jenny)
+    Write-Host "3 decimal places:`t" ("{0:N3}" -f $jenny)
+    Write-Host "Currency:`t`t`t" ("{0:C2}" -f $jenny)
+    Write-Host "Percentage:`t`t`t" ("{0:P2}" -f $jenny)
+    Write-Host "Scientific:`t`t`t" ("{0:E2}" -f $jenny)
+    Write-Host "Fixed Point:`t`t" ("{0:F5}" -f $jenny)
+    Write-Host "Decimal:`t`t`t" ("{0:D8}" -f [int]$jenny)
+    Write-Host "HEX:`t`t`t`t" ("{0:X0}" -f [int]$jenny)
 
 **Werken met errors**: try catching: bij 2 nummers --> correct, bij 2 strings --> error boodschop wordt weergegeven in de catch
     
@@ -196,6 +228,8 @@ Oproepen door:
 **Performantie**: meet hoe lang het duurt om iets uit te voeren
 
     Measure-Command { opvolging van verschillende commando's }
+
+## Managing Windows Network Services with PowerShell
 
 **Configureren van statisch netwerking**
 
@@ -267,6 +301,80 @@ Oproepen door:
     	SafeModeAdministratorPassword $SMPass -Credential $myCred –
     	Confirm:$false
     	}
+
+**Configureren van zones in DNS**
+
+1. Ga na welke features moeten worden geïnstalleerd:
+
+		Get-WindowsFeature | Where-Object Name -like *dns*
+
+2. Installeer DNS (als dit nog niet gedaan is):
+
+		Install-WindowsFeature
+
+3. Maak een reverse lookup zone:
+
+		Add-DnsServerPrimaryZone –Name 10.10.10.in-addr.arpa –
+		ReplicationScope Forest
+		Add-DnsServerPrimaryZone –Name 20.168.192.in-addr.arpa –
+		ReplicationScope Forest
+
+4. Maak een primary zone en voeg static records toe:
+
+    	Add-DnsServerPrimaryZone –Name contoso.com –ZoneFile contoso.com.
+		dns
+		Add-DnsServerResourceRecordA –ZoneName contoso.com –Name www –
+		IPv4Address 192.168.20.54 –CreatePtr
+
+5. Maak een conditional forwarder:
+
+		Add-DnsServerConditionalForwarderZone -Name fabrikam.com
+		-MasterServers 192.168.99.1
+
+6. Maak een secondary zone aan:
+
+		Add-DnsServerSecondaryZone -Name corp.adatum.com -ZoneFile corp.
+		adatum.com.dns -MasterServers 192.168.1.1
+
+Noem al de zones op
+
+    Get-DnsServerZone
+
+**Configureren van DHCP scopes**
+
+1. Installeer DHCP en de management tools:
+
+		Get-WindowsFeature | Where-Object Name -like *dhcp*
+		Install-WindowsFeature DHCP -IncludeManagementTools
+
+2. Maak een DHCP scope aan:
+
+		Add-DhcpServerv4Scope -Name "Corpnet" -StartRange 10.10.10.100
+		-EndRange 10.10.10.200 -SubnetMask 255.255.255.0
+
+
+3. Set DHCP options
+
+		Set-DhcpServerv4OptionValue -DnsDomain corp.contoso.com -DnsServer
+		10.10.10.10 -Router 10.10.10.1
+
+
+4. Activeer DHCP
+
+		Add-DhcpServerInDC -DnsName corpdc1.corp.contoso.com
+
+5. Voeg DHCP reservations toe:
+
+	    Add-dhcpserverv4reservation –scopeid 10.10.10.0 –ipaddress
+	    10.10.10.102 –name test2 –description "Test server" –clientid 12-
+	    34-56-78-90-12
+	    Get-dhcpserverv4reservation –scopeid 10.10.10.0
+
+6. Voeg DHCP exclusions toe:
+
+	    Add-DhcpServerv4ExclusionRange –ScopeId 10.10.10.0 –StartRange
+		10.10.10.110 –EndRange 10.10.10.111
+		Get-DhcpServerv4ExclusionRange
 
 **Werken met Private Key Infrastructure en CA's** waarbij we certificaten gaan vertrouwen die certificaten gaat uitdelen aan users en computers die hen toegang zullen geven
 
@@ -360,6 +468,48 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
     	Get-ADUser -Filter * -SearchBase "OU=Sales,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
     	Get-ADUser -Filter * -SearchBase "OU=Technical,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
     }
+
+**Zoeken naar en rapporteren op AD users**
+
+Voer eerst de volgende code uit:
+
+    Get-ADUser -Filter * -Properties SamAccountName, DisplayName, `
+    ProfilePath, ScriptPath | `
+    Select-Object SamAccountName, DisplayName, ProfilePath, ScriptPath
+
+Om de gedisabled gebruikers te vinden:
+
+    Get-ADUser –Filter 'Enabled -eq $false'
+
+Om gebruikers te vinden die de laatste 30 dagen niet meer hebben ingelogged:
+
+    $logonDate = (Get-Date).AddDays(-30)
+    Get-ADUser -Filter 'LastLogonDate -lt $logonDate' | Select-Object
+    DistinguishedName
+
+Om accounts te vinden die al meerdere malen verkeerde inlog gegevens hebben ingegeven:
+
+    $primaryDC = Get-ADDomainController -Discover -Service PrimaryDC
+    Get-ADUser -Filter 'badpwdcount -ge 5' -Server $primaryDC.Name `
+    -Properties BadPwdCount | Select-Object DistinguishedName,
+    BadPwdCount
+
+
+**Vinden van vervallen computers in AD**
+
+Om recent vervallen computers te vinden in de AD doe::
+
+    $30Days = (Get-Date).AddDays(-30)
+    Get-ADComputer -Properties lastLogonDate -Filter 'lastLogonDate
+    -lt $30Days' | Format-Table Name, LastLogonDate
+
+Om oudere accounts te vinden, voer dit uit:
+
+    $60Days = (Get-Date).AddDays(-60)
+    Get-ADComputer -Properties lastLogonDate -Filter 'lastLogonDate
+    -lt $60Days' | Format-Table Name, LastLogonDate
+
+##Managing Hyper-V with PowerShell
 
 **Installeren en configureren van Hyper-V**
 
@@ -497,7 +647,8 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 
 	    Move-VM -Name VM1 -DestinationHost HV02 
 	    -DestinationStoragePath E:\vm -IncludeStorage
-<<<<<<< HEAD
+
+## Managing Storage with PowerShell
 
 **Permissies wijzigen op een bestand (NTFS)**
 
@@ -601,6 +752,8 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 	    -ReportTypeQuotaUsage -Interactive -MailTo fsadmin@corp.contoso.
 	    com
 
+## Managing Network Shares with PowerShell
+
 **Aanmaken van shares**
 
 1. Bekijk de huidige shares op de server
@@ -658,6 +811,8 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 	    
 	    Grant-NfsSharePermission -Name NFS1 -ClientName Server1 `
 	    -ClientType host -Permission readwrite -AllowRootAccess $true
+
+## Managing Windows Updates with PowerShell
 
 **Installeren van WSUS (Windows Server Update Services)**
 
@@ -736,6 +891,74 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 	    Select-Object @{Name="UpdateID"; `
 	    Expression={$_.Identity.UpdateID}}, Title
 
+**Installen van updates**
+
+1. Zet de nodige updates client objecten op:
+    
+    	$searcher = New-Object -ComObject Microsoft.Update.Searcher
+    	$updateCollection = New-Object -ComObject Microsoft.Update.
+    	UpdateColl
+    	$session = New-Object -ComObject Microsoft.Update.Session
+    	$installer = New-Object -ComObject Microsoft.Update.Installer
+
+2. Zoek naar missende updates:
+
+    	$searcher.online=$true
+    	$searcher.ServerSelection=1
+    	$results = $searcher.Search("IsInstalled=0")
+
+3. Zoek naar toepasbare updates:
+    
+    	$updates=$results.Updates
+    	ForEach($update in $updates){ $updateCollection.Add($update) }
+
+4. Download de updates:
+
+    	$downloader = $session.CreateUpdateDownloader()
+    	$downloader.Updates = $updateCollection
+    	$downloader.Download()
+
+5. Installeer de updates:
+
+    	$installer.Updates = $updateCollection
+    	$installer.Install()
+
+**Uninstallen van updates**
+
+1. Lijst de geïnstalleerde updates op die aangeven welke update zal verdwijnen.
+
+    	$searcher = New-Object -ComObject Microsoft.Update.Searcher
+    	$searcher.Online = $true
+    	$searcher.ServerSelection = 1
+    	$results = $searcher.Search('IsInstalled=1')
+    	$results.Updates | `
+    	Select-Object @{Name="UpdateID"; `
+    	Expression={$_.Identity.UpdateID}}, Title
+
+2. Zet de nodige update client objecten op:
+
+    	$updateCollection = New-Object -ComObject Microsoft.Update.
+    	UpdateColl
+    	$installer = New-Object -ComObject Microsoft.Update.Installer
+
+3. Zorg voor de correcte update bij UpdateID:
+
+    	$searcher.online = $true
+    	$searcher.ServerSelection = 1
+    	$results = $searcher.Search("UpdateID='70cd87ec-854f-4cdd-8acac272b6fe45f5'")
+
+4. Maak een collectie van toepasbare updates:
+
+    	$updates = $results.Updates
+    	ForEach($update in $updates){ $updateCollection.Add($update) }
+
+5. Uninstall de updates:
+
+    	$installer.Updates = $updateCollection
+    	$installer.UnInstall()
+
+## Managing Printers with PowerShell
+
 **Een gedeelde printer opzetten** (in dit geval een HP LasterJet met IP van 10.0.0.200.)
 
 1. Installeer de print server
@@ -788,6 +1011,222 @@ Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv 
 		@{Name="Source";Expression={$_.Properties[3].Value}}, `
 		@{Name="Printer";Expression={$_.Properties[4].Value}}, `
 		@{Name="Pages";Expression={$_.Properties[7].Value}}
+
+## Troubleshooting Servers with PowerShell
+
+**Testing if a server is responding**
+
+Ping naar een host.
+
+    Test-Connection -ComputerName corpdc1
+
+Ping naar meerdere hosts.
+
+    Workflow Ping-Host ([string[]] $targets)
+    {
+    	ForEach -Parallel ($target in $targets)
+    	{
+    		If (Test-Connection -ComputerName $target -Count 2 -Quiet)
+    		{
+    			"$target is alive"
+    		} Else {
+    			"$target is down"
+    		}
+    	}
+    }
+    Ping-Host 10.10.10.10, 10.10.10.11
+
+## Inventorying Servers with PowerShell
+
+**Bijhouden van hardware met PowerShell**
+
+Verkrijg schijfinformatie.
+
+    $TargetSystem="."
+    $myCim = New-CimSession -ComputerName $TargetSystem
+    Get-Disk -CimSession $myCim
+
+Logische schijf
+
+    Get-Disk -CimSession $myCim
+
+Fysieke schijf
+
+    Get-PhysicalDisk -CimSession $myCim
+
+Netwerk adapters
+
+    Get-NetAdapter -CimSession $myCim
+
+System enclosure
+
+    Get-WmiObject -ComputerName $TargetSystem `
+    -Class Win32_SystemEnclosure
+
+Computer systeem
+
+    Get-WmiObject -ComputerName $TargetSystem `
+    -Class Win32_ComputerSystemProduct
+
+Processor
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_Processor
+
+Fysiek geheugen
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_
+    PhysicalMemory
+
+CD-Rom
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_CDromDrive
+
+Sound card
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_SoundDevice
+
+Video card
+
+    Get-WmiObject -ComputerName $TargetSystem `
+    -Class Win32_VideoController
+
+BIOS
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_BIOS
+
+**Bijhouden van geïnstalleerde software**
+
+Verkrijg de geïnstalleerde features.
+
+    Get-WindowsFeature | Where-Object Install`State -EQ "Installed"
+
+**Bijhouden van de systeem configuratie**
+
+Verkrijg de netwerk configuratie.
+
+    $TargetSystem="."
+    $myCim = New-CimSession -ComputerName $TargetSystem
+    Get-NetIPAddress -CimSession $myCim
+    Get-NetRoute -CimSession $myCim
+
+Toon de local users en groepen.
+
+    Get-WmiObject -ComputerName $TargetSystem `
+    -Query "Select * from Win32_Group where Domain='$TargetSystem'"
+    Get-WmiObject -ComputerName $TargetSystemt `
+    -Query "Select * from Win32_UserAccount where
+    Domain='$TargetSystem'"
+
+Som de services op.
+    
+    Get-Service
+    Get-WmiObject -Class Win32_Service | `
+    Select-Object Name, Caption, StartMode, State
+
+Lijst van de lopende proccessen. 
+
+    Get-Process
+
+Toon de shares en printers.
+
+    Get-SmbShare
+    Get-Printer
+    
+Toon de start-up informatie.
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_
+    StartupCommand
+
+Toon de tijdzone.
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_TimeZone
+
+Toon registratie informatie.
+
+    Get-WmiObject -ComputerName $TargetSystem -Class Win32_Registry
+
+## Server Backup
+
+**Configuring backup policies**
+
+Installeerd Windows Server Backup feature:
+
+    Add-WindowsFeature Windows-Server-Backup -IncludeManagementTools
+
+Maak een backup policy:
+
+    $myPol = New-WBPolicy
+
+Voeg de backup bronnen toe.
+
+    $myPol | Add-WBBareMetalRecovery
+    $myPol | Add-WBSystemState
+    $sourceVol = Get-WBVolume C:
+    Add-WBVolume -Policy $myPol -Volume $sourceVol
+
+Definieer het backup target.
+
+    $targetVol = New-WBBackupTarget -Volume (Get-WBVolume E:)
+    Add-WBBackupTarget -Policy $myPol -Target $targetVol
+
+Definieer de planning.
+
+    Set-WBSchedule -Policy $myPol -Schedule ("12/17/2012 9:00:00 PM")
+
+Slaag de policy op.
+
+    Set-WBPolicy -Policy $myPol
+
+**Initiating backups manually**
+
+Initieer de default backup policy.
+
+    Get-WBPolicy | Start-WBBackup
+
+Monitor van backup.:
+
+    Get-WBSummay
+Maak één backup van C:\InetPub:
+
+    $myPol = New-WBPolicy
+    $mySpec = New-WBFileSpec -FileSpec "C:\InetPub"
+    Add-WBFileSpec -Policy $myPol -FileSpec $mySpec
+    $targetVol = New-WBBackupTarget -Volume (Get-WBVolume E:)
+    Add-WBBackupTarget -Policy $myPol -Target $targetVol
+    Start-WBBackup -Policy $myPol
+
+**Restoring files**
+
+Identifieer de backup set.
+
+    Get-WBBackupSet
+    
+    $myBackup = Get-WBBackupSet | `
+    Where-Object VersionId -eq 03/03/2013-19:31
+
+Voer de recovery uit op één file.
+
+    Start-WBFileRecovery -BackupSet $myBackup `
+    -SourcePath c:\temp\perfcounter.csv
+
+Herstellen van een folder.
+
+    Start-WBFileRecovery -BackupSet $myBackup `
+    -SourcePath c:\inetpub\ -Recursive -TargetPath c:\
+
+**Restoring Windows system state**
+
+Identifiëren van de backup set.
+
+    Get-WBBackupSet
+    $myBackup = Get-WBBackupSet | `
+    Where-Object VersionId -eq 03/03/2013-19:31
+
+Initieer de system state restore.
+
+    Start-WBSystemStateRecovery -BackupSet $myBackup
+
+Select Y om het systeem te rebooten.
 
 
 
