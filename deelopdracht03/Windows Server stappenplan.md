@@ -31,11 +31,36 @@
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
 
 
-### 
+### Active Directory
+
+1. De exacte naam bekijken van de Active Directory service `Get-WindowsFeature *ad*` (AD-Domain-Services)
+2. Installeren `Install-windowsfeature AD-domain-services`
+3. De module ADDSDeployment importeren: `Import-Module ADDSDeployment`
+4. De server promoveren naar Domain Controller met volgende parameters: 
+
+    	$domainname = "Assengraaf.nl"
+    	$netbiosName = ASSENGRAAF
+    	Install-ADDSForest 
+    	-CreateDnsDelegation:$false `
+    	-DatabasePath "C:\Windows\NTDS" `
+    	-DomainMode "Win2012R2" `
+    	-DomainName $domainname `
+    	-DomainNetbiosName $netbiosName `
+    	-ForestMode "Win2012R2" `
+    	-InstallDns:$true `
+    	-LogPath "C:\Windows\NTDS" `
+    	-NoRebootOnCompletion:$false `
+    	-SysvolPath "C:\Windows\SYSVOL" `
+    	-Force:$true
+
+5. 
 
 
 
+Bronnen:
 
+* http://www.thegeekstuff.com/2014/12/install-windows-ad/
+* 
 
 
 
