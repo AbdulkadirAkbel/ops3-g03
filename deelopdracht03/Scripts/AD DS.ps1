@@ -1,7 +1,7 @@
 ﻿Install-windowsfeature AD-domain-services
 Import-Module ADDSDeployment
 $domainname = "Projecten3.be"
-$netbiosName = PROJECTEN3
+$netbiosName = "PROJECTEN3"
 Install-ADDSForest 
     -CreateDnsDelegation:$false `
     -DatabasePath "C:\Windows\NTDS" `
