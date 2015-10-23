@@ -28,9 +28,9 @@
 
 | Student  | Geschat | Gerealiseerd |
 | :---     |    ---: |         ---: |
-| Abdülkadir |         |              |
-| Anthony |         |              |
-| Andy |         |              |
-| Nicolai |         |              |
+| Abdülkadir |    20     |              |
+| Anthony |     20    |              |
+| Andy |     20    |              |
+| Nicolai |    20     |              |
 
 (na oplevering van de taak een schermafbeelding toevoegen van rapport tijdbesteding voor deze taak)
