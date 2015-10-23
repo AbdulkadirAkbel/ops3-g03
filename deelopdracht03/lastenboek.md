@@ -21,7 +21,8 @@
 
 ### Kanban-bord
 
-![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_kanban.PNG)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_kanban1.PNG)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_kanban2.PNG)
 
 ### Tijdbesteding
 
