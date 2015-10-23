@@ -126,7 +126,7 @@ Het forest en domein hebben dus als functional level Windows Server 2012 R2.
 
 **Informatie bekijken domein en forest**
 
-Na het aanmaken van het domein en de forest kan je met volgend script de Forest Mode, Domain Mode, en Schema Version bekijken. Sla het script op als Get-myADVersion.ps1.
+Na het aanmaken van het domein en de forest kan je met volgend script de Forest Mode, Domain Mode, en Schema Version bekijken. Sla het script op als Get-myADVersion.ps1. Het script staat ook in het script mapje op github.
 
 ```
 <#
@@ -203,4 +203,68 @@ Get-myADVersion
 Het is onmogelijk een AD DS te draaien zonder het gebruik van een DNS. 
 In het volgende hoofdstuk ga ik dieper in over hoe een DNS tot stand wordt gebracht met Powershell.
 
-###
+### Nieuwe primary forward lookup zone aanmaken
+Voor het aanmaken van een nieuwe primary zone gebruiken we het Add-DnsServerPrimaryZone cmdlet. Vervang bij `Name` en `ComputerName` de waarden die van toepassing zijn.
+ 
+```
+Add-DnsServerPrimaryZone -Name 'dnsnaam.com' `
+                         -ComputerName 'computernaam.treyresearch.net' `
+                         -ReplicationScope 'Domain' `
+                         -DynamicUpdate 'Secure' `
+                         -PassThru
+                         
+```
+### Nieuwe reverse lookup zone aanmaken
+Een reverse lookup zone aanmaken is heel gelijkend op het aanmaken van een forward lookup zone. We maken weer gebruik van het DnsServerPrimaryZone.
+
+Pas de `NetworkID` aan naar de waarde die van toepassing is.
+
+***Reverse lookup zone met ipv4***
+
+```
+Add-DnsServerPrimaryZone -NetworkID 192.168.10.0/24 `
+                         -ReplicationScope 'Forest' `
+                         -DynamicUpdate 'NonsecureAndSecure' `
+                         -PassThru
+```
+***Reverse lookup zone met ipv6***
+
+```
+Add-DnsServerPrimaryZone -NetworkID 2001:db8:0:10::/64 `
+                         -ReplicationScope 'Forest' `
+                         -DynamicUpdate 'Secure' `
+```
+### Lookup zone aanpassen
+
+```
+Set-DnsServerPrimaryZone -Name 'TailspinToys.com' `
+                         -Notify 'NotifyServers' `
+                         -NotifyServers "192.168.10.201","192.168.10.202" `
+                         -PassThru
+```
+### Primary lookup zone exporteren
+Het is handig wanneer je een primary DNS zone als file hebt voor disaster recovery of voor gebruik in testomgevingen. Om dit te doen hanteren we de Export-DnsServerZone cmdlet.
+
+***Ipv4 DNS zone exporteren***
+
+***Ipv6 DNS zone exporteren***
+
+```
+Export-DnsServerZone -Name '0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa' `
+                     -Filename '0.1.0.0.0.0.0.0.8.b.d 0.1.0.0.2.ip6.arpa.dns'
+```
+De file wordt opgeslagen in de  `%windir%\system32\dns` directory. Het bestand bevat alle informatie om de DNS zone te reacreëren.
+
+### Beheer secondary zones
+
+Secondary DNS zones are primarily used for providing distributed DNS resolution when you are using traditional file-based DNS zones. Secondary DNS zones are used for both forward lookup and reverse lookup zones. Een secondary DNS zone is read-only. Het DnsServerSecondaryZone wordt hier gehanteerd.
+
+Parameters aanpassen waar nodig!
+
+```
+Add-DnsServerSecondaryZone –Name 0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa `
+                           -ZoneFile "0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa.dns" `
+                           -LoadExisting `
+                           -MasterServers 192.168.10.2,2001:db8:0:10::2 `
+                           -PassThru
+```
