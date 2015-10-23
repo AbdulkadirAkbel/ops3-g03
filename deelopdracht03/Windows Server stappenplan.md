@@ -33,34 +33,13 @@
 
 ### Active Directory en DNS
 
-1. De exacte naam bekijken van de Active Directory service `Get-WindowsFeature *ad*` (AD-Domain-Services)
-2. Installeren `Install-windowsfeature AD-domain-services`
-3. De module ADDSDeployment importeren: `Import-Module ADDSDeployment`
-4. De server promoveren naar Domain Controller met volgende parameters: 
+Voer onderstaande script uit op de server voor de installatie van AD en DNS <br/>
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/AD%20DS.ps1
 
-    	$domainname = "Projecten3.be"
-    	$netbiosName = PROJECTEN3
-    	Install-ADDSForest 
-    	-CreateDnsDelegation:$false `
-    	-DatabasePath "C:\Windows\NTDS" `
-    	-DomainMode "Win2012R2" `
-    	-DomainName $domainname `
-    	-DomainNetbiosName $netbiosName `
-    	-ForestMode "Win2012R2" `
-    	-InstallDns:$true `
-    	-LogPath "C:\Windows\NTDS" `
-    	-NoRebootOnCompletion:$false `
-    	-SysvolPath "C:\Windows\SYSVOL" `
-    	-Force:$true
+Bronnen: http://www.thegeekstuff.com/2014/12/install-windows-ad/
 
-5. 
-
-
-
-Bronnen:
-
-* http://www.thegeekstuff.com/2014/12/install-windows-ad/
-* 
+### DNS 
+ 
 
 
 
