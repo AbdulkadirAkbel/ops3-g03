@@ -31,15 +31,15 @@
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
 
 
-### Active Directory
+### Active Directory en DNS
 
 1. De exacte naam bekijken van de Active Directory service `Get-WindowsFeature *ad*` (AD-Domain-Services)
 2. Installeren `Install-windowsfeature AD-domain-services`
 3. De module ADDSDeployment importeren: `Import-Module ADDSDeployment`
 4. De server promoveren naar Domain Controller met volgende parameters: 
 
-    	$domainname = "Assengraaf.nl"
-    	$netbiosName = ASSENGRAAF
+    	$domainname = "Projecten3.be"
+    	$netbiosName = PROJECTEN3
     	Install-ADDSForest 
     	-CreateDnsDelegation:$false `
     	-DatabasePath "C:\Windows\NTDS" `
