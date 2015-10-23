@@ -39,9 +39,10 @@
 
 ### Nicolai
 
-* ...
+* Testplan LAMP stack + collectd opgesteld en aangevuld
+* Laatste powershell sessie bekeken
 
-[Afbeelding individueel rapport tijdregistratie]
+![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week5_toggl_nicolai.PNG)
 
 ### Anthony Bracke
 
@@ -67,6 +68,10 @@
 * Linux verder werken grafana/graphite.
 
 ### Nicolai
+* verder werken aan collectd + graphite of graphana
+* start opdracht van windows server deployment
+* samenvoegen van samengevatte informatie van de boeken 
+
 ### Anthony Bracke
 * Verder werken aan Linux: metrieken van collectd weergeven met grafana of graphite.
 * Powershell afwerken.
