@@ -2,8 +2,7 @@
 Import-Module ADDSDeployment
 $domainname = "Projecten3.be"
 $netbiosName = "PROJECTEN3"
-Install-ADDSForest 
-    -CreateDnsDelegation:$false `
+Install-ADDSForest -CreateDnsDelegation:$false `
     -DatabasePath "C:\Windows\NTDS" `
     -DomainMode "Win2012R2" `
     -DomainName $domainname `
