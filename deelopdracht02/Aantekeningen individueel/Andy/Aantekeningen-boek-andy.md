@@ -198,3 +198,9 @@ Als je het script wilt uitvoeren in Powershell geef je het volgende commando in.
 ```
 Get-myADVersion
 ```
+## Beheer DNS en DHCP
+
+Het is onmogelijk een AD DS te draaien zonder het gebruik van een DNS. 
+In het volgende hoofdstuk ga ik dieper in over hoe een DNS tot stand wordt gebracht met Powershell.
+
+###
