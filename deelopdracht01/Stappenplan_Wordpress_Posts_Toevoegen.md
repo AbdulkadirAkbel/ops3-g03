@@ -35,9 +35,9 @@
 
 3) Ga naar de ansible folder en maak daar een nieuwe folder "files" aan waarin je het bestand "init.sql" zet.
 
-4) Pas tenslotten de lampstack.yml in de host_vars nog aan door volgende 3 lijntjes toe te voegen:
-mariadb_init_scripts:
-  - database: wordpress
-    script: files/init.sql
+4) Pas tenslotten de lampstack.yml in de host_vars nog aan door volgende 3 lijntjes toe te voegen:<br>
+mariadb_init_scripts:<br>
+  - database: wordpress<br>
+    script: files/init.sql<br>
 
 5) Test of het werkt door na je wordpress gevuld te hebben met posts "vagrant destroy -f" toe te passen. Voer dan stap 3 en stap 4 uit. Doe terug vagrant up, en je zal zien dat na het bezoeken van de wordpress pagina de posts en de inlog-gegevens worden bijgehouden. Zolang je nu geen vagrant destroy meer doet kan je terug deze 3 lijntjes in commentaar zetten.
