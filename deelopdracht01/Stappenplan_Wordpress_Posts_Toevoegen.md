@@ -10,20 +10,20 @@
     `cd /usr/share/wordpress/wp-content/plugins` 
 4) Download de plugin "Yonox Add Posts". <br>
 
-	`sudo wget https://downloads.wordpress.org/plugin/yonox-add-multiple-posts.1.3.zip` 
+	`sudo wget https://downloads.wordpress.org/plugin/demo-data-creator.zip` 
 
 5) Unzip de zip-file. <br>
 
-    `sudo unzip yonox-add-multiple-posts.1.3.zip` 
+    `sudo unzip demo-data-creator.zip` 
 6) Verwijder de zip-file. <br>
 
-	`sudo rm yonox-add-multiple-posts.1.3.zip`
+	`sudo rm demo-data-creator.zip`
 
 7) Surf op de host naar http://192.168.56.77/wordpress/ en log in als admin. <br>
 
-8) Druk links op Plugins en activeer "Yonox Add Multiple Posts". <br>
+8) Druk links op Plugins en activeer "Demo Data Creator". <br>
 
-9) Druk links onderaan op "Yonox Add Posts". <br>
+9) Druk links op Tools en ga naar "Demo Data Creator". <br>
 
-10) Typ 1 keer "Lorem Ipsum", kopieer dit en plak dit 10 keer. Kopieer dan de 10 keer "Lorem Ipsum" en blijf plakken naargelang hoeveel posts je wilt. Indien je wilt kan je een een categorie toevoegen in deze plugin, maar deze moet op voorhand aangemaakt worden in Wordpress. Uiteindelijk druk je gewoon nog op "Create Multiple Posts" en je posts worden aangemaakt.
+10) Kies bij het onderdeel 'Posts' bepaal je hoeveel posts je wilt opmaken en hoeveel paragrafen er moeten zijn. Bij het onderdeel 'Comments' kan je ook at random reacties laten genereren op de aangemaakte posts.
 
