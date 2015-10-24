@@ -215,7 +215,7 @@ Add-DnsServerPrimaryZone -Name 'dnsnaam.com' `
                          
 ```
 ### Nieuwe reverse lookup zone aanmaken
-Een reverse lookup zone aanmaken is heel gelijkend op het aanmaken van een forward lookup zone. We maken weer gebruik van het DnsServerPrimaryZone.
+Een reverse lookup zone aanmaken is heel gelijkend op het aanmaken van een forward lookup zone. Het enige verschil is dat we idpv parameter `ComputerName` we `NetworkID` gebruiken. We maken ook weer gebruik van het `DnsServerPrimaryZone`.
 
 Pas de `NetworkID` aan naar de waarde die van toepassing is.
 
@@ -243,7 +243,7 @@ Set-DnsServerPrimaryZone -Name 'TailspinToys.com' `
                          -PassThru
 ```
 ### Primary lookup zone exporteren
-Het is handig wanneer je een primary DNS zone als file hebt voor disaster recovery of voor gebruik in testomgevingen. Om dit te doen hanteren we de Export-DnsServerZone cmdlet.
+Het is handig wanneer je een primary DNS zone als file hebt voor disaster recovery of voor gebruik in testomgevingen. Om dit te doen hanteren we de `Export-DnsServerZone` cmdlet.
 
 ***Ipv4 DNS zone exporteren***
 
@@ -257,9 +257,10 @@ De file wordt opgeslagen in de  `%windir%\system32\dns` directory. Het bestand b
 
 ### Beheer secondary zones
 
-Secondary DNS zones are primarily used for providing distributed DNS resolution when you are using traditional file-based DNS zones. Secondary DNS zones are used for both forward lookup and reverse lookup zones. Een secondary DNS zone is read-only. Het DnsServerSecondaryZone wordt hier gehanteerd.
+Secondary DNS zones are primarily used for providing distributed DNS resolution when you are using traditional file-based DNS zones. Secondary DNS zones are used for both forward lookup and reverse lookup zones. Een secondary DNS zone is read-only. 
 
-Parameters aanpassen waar nodig!
+***Secondary zone aanmaken aan de hand van geëxporteerde file***
+Om een secondary zone aan te maken gebruiken we het cmdlet `Add-DnsServerSecondaryZone`. In dit voorbeeld gebruiken we het geëxporteerd bestand in de `%windir%\system32\dns` directory. 
 
 ```
 Add-DnsServerSecondaryZone –Name 0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa `
@@ -267,4 +268,54 @@ Add-DnsServerSecondaryZone –Name 0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa `
                            -LoadExisting `
                            -MasterServers 192.168.10.2,2001:db8:0:10::2 `
                            -PassThru
+```
+***Secondary zone aanpassen***
+Hierbij gebruiken we het `Set-DnsServerSecondaryZone`  cmdlet.
+
+```
+Set-DnsServerSecondaryZone -Name 0.1.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa `
+                           -MasterServers 192.168.10.3,2001:db8:0:10::3 `
+                           -PassThru
+```
+
+###Stub zones
+Stub DNS zones houden enkel de nodige records bij om een namesever te lokaliseren van van een zone. 
+Hun functie is om bij te houden welke servers  gemachtigd zijn om een child zone te betreden, zonder volledige records bij te houden van die child zone. Stub zones kunnen voor zowel forward als reverse lookup zones gebruikt worden.
+
+Stub zones worden vaak gebruikt bij secondary zones. Secondary zones houden namelijk alle records bij van een zone waardoor aan indringeer in het bezit kan geraken van deze belangrijke informatie. Door het gebruik van Stub Zone heeft een potentiële indringer enkel toegang tot ip adressen en de namen van hun DNS servers.
+
+***Stub Zone aanmaken***
+Om een Stub zone aan te maken gebruiker we het `Add-DnsServerStubZone` cmdlet. Als voorbeeld heeft de master server ip 192.168.10.4.
+
+```
+Add-DnsServerStubZone -Name TailspinToys.com `
+                      -MasterServers 192.168.10.4 `
+                      -ReplicationScope Domain `
+                      -PassThru
+```
+***Stub Zone aanpassen***
+Om een Stub Zone aan te passen gebruiken we het `Set-DnsServerStubZone` cmdlet. 
+
+```
+Set-DnsServerStubZone -Name TailspinToys.com `
+                      -LocalMasters 192.168.10.201,192.168.10.202 `
+                      -PassThru
+```
+
+###Conditional forwards configureren
+Conditional forwards worden gebruikt om DNS request te forwarden naar specifieke DNS domeinen. 
+
+Voorbeeld:<br>
+Je hebt meerder interne DNS domeinen en 1 DNS krijgt een request dat niet voor hem bestemd is. De DNS gaat dan kijken in zijn cache of hij de bestemming van de request heeft. Als dit niet zo is gaat de DNS na of er een conditional forward is geconfigureerd voor de DNS request. Als dit het geval is zal de DNS de request forwarden naar de ingestelde conditional forward.
+
+***Conditional forwarder aanmaken***
+Als voorbeeld gaan we een conditional forward configureren voor TreyResearch.net. We gebruiken het `Add-DnsServerConditionalForwarderZone` cmdlet.
+
+```
+Add-DnsServerConditionalForwarderZone -Name treyresearch.net `
+                                      -MasterServers 192.168.10.2,2001:db8::10:2 `
+                                      -ForwarderTimeout 5 `
+                                      -ReplicationScope "Forest" `
+                                      -Recursion $False `
+                                      -PassThru
 ```
