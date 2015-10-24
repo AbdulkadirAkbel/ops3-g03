@@ -8,7 +8,7 @@
 3) Navigeer naar /usr/share/wordpress/wp-content/plugins<br>
 
     `cd /usr/share/wordpress/wp-content/plugins` 
-4) Download de plugin "Yonox Add Posts". <br>
+4) Download de plugin "Demo Data Creator". <br>
 
 	`sudo wget https://downloads.wordpress.org/plugin/demo-data-creator.zip` 
 
