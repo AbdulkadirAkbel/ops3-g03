@@ -580,7 +580,7 @@ Stanley Behr,Stanley,Behr,Stanley T. Behr, Stanley,WebMaster
 ``` 
 
 ***Aangemaakte gebruikers bekijken***<br>
-Met volgend commando krijg je een lijst van de aangemaakt gebruikers.
+Met volgend commando krijg je een lijst van de aangemaakte gebruikers.
 
 ``` 
 (Get-ADUser -Filter {Enabled -eq "True"} -Properties DisplayName).DisplayName
@@ -632,7 +632,7 @@ Bekijk of de gebruikers aan de groep toegevoegd zijn.
 Get-ADGroupMember -Identity Managers | ft -auto SAMAccountName,Name
 ``` 
 
-***Gebruiker aan meerder groepen toevoegen***<br>
+***Gebruiker aan meerdere groepen toevoegen***<br>
 Array van groepen maken.
 
 ```
