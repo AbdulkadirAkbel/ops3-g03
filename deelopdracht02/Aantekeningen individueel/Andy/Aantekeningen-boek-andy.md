@@ -457,6 +457,7 @@ ScopeId              StartRange           EndRange
 
 ***IpV4 scope opties***<br>
 Als laatste moeten nog enkele opties op de scope aangepast worden. Dit doen we met het `Set-DhcpServerv4OptionValue` cmdlet.
+
 ``` 
 Set-DhcpServerv4OptionValue -ScopeID 192.168.10.0 `
                             -ComputerName "trey-dns-03" `
