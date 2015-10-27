@@ -267,3 +267,180 @@ Als je het script wilt uitvoeren in Powershell geef je het volgende commando in.
 ```
 Get-myADVersion
 ```
+
+##Clone AD DS 
+
+###Bestaande AD DS toevoegen aan Cloneable Domain Controllers security group.
+Voor we de AD DS kunnen clonen moeten hem eerst een security group toevoegen zodat hij de rechten heeft om gecloned te worden. Na het clonen voltooid is moet de AD DS terug uit de groep verwijderd worden.
+
+
+```
+Add-ADGroupMember -Identity "Cloneable Domain Controllers" `
+                  -Members (Get-ADComputer -Identity trey-dc-04).SAMAccountName `
+                  -PassThru
+```
+
+Resultaat:
+
+```
+DistinguishedName : CN=Cloneable Domain Controllers,CN=Users,DC=TreyResearch,DC=net
+GroupCategory     : Security
+GroupScope        : Global
+Name              : Cloneable Domain Controllers
+ObjectClass       : group
+ObjectGUID        : b12b23c1-499b-4dbe-8206-846a17cd2df2
+SamAccountName    : Cloneable Domain Controllers
+SID               : S-1-5-21-910751839-3601328731-670513855-522
+```
+Om de AD DS weer uit de groep te verwijderen gebruik je volgend commando.
+
+```
+Remove-ADGroupMember -Identity "Cloneable Domain Controllers" `
+                     -Members (Get-ADComputer -Identity trey-dc-04).SAMAccountName `
+                     -PassThru
+```
+
+###Problemen clonen vermijden
+Er zijn een paar problemen die kunnen opduiken tijdens het clonen. Deze problemen kunnen we omzeilen door wat verandering door te voeren aan de AD DS.
+
+***Programma's en services verwijderen***<br>
+Als eerste kunnen geïnstalleerde programma's of services voor problemen zorgen.
+Gebruik het volgende commando om te kijken of er programma's of services voor problemen kunnen zorgen.
+
+```
+Get-ADDCCloningExcludedApplicationList
+```
+
+Als een programma of service voor problemen zou kunnen zorgen, verwijderd deze dan.
+Antivirus programma's of services zoals windows defender kunnen meestal voor problemen zorgen.
+
+verwijder een programma of service met volgend commando. Als voorbeeld gebruiken we windows defender.
+
+```
+Uninstall-WindowsFeature -Name Windows-Defender
+Restart-Computer -Wait 0
+```
+
+Eens de programma's of services verwijderd zijn en de server weer geboot is gaan we een .xml file maken van de exclusion list.
+Dit doen we met volgend commando.
+
+```
+Get-ADDCCloningExcludedApplicationList -GenerateXML
+The inclusion list was written to 'C:\Windows\NTDS\CustomDCCloneAllowList.xml'.
+```
+
+***Verwijder managed service accounts***<br>
+Stand-alone managed service accounts worden niet ondersteund tijdens het clonen. Verwijder deze accounts dus en maak ze weer aan als het clonen voltooid is.
+
+Bekijk met volgend commando of er zo een accounts op je server bevinden. Als dit het geval is verwijder ze dan.
+```
+Get-ADComputer -Identity trey-dc-04 | Get-ADComputerServiceAccount
+```
+Group managed service accounts zijn wel toegestaan bij cloning. Deze hoeven dus niet verwijderd te worden.
+
+###Maak DCCloneConfig.xml aan
+We hebben een .xml file nodig die het cloning procces controleert. Gebruik hiervoor het `New-ADDCCloneConfigFile` cmdlet.
+
+```
+New-ADDCCloneConfigFile -Static `
+                        -CloneComputerName trey-dc-10 `
+                        -IPv4Address 192.168.10.10 `
+                        -IPv4SubnetMask 255.255.255.0 `
+                        -IPv4DefaultGateway 192.168.10.1 `
+                        -IPv4DNSResolver 192.168.10.2
+```
+Als dit commando geslaagd is op de bestaande AD DS, sluit deze dan af.
+
+###Maak de cloned domain controller aan
+Clone de AD DS met het volgende commando op de doel server. Pas aan waar nodig.
+
+```
+Copy-Item "D:\VMs\trey-dc-04\Virtual Hard Disks\trey-dc-04-system.vhdx" `
+           "V:\trey-dc-10\Virtual Hard Disks\trey-dc-10-system.vhdx"
+$ClonedDC=New-VM -Name trey-dc-10 `
+           -MemoryStartupBytes 1024MB `
+           -Generation 2 `
+           -BootDevice VHD `
+           -Path "V:\" `
+           -VHDPath "V:\trey-dc-10\Virtual Hard Disks\trey-dc-10-system.vhdx" `
+           -Switch "Local-10"
+Set-VM -VM $ClonedDC -ProcessorCount 2 -DynamicMemory -PassThru
+Start-VM $ClonedDC
+```
+
+###Beheer FSMO roles
+Er zijn 5 flexible single master operations in een windows domein. Elke role speelt een belangrijke rol in het onderhoud van het domein. Als een nieuw domein of forest aangemaakt wordt, worden deze roles automatisch op de eerste AD DS geïnstalleerd.
+In een klein domein is dit perfect haalbaar maar wanneer het domein groeit is het beter om deze roles op meerdere AD DS bij te houden.<br><br>
+De 5 roles zijn: `SchemaMaster`,`DomainNamingMaster`,`PDCEmulator`,`RIDMaster`,`InfrastructureMaster`.
+
+***Bekijk waar roles zich bevinden***<br>
+Om te kijken waar de roles zich bevinden gebruik dan het commando.
+
+```
+Get-ADDomain -Identity treyresearch.net
+```
+
+***Roles verplaatsen***<br>
+Om roles te verplaatsen gebruiken we volgend commando.
+
+```
+Move-ADDirectoryServerOperationMasterRole `
+                         -OperationMaster PDCEmulator,RIDMaster,InfrastructureMaster `
+                         -Identity trey-dc-04
+```
+
+Controleer dan met het volgend commando.
+
+```
+Move-ADDirectoryServerOperationMasterRole `
+                         -Identity 'trey-dc-09' `
+                         -OperationMasterRole SchemaMaster,DomainNamingMaster
+```
+
+***Roles overnemen***
+De meest verkozen manier om roles te verplaatsen is door voorgaande manier te hanteren. Maar soms is dit niet mogelijk, bijvoorbeeld bij disaster recovery of domein migratie. Op zo een momenten kan het zijn dat je geen roles zomaar kan verplaatsen. Maar tot zo lang er 1 DC op het domein actief is kan je wel zijn roles overnemen. Dit gebeurd op dezelfde manier dan hierboven beschreven. Het enige verschil is dat we het `-Force` commando gebruiken.
+
+```
+Move-ADDirectoryServerOperationMasterRole `
+                    -OperationMaster PDCEmulator,RIDMaster,InfrastructureMaster `
+                    -Identity trey-dc-02 `
+                    -Force
+```
+
+Hou er zeker rekening mee dat eens roles van een bepaalde DC overgenomen worden, deze DC NOOIT meer in gebruik kan worden genomen! DC `trey-dc-04` moet nu verwijderd worden omdat van hem roles overgenomen hebben. Gebruik het volgende commando om de DC te verwijderen.
+
+```
+Remove-VM -Name trey-dc-04 ; rm -r D:\VMs\trey-dc-04
+```
+
+##read-only domain controllers (RODCs)
+
+###Domein voorbereiden
+
+
+***Group policy voorbereiden***<br> 
+Dit moet enkel als eerste keer RODC.
+
+```
+adprep /domainprep /gpprep
+```
+
+***Domein voorbereiden***
+
+```
+adprep /rodcprep
+```
+
+###RODC account voorbereiden
+
+```
+Add-ADDSReadOnlyDomainControllerAccount `
+      -DomainControllerAccountName "trey-rodc-200" `
+      -DomainName "TreyResearch.net" `
+      -SiteName "Default-First-Site-Name" `
+      -DelegatedAdministratorAccountName "TREYRESEARCH\Stanley" `
+      -InstallDNS `
+      -AllowPasswordReplicationAccountName "Dave","Alfie","Stanley"
+```
+
+###Doelserver voorbereiden
