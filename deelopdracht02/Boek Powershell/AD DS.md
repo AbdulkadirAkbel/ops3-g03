@@ -267,7 +267,8 @@ Als je het script wilt uitvoeren in Powershell geef je het volgende commando in.
 ```
 Get-myADVersion
 ```
-
+##Meedere domain controllers
+uitwerken
 ##Clone AD DS 
 
 ###Bestaande AD DS toevoegen aan Cloneable Domain Controllers security group.
@@ -444,3 +445,52 @@ Add-ADDSReadOnlyDomainControllerAccount `
 ```
 
 ###Doelserver voorbereiden
+
+***Netwerkadapter aanpassen***<br>
+Gebruik het script `Set-myIP.ps1` om de netwerkadapter correct te configureren. Pas natuurlijk aan waar nodig. Het script kan je vinden in het mapje scripts.
+
+```
+# Quick and dirty IP address setter
+
+Param ($IP4,$IP6)
+
+$Network = "192.168.10."
+$Network6 = "2001:db8:0:10::"
+$IPv4 = $Network + "$IP4"
+$IPv6 = $Network6 + "$IP6"
+$Gateway4 = $Network + "1"
+$Gateway6 = $Network6 + "1"
+
+$Nic = Get-NetAdapter -name Ethernet
+$Nic | Set-NetIPInterface -DHCP Disabled
+$Nic | New-NetIPAddress -AddressFamily IPv4 `
+                        -IPAddress $IPv4 `
+                        -PrefixLength 24 `
+                        -type Unicast `
+                        -DefaultGateway $Gateway4
+Set-DnsClientServerAddress -InterfaceAlias $Nic.Name `
+                           -ServerAddresses 192.168.10.2,2001:db8:0:10::2
+$NIC |  New-NetIPAddress -AddressFamily IPv6 `
+                         -IPAddress $IPv6 `
+                         -PrefixLength 64 `
+                         -type Unicast `
+                         -DefaultGateway $Gateway6
+ipconfig /all
+```
+Om het script uit te voeren geef je eerst de naam in gevolgd door 2 parameters. 
+De eerste parameter stelt het laatste cijfer van het ipv4 adres voor. De tweede parameter het laatste hexadecimaal cijfer van het ipv6 adres.
+
+Voorbeeld:
+
+```
+Set-myIP -IP4 200 -IP6 C8
+```
+IPv4 Address. . . . . . . . . . . : 192.168.10.200<br>
+IPv6 Address. . . . . . . . . . . : 2001:db8:0:10::c8
+
+***naam server aanpassen***<br>
+Naam van de server moet aangepast worden naar de naam van de RODC.
+```
+Rename-Computer -NewName trey-rodc-200 -Restart -Force
+```
+###Maak de RODC target server aan
