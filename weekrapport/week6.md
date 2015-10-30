@@ -42,7 +42,9 @@
 
 ### Anthony Bracke
 
-* 
+* Collectd framework voor loadtesting onderzoeken
+* Graphite onderzoeken
+* Powershell verder afwerken
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_anthony.PNG)
 
@@ -64,7 +66,8 @@
 * 
 
 ### Anthony Bracke
-* 
+* Powershell volledig afwerken
+* Collectd graphite werkende krijgen
 
 ## Waar hebben jullie nog problemen mee?
 
