@@ -21,15 +21,15 @@ mariadb_databases:
   - wordpress
 
 mariadb_users:
-  - name: wordpressusr
-    password: BulpashCod
+  - name: admin
+    password: admin
     priv: 'wordpress.*:ALL'
 
-mariadb_root_password: Teilvadci
+mariadb_root_password: admin
 
 wordpress_database: wordpress
-wordpress_user: wordpressusr
-wordpress_password: BulpashCod
+wordpress_user: admin
+wordpress_password: admin
 mariadb_init_scripts:
   - database: wordpress
-    scripts: file/init.sql
+    script: files/init.sql
