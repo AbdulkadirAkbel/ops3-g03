@@ -31,17 +31,21 @@
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
 
 
-### Active Directory en DNS
+### Active Directory
 
 Voer onderstaande script uit op de server voor de installatie van AD en DNS <br/>
 https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/AD%20DS.ps1
 
-Bronnen: http://www.thegeekstuff.com/2014/12/install-windows-ad/
-
 ### DNS 
  
+Het script van AD DS heeft DNS al geïnstalleerd en een forward lookup zone aangemaakt. Nu moeten we enkel nog een reverse lookup zone aanmaken. Gebruik hiervoor het volgende script: <br/>
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/DNS%20ZONE.ps1
 
+Bronnen: 
 
+* http://www.thegeekstuff.com/2014/12/install-windows-ad/
+* https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht02/Boek%20Powershell/AD%20DS.md
+* https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht02/Boek%20Powershell/DNS.md
 
 
 
