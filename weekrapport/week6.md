@@ -16,12 +16,15 @@
 
 ![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban1.PNG)
 ![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban2.PNG)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban3.PNG)
 
 ![toggl algemeen](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_algemeen.PNG)
 
 ### Abdülkadir
 
-* 
+* Windows Server geïnstalleerd
+* Basisinstellingen geconfigureerd
+* AD DS geïnstalleerd
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_abdulkadir.PNG)
 
@@ -55,7 +58,8 @@
 
 ### Abdülkadir 
 
-* 
+* DNS
+* DHCP
 
 ### Andy
 * Boek powershell verder lezen en verwerken
