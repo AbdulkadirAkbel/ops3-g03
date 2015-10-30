@@ -15,7 +15,8 @@
 ### Algemeen
 
 ![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban1.PNG)
-![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban2.PNG)![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban3.PNG)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban2.PNG)
+![kanban-bord](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_kanban3.PNG)
 
 ![toggl algemeen](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_algemeen.PNG)
 
