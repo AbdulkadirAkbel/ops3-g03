@@ -50,7 +50,10 @@ https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/DHCP.ps
 Hiervoor hebben we het script van vorig jaar bij Projecten 2 gebruikt.
 
 Script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/OU's%20en%20gebruikers.ps1 <br/>
-CSV bestand met gebruikers: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/werknemers.csv
+CSV bestand met gebruikers: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/werknemers.csv <br/>
+Logon script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/logon.vbs
+
+
 
 
 
