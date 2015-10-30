@@ -39,7 +39,7 @@
 * Samenvoegen van PowerShell notities van mezelf en Abdülkadir
 * Werken aan een een sql scriptje om bij het verwijderen van de vm de wordpress en log-in gegevens bij te houden
 
-![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_nicolai.PNG)
+![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_nicolai.PNG)
 
 ### Anthony Bracke
 
