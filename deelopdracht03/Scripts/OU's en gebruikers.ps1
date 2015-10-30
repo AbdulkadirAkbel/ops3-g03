@@ -2,15 +2,15 @@
 
 $ADUsers = Import-Csv werknemers.csv
 
-if ([ADSI]::Exists("LDAP://OU=Technical,DC=Projecten2,DC=be") -eq $false) {
+if ([ADSI]::Exists("LDAP://OU=Technical,DC=Project3,DC=be") -eq $false) {
     New-ADOrganizationalUnit -Name Technical -ProtectedFromAccidentalDeletion $false
 }
 
-if ([ADSI]::Exists("LDAP://OU=HR,DC=Projecten2,DC=be") -eq $false) {
+if ([ADSI]::Exists("LDAP://OU=HR,DC=Project3,DC=be") -eq $false) {
     New-ADOrganizationalUnit -Name HR -ProtectedFromAccidentalDeletion $false
 }
 
-if ([ADSI]::Exists("LDAP://OU=Sales,DC=Projecten2,DC=be") -eq $false) {
+if ([ADSI]::Exists("LDAP://OU=Sales,DC=Project3,DC=be") -eq $false) {
     New-ADOrganizationalUnit -Name Sales -ProtectedFromAccidentalDeletion $false
 }
 
@@ -39,10 +39,10 @@ if (Get-ADUser -F {SamAccountName -eq $Username})
 }
 else
 {
-    New-ADUser -SamAccountName $Username -Name $Name -Path $OU -City $City -Title $Title -GivenName $GivenName -Surname $Surname -StreetAddress $StreetAddress -PostalCode $Postcode -Country $Country -MobilePhone $Telefoon -AccountPassword (ConvertTo-SecureString "Projecten2" -AsPlainText -Force) -Description "Gender: $Gender, birthday: $Birthday, country: $CountryFull" -ScriptPath logon.vbs -PassThru | Enable-ADAccount
+    New-ADUser -SamAccountName $Username -Name $Name -Path $OU -City $City -Title $Title -GivenName $GivenName -Surname $Surname -StreetAddress $StreetAddress -PostalCode $Postcode -Country $Country -MobilePhone $Telefoon -AccountPassword (ConvertTo-SecureString "Project3" -AsPlainText -Force) -Description "Gender: $Gender, birthday: $Birthday, country: $CountryFull" -PassThru | Enable-ADAccount
 }
 
-    Get-ADUser -Filter * -SearchBase "OU=HR,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
-    Get-ADUser -Filter * -SearchBase "OU=Sales,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
-    Get-ADUser -Filter * -SearchBase "OU=Technical,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    Get-ADUser -Filter * -SearchBase "OU=HR,DC=Project3,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    Get-ADUser -Filter * -SearchBase "OU=Sales,DC=Project3,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    Get-ADUser -Filter * -SearchBase "OU=Technical,DC=Project3,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
 }
