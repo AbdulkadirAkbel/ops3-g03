@@ -5,10 +5,10 @@
 
 | Student  | Aanw. | Opmerking |
 | :---     | :---  | :---      |
-| Abdülkadir |       |           |
-| Anthony |       |           |
-| Andy |       |           |
-| Nicolai |       |           |
+| Abdülkadir |   X    |           |
+| Anthony |   X    |           |
+| Andy |    X   |           |
+| Nicolai | X      |           |
 
 ## Wat heb je deze week gerealiseerd?
 
@@ -54,6 +54,7 @@
 ## Wat plan je volgende week te doen?
 
 ### Algemeen
+
 ### Abdülkadir 
 
 * beginnen aan opdracht 3: windows installeren
@@ -84,9 +85,23 @@
 ## Feedback technisch luik
 
 ### Algemeen
-
+* Goed gewerkt bij opdrachten boek lezen en microsoft virtual academy
+* Samenvatting uitgewerkt
+* Gestart met opdracht Powershell AD implementatie
+* Geen grote opmerkingen
+* Paar kleine tips
+  - Kwaliteit waarborgen door 
+    - teksten te laten nakijken door andere teamlid
+    - testen beter voor te bereiden (afspreken wie wat wanneer zal testen en toevoegen aan scrum bord)
+    - sneller te starten met testen (niet enkel o phet einde van de rit) en sneller inspelen op fouten
+  - Onderverdeling van tekst kan beter (werken met submappen of inhoudstafel)
+  - Scripts uit boeken en online repos bijhouden in folderstructuur (testen en bij onduidelijk commandos commentaar toevoegen)
 ### Abdülkadir
+* geen opmerkingen
 ### Andy
+* geen opmerkingen
 ### Nicolai
+* geen opmerkingen
 ### Anthony
+* geen opmerkingen
 

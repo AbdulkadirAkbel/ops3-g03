@@ -31,11 +31,15 @@
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
 
 
-### 
+### Active Directory en DNS
 
+Voer onderstaande script uit op de server voor de installatie van AD en DNS <br/>
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/AD%20DS.ps1
 
+Bronnen: http://www.thegeekstuff.com/2014/12/install-windows-ad/
 
-
+### DNS 
+ 
 
 
 
