@@ -1,5 +1,5 @@
 ## Stappenplan Windows Server
-
+I
 ### VM
 
 1.	Maak een nieuwe virtuele machine aan met een naam naar keuze, als type Microsoft Windows en versie Windows 2012 (64-bit).
@@ -29,6 +29,7 @@
 4. Valideer aan de hand van `ipconfig /all`
 5. Bekijk computernaam met `Get-WmiObject Win32_ComputerSystem`
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
+7. Reboot de server met `Restart-computer`
 
 
 ### Active Directory en DNS
