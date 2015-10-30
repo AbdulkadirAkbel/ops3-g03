@@ -33,8 +33,8 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 2. De gebruikers zitten in de correcte OU's.
 3. De gegevens van de gebruikers zijn allemaal aanwezig.
 4. Gebruikers kunnen inloggen op het domein.
-5. Gebruikers hebben de juiste rechten.
 
+Om gebruikers te bekijken: `Get-ADUser -Filter 'Enabled -eq $false'` 
 
 ### Testrapport
 
