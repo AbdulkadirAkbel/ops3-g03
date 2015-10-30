@@ -36,7 +36,8 @@
 
 ### Nicolai
 
-* 
+* Samenvoegen van PowerShell notities van mezelf en Abdülkadir
+* Werken aan een een sql scriptje om bij het verwijderen van de vm de wordpress en log-in gegevens bij te houden
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week6_toggl_nicolai.PNG)
 
@@ -63,7 +64,8 @@
 * Windows deployment helpen
 
 ### Nicolai
-* 
+* Verder werken aan het integreren van graphite
+* testing Windows Deployment
 
 ### Anthony Bracke
 * Powershell volledig afwerken
