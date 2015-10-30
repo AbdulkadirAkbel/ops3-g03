@@ -5,9 +5,31 @@
 
 ### Testplan
 
-Auteur(s) testplan: Abdülkadir
+Auteur(s) testplan: Andy
 
+***AD DS***
+1. Is active directory correct gëinstalleerd.
+2. Is het domein aangemaakt.
 
+Cmdlets om te testen: https://technet.microsoft.com/en-us/library/hh852274(v=wps.630).aspx
+
+***DNS*** (get-DNSserverZone)
+1. De DNS is gëinstalleerd.
+2. Er is een primary forward-lookup zone geconfigureerd.
+3. Er is een primary reverse-lookup zone geconfigureerd.
+
+Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj649850.aspx
+
+***DHCP***
+1. De DHCP role is geïnstalleerd
+2. Er is een scope aangemaakt voor de hosts.(`Get-DhcpServerv4Scope`)
+3. Er is een exclusion range aangemaakt. (`Get-DhcpServerv4ExclusionRange`)
+4. De DHCP is geactiveerd.
+
+Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps.630).aspx
+
+***Gebruikers***
+1. 
 
 
 ### Testrapport
