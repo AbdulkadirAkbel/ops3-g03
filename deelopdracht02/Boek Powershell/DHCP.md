@@ -23,14 +23,14 @@
 
 		Add-DhcpServerInDC -DnsName corpdc1.corp.contoso.com
 
-5. Voeg DHCP reservations toe:
+5. Voeg DHCP reservations toe (reservaties zijn voor bepaalde servers bedoeld, hierdoor zullen ze altijd dezelfde IP-adres hebben):
 
 	    Add-dhcpserverv4reservation –scopeid 10.10.10.0 –ipaddress
 	    10.10.10.102 –name test2 –description "Test server" –clientid 12-
 	    34-56-78-90-12
 	    Get-dhcpserverv4reservation –scopeid 10.10.10.0
 
-6. Voeg DHCP exclusions toe:
+6. Voeg DHCP exclusions toe (exclusions zijn een reeks IP-adressen die niet toegekend worden aan werkstations):
 
 	    Add-DhcpServerv4ExclusionRange –ScopeId 10.10.10.0 –StartRange
 		10.10.10.110 –EndRange 10.10.10.111
