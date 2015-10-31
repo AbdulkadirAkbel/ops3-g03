@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/bash
 #
 # Author: Bert Van Vreckem <bert.vanvreckem@gmail.com>
 #

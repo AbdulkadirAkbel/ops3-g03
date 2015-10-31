@@ -1,0 +1,2 @@
+- name: Download and install ApacheJMeter
+  command: cd /vagrant | sudo yum install java -y | wget http://apache.belnet.be//jmeter/binaries/apache-jmeter-2.13.tgz | tar zxvf apache-jmeter-2.13.tgz
