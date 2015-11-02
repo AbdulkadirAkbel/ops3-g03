@@ -13,3 +13,7 @@
 
 * Kanban-bord: <https://huboard.com/HoGentTIN/ops3-g03/>
 * Tijdregistratie: <https://toggl.com/app/projects/820421/list/page/1>
+
+## Handig
+
+Eenvoudig de repo downloaden in ZIP: neem de link en zet er /zipball/master achter. Hier is dit dan https://github.com/HoGentTIN/ops3-g03/zipball/master
