@@ -17,6 +17,9 @@ el7_firewall_allow_services:
 
 httpd_scripting: 'php'
 
+el7_firewall_allow_ports:
+  - 25827/udp
+
 mariadb_databases:
   - wordpress
 

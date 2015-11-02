@@ -1,5 +1,5 @@
 ## Stappenplan Windows Server
-I
+
 ### VM
 
 1.	Maak een nieuwe virtuele machine aan met een naam naar keuze, als type Microsoft Windows en versie Windows 2012 (64-bit).
@@ -29,20 +29,39 @@ I
 4. Valideer aan de hand van `ipconfig /all`
 5. Bekijk computernaam met `Get-WmiObject Win32_ComputerSystem`
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
-7. Reboot de server met `Restart-computer`
 
 
-### Active Directory en DNS
+### Active Directory
 
 Voer onderstaande script uit op de server voor de installatie van AD en DNS <br/>
 https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/AD%20DS.ps1
 
-Bronnen: http://www.thegeekstuff.com/2014/12/install-windows-ad/
-
 ### DNS 
  
+Het script van AD DS heeft DNS al geïnstalleerd en een forward lookup zone aangemaakt. Nu moeten we enkel nog een reverse lookup zone aanmaken. Gebruik hiervoor het volgende script: <br/>
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/DNS%20ZONE.ps1
+
+### DHCP
+
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/DHCP.ps1
+
+### OU's en gebruikers
+
+Hiervoor hebben we het script van vorig jaar bij Projecten 2 gebruikt.
+
+Script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/OU's%20en%20gebruikers.ps1 <br/>
+CSV bestand met gebruikers: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/werknemers.csv <br/>
+Logon script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/logon.vbs
 
 
+
+
+
+Bronnen: 
+
+* http://www.thegeekstuff.com/2014/12/install-windows-ad/
+* https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht02/Boek%20Powershell/AD%20DS.md
+* https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht02/Boek%20Powershell/DNS.md
 
 
 
