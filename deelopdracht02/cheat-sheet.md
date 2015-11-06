@@ -1,6 +1,6 @@
 ## PowerShell cheat sheet
 
-| Command  | Task	  | 
+| Command / Term | Task	  | 
 | :---      | :---    |  
 |  			|  ``       |  
 |  			|   ``      |   
@@ -9,7 +9,7 @@
 
 ### Basics
 
-| Command  | Task 	  | 
+| Command / Term | Task 	  | 
 | :---      | :---    |  
 |  	Cmdlet		|   Commands built into shell written in .NET      |  
 |  	Functions		|    Commands written in PowerShell language     |   
@@ -27,19 +27,9 @@
 |  	F7		|   Command history in a window      |   
 |  	Tab / Shift-Tab		|  Command line completion       |  
    
-  
-
 
 ### Help
 
-
-| Taak                                        | Commando                  |
-| :---                                        | :---                      |
-| Huidige toestand project                    | `git status`              |
-| Bestanden toevoegen/klaarzetten voor commit | `git add FILE...`         |
-| Bestanden "committen"                       | `git commit -m 'MESSAGE'` |
-| Synchroniseren naar Bitbucket               | `git push`                |
-| Wijzigingen van Bitbucket halen             | `git pull`                |
 
 
 
