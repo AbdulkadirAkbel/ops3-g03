@@ -21,7 +21,7 @@
 8.	Maak een wachtwoord aan voor de Administrator. (wachtwoord = “Projecten3”)
 9.	Log in.
 
-Guest Additions installeren voor copy/paste:
+**Guest Additions installeren voor copy/paste:**
 
 1. Klik op de menubalk van de virtuele machien op *Apparaten* en dan op *Invoegen Guest Additions CD-image*.
 2. Open powershell met de commando `powershell`.
