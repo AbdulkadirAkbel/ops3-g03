@@ -167,7 +167,7 @@
 |  	`Set-Item`		     |              
 |  	`New-Item`		     |  
 
-### Arrays, Objects 
+### Arrays
 
 | Command | Task	   | 
 | :---           | :---    |  
@@ -177,9 +177,19 @@
 |  	`$arr[-3..-1]`		     |   Last three array elements      | 
 |  	`$arr[1,4+6..9]`		     | Elements at index 1,4, 6-9        |  
 |  	`$arr[1] += 200`		     | Add to array item value        |   
-|  	`$z = $arA + $arB`		     |  Two arrays into single array       |     
+|  	`$z = $arA + $arB`		     |  Two arrays into single array       |      
+
+### Objects
+
+| Command | Task	   | 
+| :---           | :---    | 
 |  	`[pscustomobject]@{x=1;z=2}`		     | Create custom object       | 
-|  	`(Get-Date).Date`		     | Date property of object        | 
+|  	`(Get-Date).Date`		     |  Date property of object from Get-Date       |  
+|  	`Get-Date | Get-Member`		     |   List properties and methods of object      |   
+|  	`[DateTime]::Now`		     |   Static properties referenced with "::"      |     
+|  	`"string".ToUpper()`		     | Use ToUpper() method on string        | 
+|  	`[system.Net.Dns]::GetHostByAddress("127.0.0.1")`		     |   Use static method to get hostname with "::"      |     
+|  	`$excel = new-object -com excel.application`		     | Create a new Excel COM object to work with   |
 
 ### Writing output and reading input
 
@@ -213,16 +223,7 @@
 |  	`\d \D`		     |     Any digit or non-digit    | 
 |  	`{n} {n,} {n,m}`		     |   Match n through m instances of a pattern      | 
 
-### Objects
-
-| Command | Task	   | 
-| :---           | :---    |  
-|  	`(Get-Date).Date`		     |  Date property of object from Get-Date       |  
-|  	`Get-Date | Get-Member`		     |   List properties and methods of object      |   
-|  	`[DateTime]::Now`		     |   Static properties referenced with "::"      |     
-|  	`"string".ToUpper()`		     | Use ToUpper() method on string        | 
-|  	`[system.Net.Dns]::GetHostByAddress("127.0.0.1")`		     |   Use static method to get hostname with "::"      |     
-|  	`$excel = new-object -com excel.application`		     | Create a new Excel COM object to work with        | 
+     
 
 ### Scripts
 
