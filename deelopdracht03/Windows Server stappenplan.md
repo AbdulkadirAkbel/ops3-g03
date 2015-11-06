@@ -28,7 +28,7 @@
 3. `Get-Volume`
 4. `cd E:\`
 5. `ls`
-6. `start VBoxWindowsAdditions`
+6. `start VBoxWindowsAdditions.exe`
 
 ### Basisinstellingen configureren
 
