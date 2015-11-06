@@ -47,6 +47,9 @@
 |  	`$a,$b = 0 or $a,$b = 'a','b'`		     |   Assign multiple variables      |   
 |  	`$a,$b = $b,$a`		     |   Flip variables      |     
 |  	`$var=[int]5`		     |   Strongly typed variable      | 
+|  	Scopes	     |  global, local, private or script       |  
+|  	`$global:var = "var"`		     |  Assign global scoped variable       |   
+
 
 ### Assignment, Logical, Comparison Operators
 
@@ -81,13 +84,14 @@
 
 ### Flow Control
 
-| Command |  
-| :---           |  
-|  	`If(){} Elseif(){ } Else{ }`		     |       
-|  	`while(){}`		     |         
-|  	`For($i=0; $i -lt 10; $i++){}`		     |          
-|  	`Foreach($file in dir C:\){$file.name}`		     |  
-|  	`1..10 | foreach{$_}`		     |    
+| Command |  Task	   | 
+| :---           |  :---    |
+|  	`If(){} Elseif(){ } Else{ }`		     |   if    |
+|  	`while(){}`		     |     while    |
+|  	`For($i=0; $i -lt 10; $i++){}`		     |    for  |    
+|  	`Foreach($file in dir C:\){$file.name}`		     |foreach  |
+|  	`1..10 | foreach{$_}`		     | foreach   |
+|  	`Switch -options (<values to switch on>){PatternX {statement} Default {Default Statement} }`		     |  switch       | 
 
 ### Comments, Escape Characters
 
@@ -186,6 +190,39 @@
 |  	`$age = Read-host "Please enter your age"`		     |   Set $age variable to input from user      |     
 |  	`$pwd = Read-host "Please enter your password" -asSecureString`		     | Read in $pwd as secure string        |  
 |  	`Clear-Host`		     |   Clear console      | 
+
+### Automatic variables
+
+| Command | Task	   | 
+| :---           | :---    |  
+|  	`$_, $PSItem`		     |  Current pipeline object       |  
+|  	`$Args`		     |    Script or function arguments     |   
+|  	`$Error`		     |   Errors from commands      |     
+|  	`$True, $False`		     |   Boolean value for true, false      |
+|  	`$null`		     |    Empty     |
+|  	`$profile`		     |  Array of profile locations       | 
+
+### Regular Expressions
+
+| Command | Task	   | 
+| :---           | :---    |  
+|  	`\w`		     |   Any word character [a-zA-Z0-9]      |  
+|  	`\W`		     |      Any non-word character   |   
+|  	`\s`		     |     Any whitespace character    |     
+|  	`\S`		     |    Any non-whitespace character     | 
+|  	`\d \D`		     |     Any digit or non-digit    | 
+|  	`{n} {n,} {n,m}`		     |   Match n through m instances of a pattern      | 
+
+### Objects
+
+| Command | Task	   | 
+| :---           | :---    |  
+|  	`(Get-Date).Date`		     |  Date property of object from Get-Date       |  
+|  	`Get-Date | Get-Member`		     |   List properties and methods of object      |   
+|  	`[DateTime]::Now`		     |   Static properties referenced with "::"      |     
+|  	`"string".ToUpper()`		     | Use ToUpper() method on string        | 
+|  	`[system.Net.Dns]::GetHostByAddress("127.0.0.1")`		     |   Use static method to get hostname with "::"      |     
+|  	`$excel = new-object -com excel.application`		     | Create a new Excel COM object to work with        | 
 
 ### Scripts
 
