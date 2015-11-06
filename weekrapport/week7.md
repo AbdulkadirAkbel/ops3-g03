@@ -44,7 +44,8 @@
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_nicolai.PNG)
 
 ### Anthony Bracke
-
+* Grafieken weergeven met collectd web
+* Framework voor loadtesting installeren
 
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_anthony.PNG)
@@ -68,10 +69,12 @@
 * Load testing
 
 ### Anthony Bracke
-
+* Framework voor loadtesting afwerken
+* Powershell volledig afwerken
+* Beginnen aan Deelopdracht2 Linux
 
 ## Waar hebben jullie nog problemen mee?
-
+* Fout bij het installeren van het loadtesting framework
 
 ## Feedback technisch luik
 
