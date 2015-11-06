@@ -4,7 +4,7 @@
 
 2) Installer zip en unzip.<br>
 
-	`Sudo yum install zip unzip`
+	`sudo yum install zip unzip`
 3) Navigeer naar /usr/share/wordpress/wp-content/plugins<br>
 
     `cd /usr/share/wordpress/wp-content/plugins` 
