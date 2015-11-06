@@ -1,6 +1,6 @@
 ## PowerShell cheat sheet
 
-| Commando  | Taak 	  | 
+| Command  | Task	  | 
 | :---      | :---    |  
 |  			|  ``       |  
 |  			|   ``      |   
@@ -9,7 +9,7 @@
 
 ### Basics
 
-| Commando  | Taak 	  | 
+| Command  | Task 	  | 
 | :---      | :---    |  
 |  	Cmdlet		|   Commands built into shell written in .NET      |  
 |  	Functions		|    Commands written in PowerShell language     |   
