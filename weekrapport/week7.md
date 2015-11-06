@@ -28,12 +28,12 @@
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_abdulkadir.PNG)
 
 ### Andy
-
+* Guest Additions installeren uitzoeken in server core
+* Powershell video's 7,8 en 9 bekeken.
+* Meegeholpen aan deployment
 
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_andy.PNG)
-
-
 
 ### Nicolai
 
@@ -58,9 +58,10 @@
 * Windows deployment testen
 * Load testing framework
 
-
 ### Andy
-
+* Windows deployment testen
+* Verder werken aan boek powershell
+* Load testen
 
 ### Nicolai
 * Opzoeken over Desired State Configuration
