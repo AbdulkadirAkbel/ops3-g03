@@ -66,6 +66,7 @@
 ### Parameters
   
 | Command  | Task	   |  
+| :---           | :---    |  
 |  	`-Confirm`		     | Prompt whether to take action        |     
 |  	`-WhatIf`		     |   Displays what command would do      | 
 
@@ -128,3 +129,75 @@
 |  	`Sls`		     |    `Select-String`     |     
 |  	`Cd,chdir,sl`		     |    `Set-Location`     | 
 |  	`Cls,clear`		     |    `Clear-Host`     | 
+
+### Cmdlets
+
+| Command | 
+| :---           |   
+|  	`Get-EventLog`		     |        
+|  	`Get-WinEvent`		     |           
+|  	`Get-Date`		     |             
+|  	`Start-Sleep`		     |
+|  	`Start-Job`		     |        
+|  	`Compare-Object`		     |           
+|  	`Get-Credential`		     |             
+|  	`Test-Connection`		     | 
+|  	`New-PSSession`		     |        
+|  	`Test-Path`		     |           
+|  	`Split-Path`		     |             
+|  	`Get-ADUser`		     | 
+|  	`Get-ADComputer`		     |        
+|  	`Get-History`		     |           
+|  	`Get-WMIObject`		     |             
+|  	`New-ISESnippet`		     |  
+|  	`Get-CimInstance`		     |          
+|  	`Set-Location`		     |         
+|  	`Get-Content`		     |           
+|  	`Add-Content`		     |        
+|  	`Set-Content`		     |        
+|  	`Out-File`		     |         
+|  	`Out-String`		     |           
+|  	`Copy-Item`		     |         
+|  	`Remove-Item`		     |         
+|  	`Move-Item`		     |          
+|  	`Set-Item`		     |              
+|  	`New-Item`		     |  
+
+### Arrays, Objects 
+
+| Command | Task	   | 
+| :---           | :---    |  
+|  	`$arr = "a", "b"`		     |   Array of strings      |  
+|  	`$arr = @()`		     |   Empty array      |   
+|  	`$arr[5]`		     |   Sixth array element      |     
+|  	`$arr[-3..-1]`		     |   Last three array elements      | 
+|  	`$arr[1,4+6..9]`		     | Elements at index 1,4, 6-9        |  
+|  	`$arr[1] += 200`		     | Add to array item value        |   
+|  	`$z = $arA + $arB`		     |  Two arrays into single array       |     
+|  	`[pscustomobject]@{x=1;z=2}`		     | Create custom object       | 
+|  	`(Get-Date).Date`		     | Date property of object        | 
+
+### Writing output and reading input
+
+| Command | Task	   | 
+| :---           | :---    |  
+|  	`"This displays a string"`		     |  String is written directly to output       |  
+|  	`Write-Host "color" -ForegroundColor Red -NoNewLine`		     |   String with colors, no new line at end      |   
+|  	`$age = Read-host "Please enter your age"`		     |   Set $age variable to input from user      |     
+|  	`$pwd = Read-host "Please enter your password" -asSecureString`		     | Read in $pwd as secure string        |  
+|  	`Clear-Host`		     |   Clear console      | 
+
+### Scripts
+
+| Command | Task	   | 
+| :---           | :---    |  
+|  	`Set-ExecutionPolicy -ExecutionPolicy Bypass`		     |  Set execution policy to allow all scripts       |  
+|  	`."\\c-is-ts-91\c$\scripts\script.ps1"`		     | Run Script.PS1 script in current scope        |   
+|  	`&"\\c-is-ts-91\c$\scripts\script.ps1"`		     |  Run Script.PS1 script in script scope       |     
+|  	`.\Script.ps1`		     | Run Script.ps1 script in script scope        | 
+|  	`$profile`		     |   Your personal profile that runs at launch      | 
+
+
+
+   
+    
