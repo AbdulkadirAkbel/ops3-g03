@@ -21,6 +21,15 @@
 8.	Maak een wachtwoord aan voor de Administrator. (wachtwoord = “Projecten3”)
 9.	Log in.
 
+Guest Additions installeren voor copy/paste:
+
+1. Klik op de menubalk van de virtuele machien op *Apparaten* en dan op *Invoegen Guest Additions CD-image*.
+2. Open powershell met de commando `powershell`.
+3. `Get-Volume`
+4. `cd E:\`
+5. `ls`
+6. `start VBoxWindowsAdditions`
+
 ### Basisinstellingen configureren
 
 1. Toon de interfaces: `Get-NetIPInterface`. Ethernet 2 (=host-only) heeft als interfaceindex 25.
@@ -62,6 +71,7 @@ Bronnen:
 * http://www.thegeekstuff.com/2014/12/install-windows-ad/
 * https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht02/Boek%20Powershell/AD%20DS.md
 * https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht02/Boek%20Powershell/DNS.md
+* http://superuser.com/questions/499264/how-can-i-mount-an-iso-via-powershell-programmatically
 
 
 
