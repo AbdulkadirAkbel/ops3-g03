@@ -28,12 +28,12 @@
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_abdulkadir.PNG)
 
 ### Andy
-
+* Guest Additions installeren uitzoeken in server core
+* Powershell video's 7,8 en 9 bekeken.
+* Meegeholpen aan deployment
 
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_andy.PNG)
-
-
 
 ### Nicolai
 
@@ -44,7 +44,8 @@
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_nicolai.PNG)
 
 ### Anthony Bracke
-
+* Grafieken weergeven met collectd web
+* Framework voor loadtesting installeren
 
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_anthony.PNG)
@@ -58,19 +59,22 @@
 * Windows deployment testen
 * Load testing framework
 
-
 ### Andy
-
+* Windows deployment testen
+* Verder werken aan boek powershell
+* Load testen
 
 ### Nicolai
 * Opzoeken over Desired State Configuration
 * Load testing
 
 ### Anthony Bracke
-
+* Framework voor loadtesting afwerken
+* Powershell volledig afwerken
+* Beginnen aan Deelopdracht2 Linux
 
 ## Waar hebben jullie nog problemen mee?
-
+* Fout bij het installeren van het loadtesting framework
 
 ## Feedback technisch luik
 

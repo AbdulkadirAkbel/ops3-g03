@@ -80,7 +80,7 @@
 * 
 
 ## Feedback technisch luik
-
+Zeer goed. Enkel cheatsheet ontbreekt.
 ### Algemeen
 * 
 ### Abdülkadir
