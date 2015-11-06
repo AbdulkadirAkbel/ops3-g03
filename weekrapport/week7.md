@@ -37,7 +37,9 @@
 
 ### Nicolai
 
-
+* Opzoeken naar load testing
+* Weergeven van monitoring grafieken adhv collectd-web
+* Testen van de monitoring (testplan en testrapport)
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week7_toggl_nicolai.PNG)
 
@@ -61,7 +63,8 @@
 
 
 ### Nicolai
-
+* Opzoeken over Desired State Configuration
+* Load testing
 
 ### Anthony Bracke
 
