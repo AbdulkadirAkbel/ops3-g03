@@ -234,7 +234,7 @@
 |  	`&"\\c-is-ts-91\c$\scripts\script.ps1"`		     |  Run Script.PS1 script in script scope       |     
 |  	`.\Script.ps1`		     | Run Script.ps1 script in script scope        | 
 |  	`$profile`		     |   Your personal profile that runs at launch      | 
-
+ 
 
 
    
