@@ -32,7 +32,7 @@
 | Student  | Geschat | Gerealiseerd |
 | :---     |    ---: |         ---: |
 | Abdülkadir |   6      |              |
-| Anthony |         |              |
+| Anthony |     7    |              |
 | Andy |         |              |
 | Nicolai |         |              |
 
