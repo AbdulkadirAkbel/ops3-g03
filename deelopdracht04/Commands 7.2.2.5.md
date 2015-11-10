@@ -1,4 +1,4 @@
-## Commands lab 6.2.3.8
+## Commands lab 7.2.2.5
 
 ### Part 1: Build the Network and Verify Connectivity
 
