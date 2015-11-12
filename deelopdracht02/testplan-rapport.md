@@ -39,7 +39,7 @@ Auteur(s) testplan: Abdülkadir
 3. Alle belangrijke onderwerpen van de individuele verslagen van de boeken zijn verwerkt in het einddocument.
 4. De opmaak is in volledig de opdracht dezelfde. Steeds dezelfde soort titels, zelfde lay-out,..
 5. Mapje scripts is aanwezig.
-5. Scripts doen wat ze moeten doen.
+5. Scripts doen wat ze moeten doen en zijn uitgevoerd door .. .
 6. Bij scripts wordt uitleg gegeven wat ze doen.
 
 
