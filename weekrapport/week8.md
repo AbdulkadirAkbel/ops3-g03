@@ -41,7 +41,9 @@
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week8_toggl_andy.PNG)
 
 ### Nicolai
-
+* Linux testen van metrieken
+* Werken aan Siege voor monitoring
+* Labo 2.3.2.3 van cisco begonnen 
 
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week8_toggl_nicolai.PNG)
@@ -69,7 +71,10 @@
 * Boek afwerken Powershell
 
 ### Nicolai
-
+* labo 2.3.2.3 cisco afwerken
+* fysieke opstelling van cisco
+* testen van JMeter
+* Starten aan multi-tier
 
 ### Anthony Bracke
 
