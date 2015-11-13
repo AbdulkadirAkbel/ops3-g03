@@ -64,7 +64,9 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj649850.aspx
 1. OK `Get-DhcpServerInDC`
 2. OK `Get-DhcpServerv4Scope`
 3. OK `Get-DhcpServerv4ExclusionRange`
-4. 
+
+Schermafbeelding van `ipconfig /all` op het werkstation dat een IP-adres krijgt van de server en dat lid is van het domein Project3.be:<br/>
+![](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Images/testdhcp.PNG)
 
 Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps.630).aspx
 
