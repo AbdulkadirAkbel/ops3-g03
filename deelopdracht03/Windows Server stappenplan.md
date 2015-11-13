@@ -39,6 +39,7 @@
 5. Bekijk computernaam met `Get-WmiObject Win32_ComputerSystem`
 6. Verander computernaam naar "Projecten3": `Rename-Computer -NewName Projecten3`
 
+Je kan ook gebruik maken van het script `Set-IP.ps1`.
 
 ### Active Directory
 
