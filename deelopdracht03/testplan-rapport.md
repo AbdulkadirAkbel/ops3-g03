@@ -77,3 +77,5 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 3. OK
 4. OK
 
+De aangemaakte gebruiker AbAkb2 kan inloggen op het werkstation.
+
