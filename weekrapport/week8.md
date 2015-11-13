@@ -32,7 +32,10 @@
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week8_toggl_abdulkadir.PNG)
 
 ### Andy
-
+* Windows Deployment uitgevoerd in Server Core.
+* Windows Deplpoyment getest.
+* Metrieken opgevraagd lampstack met collectd.
+* Labo 7.2.2.5 begonnen.
 
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week8_toggl_andy.PNG)
@@ -60,7 +63,9 @@
 * Verschillende soorten load creëeren en bekijken
 
 ### Andy
-
+* Labo 7.2.2.5 en 7.4.3.5 afwerken
+* Fysieke opstelling doen
+* Boek afwerken Powershell
 
 ### Nicolai
 
