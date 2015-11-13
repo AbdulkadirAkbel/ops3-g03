@@ -49,7 +49,9 @@
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week8_toggl_nicolai.PNG)
 
 ### Anthony Bracke
-
+* Collectd cofiguratie verbeteren
+* Bind plugin configureren
+* Apache JMeter werkende krijgen
 
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week8_toggl_anthony.PNG)
@@ -77,10 +79,12 @@
 * Starten aan multi-tier
 
 ### Anthony Bracke
-
+* PowerShell volledig afwerken
+* Deelopdracht 1 Linux afronden
+* Beginnen aan Deelopdracht 2 Linux
 
 ## Waar hebben jullie nog problemen mee?
-
+* Bind plugin configureren
 
 ## Feedback technisch luik
 
