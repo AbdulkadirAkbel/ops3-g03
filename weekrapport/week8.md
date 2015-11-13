@@ -55,6 +55,7 @@
 
 ### Abdülkadir 
 
+* Windows deployment dhcp probleem oplossen
 * Testplan-rapport deelopdracht 4
 * Labo 6.2.3.9
 * Verschillende soorten load creëeren en bekijken
