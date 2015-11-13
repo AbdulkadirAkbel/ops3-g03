@@ -1,3 +1,4 @@
+
 # Quick and dirty IP address setter
 
 Param ($IP4,$IP6)
