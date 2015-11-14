@@ -131,7 +131,7 @@ R3(config-if)# no shut
 
 ```R1(config)# ipv6 unicast-routing
 R1(config)# ipv6 router eigrp 1
-R1(config-rtr)# router-id 1.1.1.1
+R1(config-rtr)# eigrp router-id 1.1.1.1
 R1(config-rtr)# no shutdown
 
 R1(config-rtr)# exit
@@ -148,7 +148,7 @@ R1(config-if)# ipv6 eigrp 1
 ```
 R2(config)# ipv6 unicast-routing
 R2(config)# ipv6 router eigrp 1
-R2(config-rtr)# router-id 2.2.2.2
+R2(config-rtr)# eigrp router-id 2.2.2.2
 R2(config-rtr)# no shutdown
 
 R2(config-rtr)# exit
@@ -165,7 +165,7 @@ R2(config-if)# ipv6 eigrp 1
 ```
 R3(config)# ipv6 unicast-routing
 R3(config)# ipv6 router eigrp 1
-R3(config-rtr)# router-id 3.3.3.3
+R3(config-rtr)# eigrp router-id 3.3.3.3
 R3(config-rtr)# no shutdown
 
 R3(config-rtr)# exit
