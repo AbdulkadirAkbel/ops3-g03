@@ -211,4 +211,6 @@ R2(config)# ipv6 router eigrp 1 R2(config-rtr)# passive-interface g0/0
 ```
 R3(config)# ipv6 router eigrp 1 
 R3(config-rtr)# passive-interface default
+R3(config-rtr)# no passive-interface s0/0/0
+R3(config-rtr)# no passive-interface s0/0/1
 ```
