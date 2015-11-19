@@ -126,7 +126,7 @@
 
     show spanning-tree
 
-S2 is root bridge
+
 
     en 
     conf t
