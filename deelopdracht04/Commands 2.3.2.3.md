@@ -118,11 +118,11 @@
     show interfaces trunk
     show running-config
 
-##Switch 1##
+##Testen in switch 1##
 
     show spanning-tree
 
-##Switch 2##
+##Testen in switch 2##
 
     show spanning-tree
 
