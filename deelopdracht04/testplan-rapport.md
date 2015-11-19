@@ -7,6 +7,14 @@
 
 Auteur(s) testplan: Abdülkadir, Andy, Anthony, Nicolai
 
+**Labo 2.3.2.3**
+
+1. Pingen van PCA naar PC1 lukt.
+2. Pingen van PC1 naar PCA lukt.
+3. VLAN configuratie nagaan op de 3 switches (`show vlan brief`)
+4. Trunk interfaces configuratie nagaan op de 3 switches (`show interfaces trunk`)
+5. De algemene configuratie nagaan op de 3 switches (`show running-config`)
+
 **Labo 6.2.3.8**
 
 1. Pingen van R1 naar R2 lukt.
@@ -29,9 +37,18 @@ Auteur(s) testplan: Abdülkadir, Andy, Anthony, Nicolai
 7. Bekijk de routeringsprotocol. Het moet "ospfv3 1" zijn. (`show ipv6 ospf`)
 8. Bekijk de routeringstabel. De routes moeten aanwezig zijn. (`show ipv6 route ospf`)
 
+
 ### Testrapport
 
 Uitvoerder(s) test: Abdülkadir, Andy, Anthony, Nicolai
+
+**Labo 2.3.2.3**
+
+1. Ok
+2. OK
+3. OK
+4. OK
+5. OK
 
 **Labo 6.2.3.8**
 
