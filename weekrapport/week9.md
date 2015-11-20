@@ -34,7 +34,9 @@
 
 ### Andy
 
-
+* Labo 7.2.2.5 en 7.4.3.5 afgewerkt
+* Scripts optimaliseren deployment
+* Testen linux
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week9_toggl_andy.PNG)
 
@@ -68,6 +70,9 @@
 
 ### Andy
 
+* fysieke opstelling labo 6.2.3.8
+* linux afwerken
+* boek afwerken
 
 ### Nicolai
 
