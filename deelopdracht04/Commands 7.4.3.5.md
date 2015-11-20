@@ -28,17 +28,17 @@ R1# copy running-config startup-config
 
 R1# conf t
 R1(config)# int g0/0
-R1(config-if)# ipv6 address 2001:D88:ACAD:A::1/64
+R1(config-if)# ipv6 address 2001:DB8:ACAD:A::1/64
 R1(config-if)# ipv6 address fe80::1 link-local
 R1(config-if)# no shut
 R1(config-if)# int s0/0/0
-R1(config-if)# ipv6 address 2001:D88:ACAD:12::1/64
+R1(config-if)# ipv6 address 2001:DB8:ACAD:12::1/64
 R1(config-if)# ipv6 address fe80::1 link-local
 R1(config-if)# clock rate 128000
 This command applies only to DCE interfaces
 R1(config-if)# no shut
 R1(config-if)# int s0/0/1
-R1(config-if)# ipv6 address 2001:D88:ACAD:13::1/64
+R1(config-if)# ipv6 address 2001:DB8:ACAD:13::1/64
 R1(config-if)# ipv6 address fe80::1 link-local
 R1(config-if)# no shut
 
@@ -71,15 +71,15 @@ R2# copy running-config startup-config
 
 R2# conf t
 R2(config)# int g0/0
-R2(config-if)# ipv6 address 2001:D88:ACAD:B::1/64
+R2(config-if)# ipv6 address 2001:DB8:ACAD:B::1/64
 R2(config-if)# ipv6 address fe80::2 link-local
 R2(config-if)# no shut
 R2(config-if)# int s0/0/0
-R2(config-if)# ipv6 address 2001:D88:ACAD:12::2/64
+R2(config-if)# ipv6 address 2001:DB8:ACAD:12::2/64
 R2(config-if)# ipv6 address fe80::2 link-local
 R2(config-if)# no shut
 R2(config-if)# int s0/0/1
-R2(config-if)# ipv6 address 2001:D88:ACAD:23::2/64
+R2(config-if)# ipv6 address 2001:DB8:ACAD:23::2/64
 R2(config-if)# ipv6 address fe80::2 link-local
 R2(config-if)# clock rate 128000
 R2(config-if)# no shut
@@ -111,11 +111,11 @@ R3# copy running-config startup-config
 
 R3# conf t
 R3(config)# int g0/0
-R3(config-if)# ipv6 address 2001:D88:ACAD:C::1/64
+R3(config-if)# ipv6 address 2001:DB8:ACAD:C::1/64
 R3(config-if)# ipv6 address fe80::3 link-local
 R3(config-if)# no shut
 R3(config-if)# int s0/0/0
-R3(config-if)# ipv6 address 2001:D88:ACAD:13::3/64
+R3(config-if)# ipv6 address 2001:DB8:ACAD:13::3/64
 R3(config-if)# ipv6 address fe80::3 link-local
 R3(config-if)# clock rate 128000
 R3(config-if)# no shut
@@ -129,7 +129,8 @@ R3(config-if)# no shut
 
 **R1**
 
-```R1(config)# ipv6 unicast-routing
+```
+R1(config)# ipv6 unicast-routing
 R1(config)# ipv6 router eigrp 1
 R1(config-rtr)# eigrp router-id 1.1.1.1
 R1(config-rtr)# no shutdown
@@ -203,7 +204,8 @@ R1# show ipv6 protocols
 **R2**
 
 ```
-R2(config)# ipv6 router eigrp 1 R2(config-rtr)# passive-interface g0/0
+R2(config)# ipv6 router eigrp 1 
+R2(config-rtr)# passive-interface g0/0
 ```
 
 **R3**
