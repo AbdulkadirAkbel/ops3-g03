@@ -215,7 +215,7 @@ R3: Internal Router
     ip ospf message-digest-key 1 md5 Cisco123
     ip ospf authentication message-digest
 
-**R2**
+**R3**
 
     en
     conf t
