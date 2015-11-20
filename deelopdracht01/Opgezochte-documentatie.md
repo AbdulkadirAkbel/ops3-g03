@@ -12,3 +12,5 @@
 *  **Collectd role**: https://github.com/bertvv/ansible-role-collectd#Testing
 *  **Graphite on CentOS**: http://www.ozmonet.com/projects/graphite.html
 *  **CPU Metrics in Collectd**: http://blog.librato.com/posts/unified-cpu-metrics-in-collectd
+*  **How To Use Apache JMeter To Perform Load Testing on a Web Server**: https://www.digitalocean.com/community/tutorials/how-to-use-apache-jmeter-to-perform-load-testing-on-a-web-server
+*  **HOW TO INSTALL AND CONFIGURE NGINX ON CENTOS 7**: https://garage.godaddy.com/tech/config/how-to-install-and-configure-nginx-on-centos-7/
