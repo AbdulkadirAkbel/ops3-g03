@@ -13,6 +13,7 @@ Auteur(s) testplan: Andy
 - Nagaan of de collectd aan het draaien is.
 - Monitoring server schrijft de monitoring resultaten naar de rrd bestanden.
 - Metrieken worden gevisualiseerd aan de hand van de collectd-web
+- Bij het testen aan de hand van Apache JMeter zien we pieken in de metrieken van de LAMP
 
 
 ### Testrapport
@@ -28,3 +29,4 @@ Uitvoerder(s) test: Anthony
 - Wanneer we ingelogd zijn op de collectd en we het volgende commando uitvoeren: 'service collectd status' zien we dat de collectd aan het draaien is (weergave: "active (running)").
 - Wanneer we naar de directory /var/lib/collectd/rrd (cd /var/lib/collectd/rrd/collectd) gaan zien we verschillende folders met een benaming die aangeeft wat voor montitoring informatie die zal bevatten. Collectd verzamelt dus succesvol de monitoring informatie over de LAMP stack in deze rrd files. 
 - Wanneer we browsen naar het IP van de collectd server: 192.168.56.78/collectd/, komen we terecht op de collectd-web waarbij we een overzicht krijgen van de status van de cpu, interface, load en memory van de servers (lampstack en collectd) aan de hand van statistieken die automatisch gegenereerd worden aan de hand van de rrd files.
+- Wanneer we een test uitvoeren op de Apache JMeter applicatie met een aantal gebruikers van bijvoorbeeld 500, zien we dat er pieken ontstaan als gevolg van het versturen van HTTP-requests.
