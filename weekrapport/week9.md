@@ -52,7 +52,9 @@
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week9_toggl_nicolai.PNG)
 
 ### Anthony Bracke
-
+* Deelopdracht 1 Linux afgewerkt
+* Powershell video's afgewerkt
+* Packet tracer oefening afgewerkt
 
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week9_toggl_anthony.PNG)
@@ -83,10 +85,12 @@
 
 
 ### Anthony Bracke
-
+* Deelopdracht 2 Linux
+* PowerShell boek afwerken
+* Testplan packet tracer oefening
 
 ## Waar hebben jullie nog problemen mee?
-
+Bind plugin collectd werkt niet.
 
 ## Feedback technisch luik
 
