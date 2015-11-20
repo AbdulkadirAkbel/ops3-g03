@@ -40,6 +40,11 @@
 
 ### Nicolai
 
+* testplan + testrapport labo 2.3.2.3
+* Uittypen van commando's in markdown van labo
+* Opzoeken NGINX multi-tier
+* Verder opstellen testplan en testrapport van loadtesting
+* Apache JMeter load testing
 
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week9_toggl_nicolai.PNG)
@@ -65,6 +70,11 @@
 
 
 ### Nicolai
+
+* cisco fysiek labo opstellen
+* cisco verslag van labo
+* multi-tier verder werken
+* verslag van load-testing
 
 
 ### Anthony Bracke
