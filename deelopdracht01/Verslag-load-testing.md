@@ -24,6 +24,12 @@ Ook hier zien we eerst terug een grotere piek die dezelfde reden heeft als bij d
 
 **Test 2: veel load (in verschillende grootte-ordes, bv 10, 1.000, 100.000, … requests per seconde en parallelle gebruikers).**
 
+**50 gebruikers**
+
+TODO
+
+**1000 gebruikers**
+
 Om veel load te simuleren zullen we gebruik maken van Apache JMeter.
 
 Vervolgens zullen we instellen om 1000 gebruikers te simuleren.
@@ -44,6 +50,10 @@ Hier zien we opnieuw de laatste piek die de simulatie van 1000 gebruikers voorst
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-interface.PNG)
 
 Kortom, onze webpagina heeft geen problemen gehad om zo'n groot aantal requests te verwerken.
+
+**1500 gebruikers**
+
+TODO
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
