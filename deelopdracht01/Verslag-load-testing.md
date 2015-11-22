@@ -16,6 +16,13 @@ config.vm.provider :virtualbox do |v|
   v.cpus = 2
 end
 
+
+    config.vm.provider :virtualbox do |v|
+    v.memory = 1024 
+    v.cpus = 2
+    end
+
+
 Hier hebben we nu dus een RAM van 1GB, maar we kunnen dit natuurlijk ook nog vergroten, afhankelijk van hoeveel RAM we hebben op onze host-machine.
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load.PNG)
