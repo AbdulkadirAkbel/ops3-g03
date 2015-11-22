@@ -57,10 +57,10 @@ TODO
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
-
+TODO
 
 
 
 **Test 4: “Slashdot”- of “Hacker News”-effect (een specifiek blogartikel wordt vermeld op een populaire nieuws-site en ineens komen er enorm veel requests binnen voor die ene pagina, naast de “normale” load voor de rest van de site.).**
 
-
+TODO
