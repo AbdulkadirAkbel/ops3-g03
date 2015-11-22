@@ -7,9 +7,9 @@ Gekozen framework voor load-testing: Apache JMeter.
 
 Voor het testen van onze Wordpress aan de hand van weinig load hebben we handmatig gebrowsed naar bepaalde posts, comments, categories gedurende enkele minuten lang. Als resultaat zien we dat er een heel kleine hoeveelheid van verkeer ontstaat die we terug kunnen zien op onze monitoring grafiek van onze collectd server. 
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load-memory)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load-memory.PNG)
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load.PNG)
 
 
 
