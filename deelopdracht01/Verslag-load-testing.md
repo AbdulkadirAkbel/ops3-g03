@@ -72,7 +72,6 @@ Bij onze interfaces zien we dat er een heel grote piek ontstaat bij het instelle
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1500-users-interface.PNG)
 
-TODO
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
