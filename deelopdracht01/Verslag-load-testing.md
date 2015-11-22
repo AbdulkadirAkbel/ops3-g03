@@ -24,10 +24,27 @@ Ook hier zien we eerst terug een grotere piek die dezelfde reden heeft als bij d
 
 **Test 2: veel load (in verschillende grootte-ordes, bv 10, 1.000, 100.000, … requests per seconde en parallelle gebruikers).**
 
+Om veel load te simuleren zullen we gebruik maken van Apache JMeter.
 
+Vervolgens zullen we instellen om 1000 gebruikers te simuleren.
 
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users.PNG)
 
+Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 1000.
 
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-alles-slaagt.PNG)
+
+Eens we dit test-plan hebben uitgevoerd voor 1000 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd gewees zijn. Dit zien we door de groene vinkjes. Onze webpagina bleef dus beschikbaar bij deze grote aanvraag. 
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-memory.PNG)
+
+Op het einde van deze grafiek zien we hier een piek die onze simulatie voorstelt van 1000 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-interface.PNG)
+
+Hier zien we opnieuw de laatste piek die de simulatie van 1000 gebruikers voorstelt. 
+
+Kortom, onze webpagina heeft geen problemen gehad om zo'n groot aantal requests te verwerken.
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
