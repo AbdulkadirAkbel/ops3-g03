@@ -1,4 +1,4 @@
-## Verslag: load testing van een eenvoudige LAMP-stack ##
+# Verslag: load testing van een eenvoudige LAMP-stack #
 
 Gekozen framework voor load-testing: Apache JMeter.
 
