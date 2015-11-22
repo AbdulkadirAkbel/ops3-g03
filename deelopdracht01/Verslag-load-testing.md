@@ -9,6 +9,15 @@ Voor het testen van onze Wordpress aan de hand van weinig load hebben we handmat
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load-memory.PNG)
 
+Hier zien we de eerste grote piek die het gevolg is van van een aantal gebruikers van 1000 gebruikers die tegelijkertijd requests sturen. De 2e (veel kleinere stijging) die we zien is het gevolg van het handmatig browsen door de wordpress pagina met een gebruiker. We zien dat dit nog steeds vrij hoog is vergeleken met de hoge piek. Een mogelijke oplossing hiervoor is de RAM te vergroten door het volgende in de vagrantfile te zetten:
+
+config.vm.provider :virtualbox do |v|
+  v.memory = 1024 
+  v.cpus = 2
+end
+
+Hier hebben we nu dus een RAM van 1GB, maar we kunnen dit natuurlijk ook nog vergroten, afhankelijk van hoeveel RAM we hebben op onze host-machine.
+
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load.PNG)
 
 
