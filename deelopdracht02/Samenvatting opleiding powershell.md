@@ -28,7 +28,7 @@
 - 'Get-help' niet hetzelfde als 'help' en 'man'.<br/>
 Get-help gaat meteen naar onderaan de help file en moet je naar boven scrollen om de inhoud te bekijken.<br/>
 Help en man tonen het begin van de help file, je kan naar onder gaan door op spatie te duwen.
-- Als je het help systeem gebruikt om naar cmdlets te zoekenmet bv. wildcards, krijg je per cmdlet de categorie, de module en een korte beschrijving.
+- Als je het help systeem gebruikt om naar cmdlets te zoeken met bv. wildcards, krijg je per cmdlet de categorie, de module en een korte beschrijving.
 - `get-verb` geeft je alle werkwoorden waarmee je een cmdlet kan vormen.
 - `get-help get-service` (geeft een deel van de helppagina)
 - `help get-service` geeft de volledige pagina
