@@ -133,7 +133,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - Kan script niet uitvoeren? --> `Set-ExecutionPolicy AllSigned` lost het probleem niet op --> moet gecertificeerd worden --> `Set-AuthenticodeSignature -Certificate CertName -FilePath PathOfCert`
 - `New-SelfSignedCertificate` --> om scripten te ondertekenen (zie vorige stap)
 - `get-psdrive` (geeft de schijfstations) <br/>er is een drive met de naam Cert (certificate)
-- `dir Cert:\CurrentUser -recurse -codesigningcert -outvariable a` (zoekt recursief naar de codesigningcertificaten
+- `dir Cert:\CurrentUser -recurse -codesigningcert -outvariable a` (zoekt recursief naar de codesigningcertificaten)
 - `$a` (zet de output van hierboven in de variabele a)
 - `$cert = $a[0]`
 - `get-executionpolicy` (output: remotesigned)
@@ -148,7 +148,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `.\test.ps1` (runnen lukt)
 - `notepad .\test.ps1` (`restart-computer` toevoegen aan de script -> proberen runnen: lukt niet: executable script code found in signature block)
 - `allsigned` = ieder script dat je downloadt of dat je aanmaakt lokaal moet signed zijn
-- `remotesigned` = alles dat je downloadt van het internet moet signed zijn (powershell weet of je het hebt gedownloadt hebt of zelf aangemaakt hebt adhv een tag)
+- `remotesigned` = alles dat je downloadt van het internet moet signed zijn (powershell weet of je het gedownloadt hebt of zelf aangemaakt hebt adhv een tag)
 - `remotesigned` is goed om te starten, `allsigned` is het beste
 - `remotesigned` is defaultwaarde
 - `get-help *variable`
