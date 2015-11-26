@@ -62,7 +62,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `get-service | ConvertTo-html -Property name,status | out-file c:\test.html`
 - `-whatif` (wat gaat er gebeuren als ik dit doe?)
 - `-confirm` (powershell vraagt bevestiging voor de uitvoering)
-- Commando's om specifieke programma's te beheren, worden met behulp van modules meegelverd met het desbetrefende programma. De modules bevatten cmdlets die het programma kunnen beheren of aanpassen. Een voorbeeld van zo een programma is Active Directory.
+- Commando's om specifieke programma's te beheren, worden met behulp van modules meegelverd met het desbetreffende programma. De modules bevatten cmdlets die het programma kunnen beheren of aanpassen. Een voorbeeld van zo een programma is Active Directory.
 - `get-module` (actieve modules)
 - `Import-Module ActiveDirectory` (importeert AD module)
 
