@@ -50,7 +50,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 
 ### Chapter 3: The pipeline: getting connected & extending the shell
 
-- Pipeline is heel krachtig dus wees voorzichtig welke commando's je uitvoerd.
+- Pipeline is heel krachtig dus wees voorzichtig welke commando's je uitvoert.
 - Pipeline vraagt geen confirmatie, de commando's worden meteen uitgevoerd
 - pipeline = `|`
 - pipeline stuurt de output voor de pipeline naar na de pipeline, zo kan je meerdere taken uitvoeren in 1 lijn
