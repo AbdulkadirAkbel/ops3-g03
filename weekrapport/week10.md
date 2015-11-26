@@ -26,7 +26,7 @@
 
 * cisco fysiek labo
 * cisco verslag
-* linux eerste opstelling afgewerkt
+* load testing aan de hand van Apache JMeter
 * powershell aantekeningen doorgenomen voor de ondervraging
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week10_toggl_abdulkadir.PNG)
