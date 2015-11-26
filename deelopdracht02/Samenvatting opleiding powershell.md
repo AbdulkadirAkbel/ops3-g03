@@ -3,7 +3,7 @@
 
 ### Chapter 1: Don't fear the shell
 
-- Powershell altijd als administrator uitvoeren anders kan je errors krijgen in verband met toegang die gewijgerd wordt.
+- Powershell altijd als administrator uitvoeren anders kan je errors krijgen in verband met toegang die geweigerd wordt.
 - Commando's van zowel unix als windows kunnen gebruikt worden in powershell.
 - Meeste cmdlets zijn in de vorm werkwoord-naamwoord
 - Powershell V2 --> Windows 7 en Server 2008
