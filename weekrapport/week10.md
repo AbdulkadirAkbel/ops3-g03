@@ -39,7 +39,10 @@
 
 ### Nicolai
 
-
+- Fysiek opzetten van cisco labo
+- load testing aan de hand van Apache JMeter
+- opmaken van verslag van de load testen
+- doornemen van powershell aantekeningen voor ondervraging
 
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week10_toggl_nicolai.PNG)
@@ -64,7 +67,9 @@
 
 ### Nicolai
 
-
+- afwerken testplan van load testing
+- multi-tier webserver
+- Indien webserver vlot verloopt, zoeken naar extra functionaliteiten voor windows deployment
 
 
 ### Anthony Bracke
