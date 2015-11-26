@@ -74,7 +74,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `get-process | where handles -gt 900 | sort handles` (zelfde als hierboven, maar gesorteerd volgens handles)
 - `get-member` toont welke type object door de pipeline gaat 
 - `get-service -name bits | get-member` (alias: `gm`)
-- `get-service | select -property name,status` (geeft enkel de naam ens tatus van de services)
+- `get-service | select -property name,status` (geeft enkel de naam en status van de services)
 - voorbeeld: `get-childitem | select -property name, length | sort -property length -descending`
 - alles waar er property in staat kan je gebruiken met `select`, `sort`...
 - `get-eventlog -logname system -newest 5 | select -property eventid, timewritten, message | sort -property timewritten | convertto-html | out-file c:error.html`
