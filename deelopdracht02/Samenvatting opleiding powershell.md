@@ -173,7 +173,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `write-output $var | gm` (er is nu wel een output, write-output passeert we de pipeline)
 - `write-warning "Please..don't do that"`
 - `write-error "Stop touching me!"`
--` ${this is a test} = 4`
+- `${this is a test} = 4`
 - `${this is a test}` (output: 4)
 - `${this is a test61671515135gd} = "WOOW"`
 - `${this is a test61671515135gd}` (output: WOOW)
