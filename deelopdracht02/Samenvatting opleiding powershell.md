@@ -218,7 +218,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `get-wmiobject win32_logicaldisk -filter "DeviceID='c:'"` <br/>info over drive c
 - `get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" | select freespace `<br/> geeft de vrije ruimte in bytes
 - als je bij het ingeven van een commando/parameter ctrl+spatie doet, krijg je een lijst met de mogelijke combinaties
-- `get-wmiobject win32\_logicaldisk -filter "DeviceID='c:'" | select @{n='freegb'; e={$\_.freespace / 1gb -as [int]}}`
+- `get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" | select @{n='freegb'; e={$\_.freespace / 1gb -as [int]}}`
 - `-get-wmiobject win32_logicaldisk -filter "DeviceID='c:'" `<br/> dit opslaan in ise als een script en dan runnen in powershell venster <br/>
 - `function get-diskinfo{`<br/>
 `[cmdletbinding()]`<br/>
