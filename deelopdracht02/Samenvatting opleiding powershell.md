@@ -81,10 +81,10 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `$x = [xml]\(cat .\bestand.xml)` <br/> xml-bestand ophalen en in variabele x steken <br/> zo kan je in een xml-bestand gegevens opvragen: `$x.PLAY.ACT[0].SCENE[0].SPEECH`
 - `get-history`
 - `$_` = huidig object in de pipeline
-- `get-service | where {$_.status -eq "Running}` huidig object in pipeline, status = property
-- `get-service | where {$_.status = "Running}`
+- `get-service | where {$_.status -eq "Running"}` huidig object in pipeline, status = property
+- `get-service | where {$_.status = "Running"}`
 - Eenvoudigere versie van where zonder {}: `Get-Service | where status -eq "Running"`
-- `get-service | where {$PSItem_.status = "Running} `<br/> alle 3 zijn hetzelfde
+- `get-service | where {$PSItem_.status = "Running"} `<br/> alle 3 zijn hetzelfde
 - `get-process` (alias: `gps`)
 - `gps | where {$_.handles -ge 1000}`
 
