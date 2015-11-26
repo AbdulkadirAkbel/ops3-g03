@@ -33,7 +33,10 @@
 
 ### Andy
 
-
+* Fysiek labo 6.2.3.8 cisco opzetten
+* Testplan en testrapport labo schrijven labo 7.2.2.5 en 7.4.3.5
+* Verder load testen met JMeter
+* Powershell voorbereiden voor ondervraging
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week10_toggl_andy.PNG)
 
@@ -63,7 +66,8 @@
 
 ### Andy
 
-
+* Boek afwerken powershell
+* Verder werken aan multi-tier opdracht 
 
 ### Nicolai
 
