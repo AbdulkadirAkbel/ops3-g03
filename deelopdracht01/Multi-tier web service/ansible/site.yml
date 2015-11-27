@@ -8,6 +8,7 @@
     - bertvv.httpd
     - bertvv.wordpress
     - sepolicy
+    - phpmyadmin
     - bertvv.collectd
     - collectd.webserver
 
@@ -19,6 +20,7 @@
     - bertvv.httpd
     - bertvv.wordpress
     - sepolicy
+    - phpmyadmin
     - bertvv.collectd
     - collectd.webserver
 
@@ -46,8 +48,6 @@
   roles:
     - bertvv.el7
     - bertvv.mariadb
-    - phpmyadmin
-    - sepolicy
     - collectd.database
 
 
