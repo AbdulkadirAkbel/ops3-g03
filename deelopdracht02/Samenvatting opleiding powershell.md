@@ -149,6 +149,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `notepad .\test.ps1` (`restart-computer` toevoegen aan de script -> proberen runnen: lukt niet: executable script code found in signature block)
 - `allsigned` = ieder script dat je downloadt of dat je aanmaakt lokaal moet signed zijn
 - `remotesigned` = alles dat je downloadt van het internet moet signed zijn (powershell weet of je het gedownloadt hebt of zelf aangemaakt hebt adhv een tag)
+- `Unrestricted` = Niets moet signed zijn om het te kunnen uitvoeren
 - `remotesigned` is goed om te starten, `allsigned` is het beste
 - `remotesigned` is defaultwaarde
 - `get-help *variable`
