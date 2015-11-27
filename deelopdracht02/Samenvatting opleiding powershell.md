@@ -130,7 +130,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 
 ### Chapter 7: Getting prepared for automation
 
-- Kan script niet uitvoeren? --> `Set-ExecutionPolicy AllSigned` lost het probleem niet op --> moet gecertificeerd worden --> `Set-AuthenticodeSignature -Certificate CertName -FilePath PathOfCert`
+- Kan script niet uitvoeren? --> `Set-ExecutionPolicy AllSigned` lost het probleem niet op --> moet gecertificeerd worden --> `Set-AuthenticodeSignature -Certificate CertName -FilePath PathOfScript`
 - `New-SelfSignedCertificate` --> om scripten te ondertekenen (zie vorige stap)
 - `get-psdrive` (geeft de schijfstations) <br/>er is een drive met de naam Cert (certificate)
 - `dir Cert:\CurrentUser -recurse -codesigningcert -outvariable a` (zoekt recursief naar de codesigningcertificaten)
@@ -142,7 +142,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - er is een testscript: test.ps1 <br/>opent de script met: `notepad .\test.ps1` (inhoud van de script: `Write-Output "Hello world"`)
 - `cat .\test.ps1`
 - als je het runt gaat het niet omdat het niet digitally signed is: `.\test.ps1`
-- `set-authenticodesignature -certificatert -filepath .\test.ps1` <br/> als je hierna `cat .\test.ps1` opent, lukt het wel
+- `set-authenticodesignature -certificate $cert -filepath .\test.ps1` <br/> als je hierna `cat .\test.ps1` opent, lukt het wel
 - `.\test.ps1` (je kan het runnen)
 - `set-executionpolicy remotesigned`
 - `.\test.ps1` (runnen lukt)
@@ -150,6 +150,7 @@ Help en man tonen het begin van de help file, je kan naar onder gaan door op spa
 - `allsigned` = ieder script dat je downloadt of dat je aanmaakt lokaal moet signed zijn
 - `remotesigned` = alles dat je downloadt van het internet moet signed zijn (powershell weet of je het gedownloadt hebt of zelf aangemaakt hebt adhv een tag)
 - `Unrestricted` = Niets moet signed zijn om het te kunnen uitvoeren
+- `Restricted` = Je kan geen enkel script uitvoeren
 - `remotesigned` is goed om te starten, `allsigned` is het beste
 - `remotesigned` is defaultwaarde
 - `get-help *variable`
