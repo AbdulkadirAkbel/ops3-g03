@@ -51,7 +51,11 @@
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week10_toggl_nicolai.PNG)
 
 ### Anthony Bracke
-
+- Info over Nginx opgezocht en werkende rollen
+- Lampstack volledig opgesplitst in 2 webservers, dns, databse
+- Dns toegevoegd aan lampstack
+- Powershell afgewerkt en opgefrist
+- Bind aan dns proberen kopelen
 
 
 ![toggl anthony](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week10_toggl_anthony.PNG)
@@ -77,10 +81,11 @@
 
 
 ### Anthony Bracke
-
+- Multi-tier afwerken
+- Boek PowerShell afwerken
 
 ## Waar hebben jullie nog problemen mee?
-
+- Bind plugin van collectd werkt niet
 
 ## Feedback technisch luik
 

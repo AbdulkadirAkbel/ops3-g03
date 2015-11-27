@@ -1,0 +1,42 @@
+---
+el7_repositories:
+  - epel-release
+
+el7_install_packages:
+  - bash-completion
+  - policycoreutils
+  - setroubleshoot-server
+  - tree
+  - vim-enhanced
+
+bind_listen_ipv4:
+  - 'any'
+
+bind_listen_ipv6:
+  - 'any'
+
+bind_allow_query:
+  - 'any'
+
+bind_zone_name: 'projectenIII.lan'
+
+bind_config_master_zones:
+  - name: 'projectenIII.lan'
+
+bind_zone_networks:
+  - '192.168.56'
+
+bind_zone_master_server_ip: '192.168.56.79'
+
+bind_zone_name_servers:
+  - 'dns'
+
+bind_zone_hosts:
+  - name: 'lampstack'
+    ip: '192.168.56.77'
+
+  - name: 'collectd'
+    ip: '192.168.56.78'
+
+  - name: 'dns'
+    ip: '192.168.56.79'

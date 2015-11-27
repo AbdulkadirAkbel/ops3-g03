@@ -1,0 +1,53 @@
+# site.yml
+---
+- hosts: webserver1
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - bertvv.httpd
+    - bertvv.wordpress
+    - sepolicy
+    - bertvv.collectd
+    - collectd.webserver
+
+- hosts: webserver2
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - bertvv.httpd
+    - bertvv.wordpress
+    - sepolicy
+    - bertvv.collectd
+    - collectd.webserver
+
+- hosts: dns
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - ansible-role-bind-master
+    - bertvv.collectd
+    - collectd.dns
+
+
+- hosts: collectd
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - bertvv.collectd
+    - collectd.collectd
+
+- hosts: database
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - bertvv.mariadb
+    - phpmyadmin
+    - sepolicy
+    - collectd.database
+
+

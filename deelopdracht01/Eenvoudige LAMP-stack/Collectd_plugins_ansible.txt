@@ -1,0 +1,24 @@
+{ role: bertvv.collectd,
+             collectd_plugins:
+             [{ plugin: "logfile"}],
+
+             collectd_plugins_multi:
+             { rrdtool: { Datadir: '"/var/lib/collectd/rrd"' },
+               network: { Listen: '192.168.56.77'}},
+
+             tags: ["collectd"] }
+
+
+{ role: bertvv.collectd,
+             collectd_plugins:
+             [{ plugin: "cpu" },
+              { plugin: "logfile"},
+              { plugin: "memory" },
+              { plugin: "load"},
+              { plugin: "disk"}],
+
+             collectd_plugins_multi:
+             { network: { Server: '192.168.56.78' },
+               bind: { url: "http://localhost:8053/"}},
+
+            tags: ["collectd"] }

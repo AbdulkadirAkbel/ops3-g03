@@ -1,0 +1,13 @@
+# host_vars/lampstack.yml
+---
+
+el7_repositories:
+  - epel-release
+
+el7_install_packages:
+  - bash-completion
+  - policycoreutils
+  - setroubleshoot-server
+  - tree
+  - vim-enhanced
+
