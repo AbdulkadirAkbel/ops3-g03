@@ -18,7 +18,7 @@ Hier zien we de eerste grote piek die het gevolg is van van een aantal gebruiker
 
 Hier hebben we nu dus een RAM van 1GB, maar we kunnen dit natuurlijk ook nog vergroten, afhankelijk van hoeveel RAM we hebben op onze host-machine.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/browsen-load.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/browsen-load.PNG)
 
 Ook hier zien we eerst terug een grotere piek die dezelfde reden heeft als bij de eerdere screenshot van het RAM geheugen. Ook daarna zien we opnieuw een heel kleine stijging in activiteit in onze interface die het gevolg is van het handmatig browsen door de Wordpress pagina.
 
@@ -31,19 +31,19 @@ Om veel load te simuleren zullen we gebruik maken van Apache JMeter.
 Als eerst zullen we instellen om 50 gebruikers te simuleren.
 Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 50.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/50-users.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-users.PNG)
 
 Eens we dit test-plan hebben uitgevoerd voor 50 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd geweest zijn. Dit zien we door de groene vinkjes. Onze webpagina bleef dus beschikbaar bij deze aanvraag van 50 gebruikers.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/50-users-alles-slaagt.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-users-alles-slaagt.PNG)
 
 Bij het RAM geheugen zien we een kleine verandering die in het zwart omcirkeld is. Dit is dus geen grote verandering.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/50-users-memory.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-users-memory.PNG)
 
 Ook in de grafiek zien we in het rood omcirkeld waar de 50 gebruikers werden gesimuleerd. Ook hier zien we dat dit weinig problemen veroorzaakt. De piek rechts ervan is een piek die 800 gebruikers voorstelde.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/50-users-interface.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-users-interface.PNG)
 
 Er waren dus geen problemen om de requests van 50 gebruikers te verwerken.
 
@@ -52,19 +52,19 @@ Er waren dus geen problemen om de requests van 50 gebruikers te verwerken.
 Vervolgens zullen we instellen om 1000 gebruikers te simuleren.
 Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 1000.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users.PNG)
 
 Eens we dit test-plan hebben uitgevoerd voor 1000 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd geweest zijn. Dit zien we door de groene vinkjes. Onze webpagina bleef dus beschikbaar bij deze grote aanvraag. 
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-alles-slaagt.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-alles-slaagt.PNG)
 
 Op het einde van deze grafiek zien we hier een piek die onze simulatie voorstelt van 1000 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-memory.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-memory.PNG)
 
 Hier zien we opnieuw de laatste piek die de simulatie van 1000 gebruikers voorstelt. 
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1000-users-interface.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-interface.PNG)
 
 Kortom, onze webpagina heeft ook hier geen problemen gehad om zo'n groot aantal requests te verwerken.
 
@@ -73,21 +73,21 @@ Kortom, onze webpagina heeft ook hier geen problemen gehad om zo'n groot aantal 
 Vervolgens zullen we instellen om 1500 gebruikers te simuleren.
 Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 1500.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1500-users.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1500-users.PNG)
 
 Eens we dit test-plan hebben uitgevoerd voor 1500 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd geweest zijn tot we rond 1100 requests kwamen. Dan zien we bij de status vele uitroeptekens staan die wijzen op errors. Op dit moment was onze Wordpress-pagina niet meer beschikbaar. Deze was dan gedurende een 5-tal minuten niet meer beschikbaar. Op het einde van het testplan kwamen er terug groene vinkjes, betekenende dat de Wordpress pagina terug beschikbaar was.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1500-users-down.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1500-users-down.PNG)
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1500-users-end-terug-up.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1500-users-end-terug-up.PNG)
 
 Bij het RAM geheugen zien we dat er een tijdje een bepaalde piek wordt aangehouden. De piek die even bleef duren was het gevolg van het simuleren van requests van 1500 gebruikers. Op deze piek was de Wordpress pagina niet meer te raadplegen en was hij dus down.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1500-users-memory.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1500-users-memory.PNG)
 
 Bij onze interfaces zien we dat er een heel grote piek ontstaat bij het instellen van 1500 gebruikers.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/load-testing-printscreens/1500-users-interface.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1500-users-interface.PNG)
 
 Uit deze grafieken kunnen we concluderen dat onze LAMP stack problemen ervaart vanaf een 1500-tal gebruikers.
 
