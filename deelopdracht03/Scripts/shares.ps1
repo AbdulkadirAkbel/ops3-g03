@@ -22,11 +22,11 @@ Grant-SmbShareAccess -Name "Technical" -AccountName AnNel4 `
 -AccessRight Full -Confirm:$false
 Grant-SmbShareAccess -Name "Technical" -AccountName NiSeg5 `
 -AccessRight Full -Confirm:$false
-Grant-SmbShareAccess -Name "Technical" -AccountName WiVan7 `
+Grant-SmbShareAccess -Name "Technical" -AccountName WiVan6 `
 -AccessRight Full -Confirm:$false
-Grant-SmbShareAccess -Name "Technical" -AccountName StWat8 `
+Grant-SmbShareAccess -Name "Technical" -AccountName StWat7 `
 -AccessRight Full -Confirm:$false
-Grant-SmbShareAccess -Name "Technical" -AccountName StVer9 `
+Grant-SmbShareAccess -Name "Technical" -AccountName StVer8 `
 -AccessRight Full -Confirm:$false
 Grant-SmbShareAccess -Name "Technical" -AccountName "AlDe 9" `
 -AccessRight Full -Confirm:$false
