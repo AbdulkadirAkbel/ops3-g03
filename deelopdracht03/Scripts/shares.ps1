@@ -11,13 +11,6 @@ Grant-SmbShareAccess -Name "HR" -AccountName StHer1 `
 -AccessRight Full -Confirm:$false
 Grant-SmbShareAccess -Name "HR" -AccountName SvAer10 `
 -AccessRight Full -Confirm:$false
-Grant-SmbShareAccess -Name "HR" -AccountName Obwan3 `
--AccessRight Full -Confirm:$false
-Grant-SmbShareAccess -Name "HR" -AccountName MaWin4 `
--AccessRight Full -Confirm:$false
-Grant-SmbShareAccess -Name "HR" -AccountName C-Her5 `
--AccessRight Full -Confirm:$false
-
 
 
 New-SmbShare -Name "Technical" -Path "C:\Technical"
