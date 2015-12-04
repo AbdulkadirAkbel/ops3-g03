@@ -4,6 +4,7 @@
 New-Item -Path "C:\HR" -ItemType Directory
 New-Item -Path "C:\Technical" -ItemType Directory
 New-Item -Path "C:\Sales" -ItemType Directory
+New-Item -Path "C:\Algemeen" -ItemType Directory
 
 
 New-SmbShare -Name "HR" -Path "C:\HR"
