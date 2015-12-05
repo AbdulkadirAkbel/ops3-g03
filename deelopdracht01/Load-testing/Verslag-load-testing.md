@@ -99,4 +99,30 @@ TODO
 
 **Test 4: “Slashdot”- of “Hacker News”-effect (een specifiek blogartikel wordt vermeld op een populaire nieuws-site en ineens komen er enorm veel requests binnen voor die ene pagina, naast de “normale” load voor de rest van de site.).**
 
-TODO
+Voor die onderdeel zullen we werken met 2 verschillende Apache JMeters waarbij we bij de ene Apache JMeter het Path instellen op "/" (wijzende op de volledige Wordpress) en anderzijds op "/wordpress/index.php/2015/11/03/demo-post-27-2/" wat specifiek voor één post is. 
+
+Voor de Wordpress pagina volledig te testen hebben we al reeds gezien hoe we dit moeten ingeven in de tester, voor die voor 1 post te doen zal dit als volgend gedaan worden:
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-post-27.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-post-27-1.PNG)
+
+
+**25 gebruikers op Demo Post 27, 25 gebruikers op de algemene wordpress pagina**
+
+Als eerst stellen voor beide Apache JMeter's de gebruikers in op 25.
+Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 25.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users.PNG)
+
+Eens we dit test-plan hebben uitgevoerd voor 1000 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd geweest zijn. Dit zien we door de groene vinkjes. Onze webpagina bleef dus beschikbaar bij deze grote aanvraag. 
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-alles-slaagt.PNG)
+
+Op het einde van deze grafiek zien we hier een piek die onze simulatie voorstelt van 1000 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-memory.PNG)
+
+Hier zien we opnieuw de laatste piek die de simulatie van 1000 gebruikers voorstelt. 
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-interface.PNG)
+
+Kortom, onze webpagina heeft ook hier geen problemen gehad om zo'n groot aantal requests te verwerken.
