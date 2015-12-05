@@ -126,3 +126,26 @@ Hier zien we opnieuw de laatste piek die de simulatie van 2 x 25 gebruikers voor
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-interface.PNG)
 
 Kortom, onze webpagina heeft ook hier geen problemen gehad dit aantal requests te verwerken.
+
+**200 gebruikers op Demo Post 27, 200 gebruikers op de algemene wordpress pagina**
+
+Als eerst stellen voor beide Apache JMeter's de gebruikers in op 200.
+Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 200.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users.PNG)
+
+Eens we dit test-plan hebben uitgevoerd voor 2 x 25 gebruikers te simuleren, zien we in de tabel dat de HTTP requests al vrij snel begonnen falen. Dit zien we door het voorkomen van de uitroeptekens. Onze webpagina was dus down bij de aanvraag van 2 x 200 gebruikers. Voor de Apache JMeters zagen we het volgende:
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-faalt.PNG)
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-faalt1.PNG)
+
+Op het einde van deze grafiek zien we hier een sterke stijging die onze simulatie voorstelt van 2 x 200 gebruikers. We zien dat hier geen sprake is van een piek, maar het geheugen blijft namelijk heel erg hoog aanhouden. Dit houdt in dat onze Wordpress pagina niet meer beschikbaar is bij de aanvraag van 2 x 200 gebruikers.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-memory.PNG)
+
+Hier zien we opnieuw de laatste piek die de simulatie van 2 x 200 gebruikers voorstelt. We zien dat dit een heel grote piek is vergeleken met de piek ervoor die de test van 2 x 25 gebruikers voorstelt. 
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-interface.PNG)
+
+Kortom, onze webpagina was niet in staat om dit aantal requests te verwerken met als gevolg dat onze Wordpress-pagina niet meer beschikbaar was.
