@@ -117,11 +117,11 @@ Eens we dit test-plan hebben uitgevoerd voor 2 x 25 gebruikers te simuleren, zie
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-alles-slaagt.PNG)
 
-Op het einde van deze grafiek zien we hier een kleine stijging die onze simulatie voorstelt van 2 x 25 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
+Op het einde van deze grafiek van het memory zien we hier een kleine stijging die onze simulatie voorstelt van 2 x 25 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-memory.PNG)
 
-Hier zien we opnieuw de laatste piek die de simulatie van 2 x 25 gebruikers voorstelt. 
+Hier zien we opnieuw bij de interface de laatste piek die de simulatie van 2 x 25 gebruikers voorstelt. 
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-interface.PNG)
 
@@ -140,11 +140,11 @@ Eens we dit test-plan hebben uitgevoerd voor 2 x 25 gebruikers te simuleren, zie
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-faalt1.PNG)
 
-Op het einde van deze grafiek zien we hier een sterke stijging die onze simulatie voorstelt van 2 x 200 gebruikers. We zien dat hier geen sprake is van een piek, maar het geheugen blijft namelijk heel erg hoog aanhouden. Dit houdt in dat onze Wordpress pagina niet meer beschikbaar is bij de aanvraag van 2 x 200 gebruikers.
+Op het einde van deze grafiek van het memory zien we hier een sterke stijging die onze simulatie voorstelt van 2 x 200 gebruikers. We zien dat hier geen sprake is van een piek, maar het geheugen blijft namelijk heel erg hoog aanhouden. Dit houdt in dat onze Wordpress pagina niet meer beschikbaar is bij de aanvraag van 2 x 200 gebruikers.
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-memory.PNG)
 
-Hier zien we opnieuw de laatste piek die de simulatie van 2 x 200 gebruikers voorstelt. We zien dat dit een heel grote piek is vergeleken met de piek ervoor die de test van 2 x 25 gebruikers voorstelt. 
+Hier zien we opnieuw bij de interface de laatste piek die de simulatie van 2 x 200 gebruikers voorstelt. We zien dat dit een heel grote piek is vergeleken met de piek ervoor die de test van 2 x 25 gebruikers voorstelt. 
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/200-users-interface.PNG)
 
