@@ -30,7 +30,9 @@
 
 ### Andy
 
-
+* Round robin informatie gezocht
+* Load testing
+* Voorbereiden test powershell
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week11_toggl_andy.PNG)
 
@@ -58,6 +60,9 @@
 * voorbereiding eindopracht
 
 ### Andy
+* Voorbereiding eindopdracht
+* Presentatie projecten
+* Alle gemaakte opdrachten tonen
 
 
 
