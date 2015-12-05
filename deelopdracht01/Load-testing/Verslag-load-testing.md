@@ -132,21 +132,21 @@ Kortom, onze webpagina heeft ook hier geen problemen gehad dit aantal requests t
 Als eerst stellen voor beide Apache JMeter's de gebruikers in op 100.
 Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is ingesteld op 100.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-users.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikers.PNG)
 
 Eens we dit test-plan hebben uitgevoerd voor 2 x 100 gebruikers te simuleren, zien we in de tabel dat de HTTP requests al vrij snel begonnen falen. Dit zien we door het voorkomen van de uitroeptekens. Onze webpagina was dus down bij de aanvraag van 2 x 100 gebruikers. Na een korte tijd (~1 minuut) begonnen de requests terug te slagen en zagen we terug groene vinkjes. Onze Wordpress pagina was dus heel even down, maar was al heel snel terug beschikbaar. Voor de Apache JMeters zagen we het volgende waarbij we merken dat de post-27 later up was dan de algemene Wordpress pagina zelf:
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-users-faalt.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikers-faalt-terug-up-post.PNG)
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-users-faalt1.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikerss-faalt-terug-up-wordpress.PNG)
 
 Op het einde van deze grafiek van het memory zien we hier een sterke stijging die onze simulatie voorstelt van 2 x 100 gebruikers. We zien dat hier geen sprake is van een piek, maar het geheugen blijft namelijk heel erg hoog aanhouden. Dit houdt in dat onze Wordpress pagina niet meer beschikbaar is voor een heel korte periode bij de aanvraag van 2 x 100 gebruikers.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-users-memory.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikers-memory.PNG)
 
 Hier zien we opnieuw bij de interface de laatste piek die de simulatie van 2 x 100 gebruikers voorstelt. 
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-users-interface.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikers-interface.PNG)
 
 Kortom, onze Wordpress-pagina had het gedurende een heel korte periode moeilijk om al deze requests tegelijk te kunnen verwerken waarbij hij dus heel even niet meer beschikbaar was. Maar na een heel korte tijd was deze pagina al weer terug beschikbaar.
 
