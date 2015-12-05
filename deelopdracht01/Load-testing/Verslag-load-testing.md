@@ -113,16 +113,16 @@ Bij "Numbers of Threads (users):" zien we dus dat het aantal gebruikers is inges
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users.PNG)
 
-Eens we dit test-plan hebben uitgevoerd voor 1000 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd geweest zijn. Dit zien we door de groene vinkjes. Onze webpagina bleef dus beschikbaar bij deze grote aanvraag. 
+Eens we dit test-plan hebben uitgevoerd voor 2 x 25 gebruikers te simuleren, zien we in de tabel dat al de HTTP requests succesvol uitgevoerd geweest zijn. Dit zien we door de groene vinkjes. Onze webpagina bleef dus beschikbaar bij deze grote aanvraag. Voor beide Apache JMeters zagen we het volgende:
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-alles-slaagt.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-alles-slaagt.PNG)
 
-Op het einde van deze grafiek zien we hier een piek die onze simulatie voorstelt van 1000 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
+Op het einde van deze grafiek zien we hier een kleine stijging die onze simulatie voorstelt van 2 x 25 gebruikers. Ook hier zien we dat het misschien geen slecht idee is om ons RAM te verhogen.
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-memory.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-memory.PNG)
 
-Hier zien we opnieuw de laatste piek die de simulatie van 1000 gebruikers voorstelt. 
+Hier zien we opnieuw de laatste piek die de simulatie van 2 x 25 gebruikers voorstelt. 
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/1000-users-interface.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/25-users-interface.PNG)
 
-Kortom, onze webpagina heeft ook hier geen problemen gehad om zo'n groot aantal requests te verwerken.
+Kortom, onze webpagina heeft ook hier geen problemen gehad dit aantal requests te verwerken.
