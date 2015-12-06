@@ -33,7 +33,7 @@ Add-DhcpServerInDC -DnsName 'trey-dns-03' -PassThru
 ###DHCP configureren
 Nu de role geïnstalleerd is en alles klaar gezet is kunnen we beginnen met het configureren van de DHCP server. 
 
-***Ipv4 scope maken***<br>
+***IpV4 scope maken***<br>
 Om een Ipv4 scope aan te maken gebruiken we het `Add-DhcpServerv4Scope` cmdlet.
 Als voorbeeld maken we een scope aan van 200 ip adressen.
 
