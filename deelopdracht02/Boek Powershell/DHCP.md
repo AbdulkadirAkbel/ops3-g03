@@ -76,7 +76,7 @@ ScopeId              StartRange           EndRange
 192.168.10.0         192.168.10.1         192.168.10.20
 ```
 
-***DHCP reservations***<br>
+***IpV4 reservations***<br>
 We kunnen nu in de exclusion range een reservatie maken voor een server. Reservaties zijn voor bepaalde servers bedoeld, hierdoor zullen ze altijd hetzelfde IP-adres hebben. We gebruiken hiervoor het `Add-DhcpServerv4Reservation` cmdlet.
 
 	    Add-dhcpserverv4reservation –scopeid 192.168.10.0
