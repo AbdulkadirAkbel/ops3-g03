@@ -1,76 +1,5 @@
-#AD DS Nicolai
-**Configureren van statisch netwerking**
+#AD DS
 
-
-1: Interfaces vinden
-
-	Get-NetIPInterface
-
-2: IP info instellen
-
-	New-NetIPAddress -AddressFamily IPv4 -IPAddress 10.10.10.10 -PrefixLength 24 -InterfaceAlias Ethernet
-
-3: DNS instellen
-
-	Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses "10.10.10.10","10.10.10.11"
-
-4: Default route instellen: nieuw netwerk route --> default gateway instellen 10.10.10.1 is router address
-
-	New-NetRoute -DestinationPrefix "0.0.0.0/0" -NextHop "10.10.10.1" -InterfaceAlias Ethernet
-
-   Resultaat: IPv4 instellingen:<br>
-   Use the following IP address:<br>
-   - IP Address: 10.10.10.11<br>
-   - Subnet mask: 255.255.255.0<br>
-   - Default gateway: 10.10.10.1<br>
-   Use the following DNS server addresses:<br>
-   - Preferred DNS: 10.10.10.10<br>
-   - Alternate DNS: 10.10.10.11<br>
-
-**Installeren van domain controllers** eens ip configuratie in orde is
-
-1. Open powershell als admin
-
-2. Identify Windows Features om te installen
-
-    	Get-WindowsFeature | Where-Object Name -like *domain*
-    	Get-WindowsFeature | Where-Object Name -like *dns*
-
-3. installeer de nodige features
-
-    	Install-WindowsFeature AD-Domain-Services, DNS –
-    	IncludeManagementTools
-
-4. configureer het domein
-
-    	$SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText -Force
-    	Install-ADDSForest -DomainName corp.contoso.com –
-    	SafeModeAdministratorPassword $SMPass –Confirm:$false
-
-5. Indien we nog een pc hebben die we lid willen maken van het domein: CORPDC2 wordt lid van domain
-
-    	$secString = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText
-    	-Force
-    	$myCred = New-Object -TypeName PSCredential -ArgumentList "corp\
-    	administrator", $secString
-    	Add-Computer -DomainName "corp.contoso.com" -Credential $myCred –
-    	NewName "CORPDC2" –Restart
-
-6. Willen we deze CORPDC2 instellen als domain controller:
-
-    	Install-WindowsFeature –Name AD-Domain-Services, DNS
-    	-IncludeManagementTools –ComputerName CORPDC2
-    	Invoke-Command –ComputerName CORPDC2 –ScriptBlock {
-    	$secPass = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText –Force
-    	$myCred = New-Object -TypeName PSCredential -ArgumentList "corp\
-    	administrator", $secPass
-    	$SMPass = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText –Force
-    	Install-ADDSDomainController -DomainName corp.contoso.com –
-    	SafeModeAdministratorPassword $SMPass -Credential $myCred –
-    	Confirm:$false
-    	}
-
-#AD DS Andy
 
 ###Configureer het ip address van de server
 
@@ -109,17 +38,30 @@ New-NetIPAddress -AddressFamily IPv6 -InterfaceAlias "10 Network" -IPAddress 200
 Set-DnsClientServerAddress -InterfaceAlias "10 Network" -ServerAddresses 192.168.10.2,2001:db8:0:10::2
 ```
 
-**Bekijk de veranderingen aan network adapter 10.**
-
-```
-Get-NetIPAddress -InterfaceAlias "10 Network
-```
-
 **Pas de servernaam aan.**
 
 ```
 Rename-Computer -NewName servernaam -Restart -Force -PassThru
 ```
+
+**Default route instellen: nieuw netwerk route --> default gateway instellen 10.10.10.1 is router address**
+
+	New-NetRoute -DestinationPrefix "0.0.0.0/0" -NextHop "10.10.10.1" -InterfaceAlias 10 Network
+
+**Bekijk de veranderingen aan network adapter 10.**
+
+```
+Get-NetIPAddress -InterfaceAlias "10 Network"
+```
+
+   Resultaat: IPv4 instellingen:<br>
+   Use the following IP address:<br>
+   - IP Address: 192.168.10.2<br>
+   - Subnet mask: 255.255.255.0<br>
+   - Default gateway: 192.168.10.1<br>
+   Use the following DNS server addresses:<br>
+   - Preferred DNS: 192.168.10.2<br>
+   - Alternate DNS: 2001:db8:0:10::2<br>
 
 ###Installeer Active Directory Domain Services
 
@@ -166,6 +108,7 @@ Bekijk de uitvoer en zo nodig de waarschuwingen die het script geeft.
 Nu staat alles klaar om het forrest aan te maken. Het commando om het forrest aan te maken is heel gelijkend op het testscript dat we net uitgevoerd hebben. Het commando is als volgt.
 
 ```
+$pwdSS = ConvertTo-SecureString 'P@$$w0rd11' –AsPlainText -Force
 Install-ADDSForest `
      -DomainName 'domeinnaam.net' `
      -DomainNetBiosName 'DOMEINNAAM' `
@@ -173,7 +116,8 @@ Install-ADDSForest `
      -ForestMode 6 `
      -NoDnsOnNetwork `
      -SkipPreChecks `
-     -Force
+     -Force 
+     –SafeModeAdministratorPassword $pwdSS –Confirm:$false
 ```
 
 Het `-Force` commando zorgt er voor dat tijdens het aanmaken van het forrest geen confirmatie prompts tevoorschijn komen. Desalniettemin zal je toch een prompt krijgen om het Directory Services Restore Mode (DSRM) password in te geven. Bij het aanmaken van veel verschillende forests is dit niet zo interessant en kunnen we deze prompt ook vermijden door de DSMR al mee te geven. Dit doen we met volgend stukje code.
@@ -265,10 +209,19 @@ $VersionCodes
 Als je het script wilt uitvoeren in Powershell geef je het volgende commando in.
 
 ```
-Get-myADVersion
+./Get-myADVersion.ps1
 ```
-##Meedere domain controllers
-uitwerken
+
+**Indien we nog een pc hebben die we lid willen maken van het domein: CORPDC2 wordt lid van domain**
+
+
+    	$secString = ConvertTo-SecureString 'P@$$w0rd11' -AsPlainText
+    	-Force
+    	$myCred = New-Object -TypeName PSCredential -ArgumentList "corp\
+    	administrator", $secString
+    	Add-Computer -DomainName "domeinnaam.net" -Credential $myCred –
+    	NewName "CORPDC2" –Restart
+    	
 ##Clone AD DS 
 
 ###Bestaande AD DS toevoegen aan Cloneable Domain Controllers security group.
@@ -493,4 +446,3 @@ Naam van de server moet aangepast worden naar de naam van de RODC.
 ```
 Rename-Computer -NewName trey-rodc-200 -Restart -Force
 ```
-###Maak de RODC target server aan

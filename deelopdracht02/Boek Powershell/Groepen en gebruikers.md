@@ -1,104 +1,4 @@
-#Groepen en gebruikers Nicolai
-
-**Users in AD aanmaken**
-
-    New-ADUser -Name JSmith -....
-
-Je kan ook gebruiken maken van een functie om eenvoudig users aan te maken waarbij users uit csv file worden gemaakt
-
-    Function Create-Users{
-    param($fileName, $emailDomain, $userPass, $numAccounts=10)
-    if($fileName -eq $null ){
-    [array]$users = $null
-    for($i=0; $i -lt $numAccounts; $i++){
-    $users += [PSCustomObject]@{
-    FirstName = 'Random'
-    LastName = 'User' + $i
-    }
-    }
-    } else {
-    $users = Import-Csv -Path $fileName
-    }
-
-Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv csv file:
-
-	Import-Module ActiveDirectory
-    
-    $ADUsers = Import-Csv werknemers.csv
-    
-    if ([ADSI]::Exists("LDAP://OU=Technical,DC=Projecten2,DC=be") -eq $false) {
-    	New-ADOrganizationalUnit -Name Technical -ProtectedFromAccidentalDeletion $false
-    }
-    
-    if ([ADSI]::Exists("LDAP://OU=HR,DC=Projecten2,DC=be") -eq $false) {
-    	New-ADOrganizationalUnit -Name HR -ProtectedFromAccidentalDeletion $false
-    }
-    
-    if ([ADSI]::Exists("LDAP://OU=Sales,DC=Projecten2,DC=be") -eq $false) {
-    	New-ADOrganizationalUnit -Name Sales -ProtectedFromAccidentalDeletion $false
-    }
-    
-    
-    foreach ($User in $ADUsers)
-    {
-    	$Name = $User.GivenName + " " + $User.Surname
-    	$OU = $User.ParentOU
-    	$Username = $User.GivenName.Substring(0,2) + $User.Surname.Substring(0,3) + $User.Number
-    	$City = $User.City
-    	$Title = $User.Title
-    	$GivenName = $User.GivenName
-    	$Surname = $User.Surname
-    	$StreetAddress = $User.StreetAddress
-    	$Postcode = $User.Postcode
-    	$Country = $User.Country
-    	$Telefoon = $User.Telefoon
-    	$Gender = $User.Gender
-    	$Birthday = $User.Birthday
-    	$CountryFull = $User.CountryFull
-    	
-    if (Get-ADUser -F {SamAccountName -eq $Username})
-    {
-    	Write-Warning "A user with $Username already exists in your Active Directory."
-    
-    }
-    else
-    {
-    	New-ADUser -SamAccountName $Username -Name $Name -Path $OU -City $City -Title $Title -GivenName $GivenName -Surname $Surname -StreetAddress $StreetAddress -PostalCode $Postcode -Country $Country -MobilePhone $Telefoon -AccountPassword (ConvertTo-SecureString "Projecten2" -AsPlainText -Force) -Description "Gender: $Gender, birthday: $Birthday, country: $CountryFull" -ScriptPath logon.vbs -PassThru | Enable-ADAccount
-    }
-    
-    	Get-ADUser -Filter * -SearchBase "OU=HR,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
-    	Get-ADUser -Filter * -SearchBase "OU=Sales,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
-    	Get-ADUser -Filter * -SearchBase "OU=Technical,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
-    }
-
-**Zoeken naar en rapporteren op AD users**
-
-Voer eerst de volgende code uit:
-
-    Get-ADUser -Filter * -Properties SamAccountName, DisplayName, `
-    ProfilePath, ScriptPath | `
-    Select-Object SamAccountName, DisplayName, ProfilePath, ScriptPath
-
-Om de gedisabled gebruikers te vinden:
-
-    Get-ADUser –Filter 'Enabled -eq $false'
-
-Om gebruikers te vinden die de laatste 30 dagen niet meer hebben ingelogged:
-
-    $logonDate = (Get-Date).AddDays(-30)
-    Get-ADUser -Filter 'LastLogonDate -lt $logonDate' | Select-Object
-    DistinguishedName
-
-Om accounts te vinden die al meerdere malen verkeerde inlog gegevens hebben ingegeven:
-
-    $primaryDC = Get-ADDomainController -Discover -Service PrimaryDC
-    Get-ADUser -Filter 'badpwdcount -ge 5' -Server $primaryDC.Name `
-    -Properties BadPwdCount | Select-Object DistinguishedName,
-    BadPwdCount
-
-
-#Groepen en gebruikers Andy
-###Gebruikers
+#Groepen en gebruikers 
 
 ***Eerste gebruiker aanmaken***<br>
 Een gebruiker aanmaken door alle gegevens te specifieren.
@@ -203,12 +103,105 @@ Alfredo Fettucine,Alfredo,Fettuccine,Alfie NoNose,Alfie,Shop Foreman
 Stanley Behr,Stanley,Behr,Stanley T. Behr, Stanley,WebMaster
 ``` 
 
-***Aangemaakte gebruikers bekijken***<br>
+of 
+
+Eigen script om gebruikers te importeren (in juiste OU en aanmaken van OU) adhv csv file:
+
+	Import-Module ActiveDirectory
+    
+    $ADUsers = Import-Csv werknemers.csv
+    
+    if ([ADSI]::Exists("LDAP://OU=Technical,DC=Projecten2,DC=be") -eq $false) {
+    	New-ADOrganizationalUnit -Name Technical -ProtectedFromAccidentalDeletion $false
+    }
+    
+    if ([ADSI]::Exists("LDAP://OU=HR,DC=Projecten2,DC=be") -eq $false) {
+    	New-ADOrganizationalUnit -Name HR -ProtectedFromAccidentalDeletion $false
+    }
+    
+    if ([ADSI]::Exists("LDAP://OU=Sales,DC=Projecten2,DC=be") -eq $false) {
+    	New-ADOrganizationalUnit -Name Sales -ProtectedFromAccidentalDeletion $false
+    }
+    
+    
+    foreach ($User in $ADUsers)
+    {
+    	$Name = $User.GivenName + " " + $User.Surname
+    	$OU = $User.ParentOU
+    	$Username = $User.GivenName.Substring(0,2) + $User.Surname.Substring(0,3) + $User.Number
+    	$City = $User.City
+    	$Title = $User.Title
+    	$GivenName = $User.GivenName
+    	$Surname = $User.Surname
+    	$StreetAddress = $User.StreetAddress
+    	$Postcode = $User.Postcode
+    	$Country = $User.Country
+    	$Telefoon = $User.Telefoon
+    	$Gender = $User.Gender
+    	$Birthday = $User.Birthday
+    	$CountryFull = $User.CountryFull
+    	
+    if (Get-ADUser -F {SamAccountName -eq $Username})
+    {
+    	Write-Warning "A user with $Username already exists in your Active Directory."
+    
+    }
+    else
+    {
+    	New-ADUser -SamAccountName $Username -Name $Name -Path $OU -City $City -Title $Title -GivenName $GivenName -Surname $Surname -StreetAddress $StreetAddress -PostalCode $Postcode -Country $Country -MobilePhone $Telefoon -AccountPassword (ConvertTo-SecureString "Projecten2" -AsPlainText -Force) -Description "Gender: $Gender, birthday: $Birthday, country: $CountryFull" -ScriptPath logon.vbs -PassThru | Enable-ADAccount
+    }
+    
+    	Get-ADUser -Filter * -SearchBase "OU=HR,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    	Get-ADUser -Filter * -SearchBase "OU=Sales,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    	Get-ADUser -Filter * -SearchBase "OU=Technical,DC=Projecten2,DC=be" | Set-ADUser -CannotChangePassword:$false -PasswordNeverExpires:$false -ChangePasswordAtLogon:$True
+    }
+    
+Je kan ook gebruiken maken van een functie om eenvoudig users aan te maken waarbij users uit csv file worden gemaakt
+
+    Function Create-Users{
+    param($fileName, $emailDomain, $userPass, $numAccounts=10)
+    if($fileName -eq $null ){
+    [array]$users = $null
+    for($i=0; $i -lt $numAccounts; $i++){
+    $users += [PSCustomObject]@{
+    FirstName = 'Random'
+    LastName = 'User' + $i
+    }
+    }
+    } else {
+    $users = Import-Csv -Path $fileName
+    }
+
+
+####Aangemaakte gebruikers bekijken<br>
 Met volgend commando krijg je een lijst van de aangemaakte gebruikers.
 
 ``` 
 (Get-ADUser -Filter {Enabled -eq "True"} -Properties DisplayName).DisplayName
 ``` 
+of 
+
+    Get-ADUser -Filter * -Properties SamAccountName, DisplayName, `
+    ProfilePath, ScriptPath | `
+    Select-Object SamAccountName, DisplayName, ProfilePath, ScriptPath
+     
+    
+Om de gedisabled gebruikers te vinden:
+
+    Get-ADUser –Filter 'Enabled -eq $false'
+
+Om gebruikers te vinden die de laatste 30 dagen niet meer hebben ingelogged:
+
+    $logonDate = (Get-Date).AddDays(-30)
+    Get-ADUser -Filter 'LastLogonDate -lt $logonDate' | Select-Object
+    DistinguishedName
+
+Om accounts te vinden die al meerdere malen verkeerde inlog gegevens hebben ingegeven:
+
+    $primaryDC = Get-ADDomainController -Discover -Service PrimaryDC
+    Get-ADUser -Filter 'badpwdcount -ge 5' -Server $primaryDC.Name `
+    -Properties BadPwdCount | Select-Object DistinguishedName,
+    BadPwdCount    
 
 ###Groepen
 ***Nieuwe groep aanmaken***<br>

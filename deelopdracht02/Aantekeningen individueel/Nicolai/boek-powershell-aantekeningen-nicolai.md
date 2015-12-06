@@ -267,6 +267,42 @@ Oproepen door:
     	SafeModeAdministratorPassword $SMPass -Credential $myCred –
     	Confirm:$false
     	}
+    	
+ **DHCP**
+
+1. Installeer DHCP en de management tools:
+
+		Get-WindowsFeature | Where-Object Name -like *dhcp*
+		Install-WindowsFeature DHCP -IncludeManagementTools
+
+2. Maak een DHCP scope aan:
+
+		Add-DhcpServerv4Scope -Name "Corpnet" -StartRange 10.10.10.100
+		-EndRange 10.10.10.200 -SubnetMask 255.255.255.0
+
+
+3. Set DHCP options
+
+		Set-DhcpServerv4OptionValue -DnsDomain corp.contoso.com -DnsServer
+		10.10.10.10 -Router 10.10.10.1
+
+
+4. Activeer DHCP
+
+		Add-DhcpServerInDC -DnsName corpdc1.corp.contoso.com
+
+5. Voeg DHCP reservations toe (reservaties zijn voor bepaalde servers bedoeld, hierdoor zullen ze altijd dezelfde IP-adres hebben):
+
+	    Add-dhcpserverv4reservation –scopeid 10.10.10.0 –ipaddress
+	    10.10.10.102 –name test2 –description "Test server" –clientid 12-
+	    34-56-78-90-12
+	    Get-dhcpserverv4reservation –scopeid 10.10.10.0
+
+6. Voeg DHCP exclusions toe (exclusions zijn een reeks IP-adressen die niet toegekend worden aan werkstations):
+
+	    Add-DhcpServerv4ExclusionRange –ScopeId 10.10.10.0 –StartRange
+		10.10.10.110 –EndRange 10.10.10.111
+		Get-DhcpServerv4ExclusionRange
 
 **Werken met Private Key Infrastructure en CA's** waarbij we certificaten gaan vertrouwen die certificaten gaat uitdelen aan users en computers die hen toegang zullen geven
 

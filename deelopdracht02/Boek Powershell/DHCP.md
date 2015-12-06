@@ -1,64 +1,4 @@
-#DHCP Nicolai
-
-**Configureren van DHCP scopes**
-
-1. Installeer DHCP en de management tools:
-
-		Get-WindowsFeature | Where-Object Name -like *dhcp*
-		Install-WindowsFeature DHCP -IncludeManagementTools
-
-2. Maak een DHCP scope aan:
-
-		Add-DhcpServerv4Scope -Name "Corpnet" -StartRange 10.10.10.100
-		-EndRange 10.10.10.200 -SubnetMask 255.255.255.0
-
-
-3. Set DHCP options
-
-		Set-DhcpServerv4OptionValue -DnsDomain corp.contoso.com -DnsServer
-		10.10.10.10 -Router 10.10.10.1
-
-
-4. Activeer DHCP
-
-		Add-DhcpServerInDC -DnsName corpdc1.corp.contoso.com
-
-5. Voeg DHCP reservations toe (reservaties zijn voor bepaalde servers bedoeld, hierdoor zullen ze altijd dezelfde IP-adres hebben):
-
-	    Add-dhcpserverv4reservation –scopeid 10.10.10.0 –ipaddress
-	    10.10.10.102 –name test2 –description "Test server" –clientid 12-
-	    34-56-78-90-12
-	    Get-dhcpserverv4reservation –scopeid 10.10.10.0
-
-6. Voeg DHCP exclusions toe (exclusions zijn een reeks IP-adressen die niet toegekend worden aan werkstations):
-
-	    Add-DhcpServerv4ExclusionRange –ScopeId 10.10.10.0 –StartRange
-		10.10.10.110 –EndRange 10.10.10.111
-		Get-DhcpServerv4ExclusionRange
-
-**Werken met Private Key Infrastructure en CA's** waarbij we certificaten gaan vertrouwen die certificaten gaat uitdelen aan users en computers die hen toegang zullen geven
-
-1. Installeer certificaat server:
-
-	    Get-WindowsFeature | Where-Object Name -Like *cert*
-	    Install-WindowsFeature AD-Certificate -IncludeManagementTools
-	    -IncludeAllSubFeature
-
-2. Configure de server als enterprise CA:
-
-	    Install-AdcsCertificationAuthority -CACommonName corp.contoso.com
-	    -CAType EnterpriseRootCA -Confirm:$false
-
-3. Install root certificate to trusted root certification authorities store:
-
-   		Certutil –pulse
-
-4. Request machine certificate from CA:
-
-	    Set-CertificateAutoEnrollmentPolicy -PolicyState Enabled -Context
-	    Machine -EnableTemplateCheck
-
-##DHCP Andy
+#DHCP 
 
 ###DHCP intialiseren
 
@@ -119,7 +59,7 @@ LeaseDuration
 8.00:00:00
 ``` 
 ***Ipv4 exclusion range***<br>
-Vervolgens maken we nu een exclusion range aan die we kunnen gebruiken voor servers op het netwerk die een statisch ip adres hebben. We maken in de voorbeeld een exclusion range aan voor 20 statische ip adressen. We gebruiken hiervoor het `Add-DhcpServerv4ExclusionRange` cmdlet.
+Vervolgens maken we nu een exclusion range aan die we kunnen gebruiken voor servers op het netwerk die een statisch ip adres hebben. We maken in de voorbeeld een exclusion range aan voor 20 statische ip adressen die niet aan werkstations kunnen geleased worden. We gebruiken hiervoor het `Add-DhcpServerv4ExclusionRange` cmdlet.
 
 ``` 
 Add-DhcpServerv4ExclusionRange -ScopeID "192.168.10.0" `
@@ -135,6 +75,17 @@ ScopeId              StartRange           EndRange
 -------              ----------           --------
 192.168.10.0         192.168.10.1         192.168.10.20
 ```
+
+***DHCP reservations***<br>
+We kunnen nu in de exclusion range een reservatie maken voor een server. Reservaties zijn voor bepaalde servers bedoeld, hierdoor zullen ze altijd hetzelfde IP-adres hebben. We gebruiken hiervoor het `Add-DhcpServerv4Reservation` cmdlet.
+
+	    Add-dhcpserverv4reservation –scopeid 192.168.10.0
+	    							 –ipaddress 192.168.10.1 
+	    							 –name test2 –description "Test server" 
+	    							 –clientid 12
+	    							 -34-56-78-90-12
+	    Get-dhcpserverv4reservation –scopeid 192.168.10.0
+
 
 ***IpV4 scope opties***<br>
 Als laatste moeten nog enkele opties op de scope aangepast worden. Dit doen we met het `Set-DhcpServerv4OptionValue` cmdlet.

@@ -10,8 +10,6 @@ Set-myIP -IP4 192.168.10.202 -PrefixLength 24 -DeafaultGateway 192.168.10.1 -Dns
 .Notes
     Author: Andy Nelis
    Initial: 13/11/2015 
-   ModHist:
-          :
 #>
 
 Param ($IP4, $PrefixLength, $DefaultGateway, $Dns)

@@ -354,3 +354,25 @@ Toon de tijdzone.
 Toon registratie informatie.
 
     Get-WmiObject -ComputerName $TargetSystem -Class Win32_Registry
+    
+**Werken met Private Key Infrastructure en CA's** waarbij we certificaten gaan vertrouwen die certificaten gaat uitdelen aan users en computers die hen toegang zullen geven
+
+1. Installeer certificaat server:
+
+	    Get-WindowsFeature | Where-Object Name -Like *cert*
+	    Install-WindowsFeature AD-Certificate -IncludeManagementTools
+	    -IncludeAllSubFeature
+
+2. Configure de server als enterprise CA:
+
+	    Install-AdcsCertificationAuthority -CACommonName corp.contoso.com
+	    -CAType EnterpriseRootCA -Confirm:$false
+
+3. Install root certificate to trusted root certification authorities store:
+
+   		Certutil –pulse
+
+4. Request machine certificate from CA:
+
+	    Set-CertificateAutoEnrollmentPolicy -PolicyState Enabled -Context
+	    Machine -EnableTemplateCheck
