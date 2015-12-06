@@ -209,7 +209,7 @@ $VersionCodes
 Als je het script wilt uitvoeren in Powershell geef je het volgende commando in.
 
 ```
-./Get-myADVersion.ps1
+.\Get-myADVersion.ps1
 ```
 
 **Indien we nog een pc hebben die we lid willen maken van het domein: CORPDC2 wordt lid van domain**
