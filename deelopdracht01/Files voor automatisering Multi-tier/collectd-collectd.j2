@@ -1,0 +1,85 @@
+##############################################################################
+# Global                                                                     #
+#----------------------------------------------------------------------------#
+# Global settings for the daemon.                                            #
+##############################################################################
+
+#Hostname    "Collectd_Collectd"
+#FQDNLookup   true
+#BaseDir     "/var/lib/collectd"
+#PIDFile     "/var/run/collectd.pid"
+#PluginDir   "/usr/lib64/collectd"
+#TypesDB     "/usr/share/collectd/types.db"
+#Interval     10
+#Timeout      2
+#ReadThreads  5
+Include      "/etc/collectd.d"
+
+##############################################################################
+# Logging                                                                    #
+#----------------------------------------------------------------------------#
+# Plugins which provide logging functions should be loaded first, so log     #
+# messages generated when loading or configuring other plugins can be        #
+# accessed.                                                                  #
+##############################################################################
+
+LoadPlugin syslog
+LoadPlugin logfile
+
+<Plugin logfile>
+	LogLevel info
+	File STDOUT
+	Timestamp true
+	PrintSeverity false
+</Plugin>
+
+#<Plugin syslog>
+#	LogLevel info
+#</Plugin>
+
+##############################################################################
+# LoadPlugin section                                                         #
+#----------------------------------------------------------------------------#
+# Lines beginning with a single `#' belong to plugins which have been built  #
+# but are disabled by default.                                               #
+#                                                                            #
+# Lines begnning with `##' belong to plugins which have not been built due   #
+# to missing dependencies or because they have been deactivated explicitly.  #
+##############################################################################
+
+
+LoadPlugin network
+
+#  Globals true
+#</LoadPlugin>
+LoadPlugin rrdtool
+
+##############################################################################
+# Plugin configuration                                                       #
+#----------------------------------------------------------------------------#
+# In this section configuration stubs for each plugin are provided. A desc-  #
+# ription of those options is available in the collectd.conf(5) manual page. #
+##############################################################################
+
+# Server
+<Plugin "network">
+ Listen "192.168.56.76"
+</Plugin>
+
+<Plugin "network">
+ Listen "192.168.56.77"
+</Plugin>
+
+<Plugin "network">
+ Listen "192.168.56.79"
+</Plugin>
+
+<Plugin "network">
+ Listen "192.168.56.80"
+</Plugin>
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+# site.yml
+---
+- hosts: lampstack
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - bertvv.httpd
+    - bertvv.mariadb
+    - bertvv.wordpress
+    - sepolicy
+    - phpmyadmin
+    - bertvv.collectd
+    - collectd.lampstack
+
+- hosts: dns
+  sudo: true
+
+  roles:
+    - bertvv.el7
+    - ansible-role-bind-master
+    - bertvv.collectd
+    - collectd.dns
+
+
+- hosts: collectd
+  sudo: true
+
+  roles:
+   - bertvv.el7
+   - bertvv.collectd
+   - collectd.collectd
+
+

@@ -1,0 +1,6 @@
+- name: put configuration for client webserver in place
+  template: src=files/collectd-webserver.j2
+            dest=/etc/collectd.conf
+            owner=root
+            group=root
+            mode=0644

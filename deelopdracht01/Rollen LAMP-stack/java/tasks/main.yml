@@ -1,0 +1,2 @@
+- name: Install Java
+  command: sudo yum install java -y
