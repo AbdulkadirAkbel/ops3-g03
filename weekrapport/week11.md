@@ -38,7 +38,8 @@
 
 ### Nicolai
 
-
+* Load testing Apache JMeter
+* Voorbereiden test powershell
 
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week11_toggl_nicolai.PNG)
@@ -68,6 +69,8 @@
 
 ### Nicolai
 
+* verder werken load-testing (nginx)
+* demo opdracht linux, en windows deployment
 
 ### Anthony Bracke
 
