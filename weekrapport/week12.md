@@ -24,7 +24,7 @@
 
 ### Abdülkadir
 
-* 
+* Windows Deployment: scripts geschreven voor shares en webserver
 
 ![toggl abdulkadir](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week12_toggl_abdulkadir.PNG)
 
@@ -54,7 +54,8 @@
 
 ### Abdülkadir 
 
-* 
+* Eindopdracht voorbereiden
+* Eindopdracht uitvoeren
 
 ### Andy
 
