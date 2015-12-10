@@ -36,7 +36,7 @@
 
 ### Nicolai
 
-* Afwerken loadtesting eenvoudige LAMP stack
+* Afwerken load testing eenvoudige LAMP stack
 * Load testing nginx
 
 
