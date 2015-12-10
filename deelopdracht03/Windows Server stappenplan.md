@@ -63,8 +63,17 @@ Script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts
 CSV bestand met gebruikers: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/werknemers.csv <br/>
 Logon script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/logon.vbs
 
+### Shares
 
+We hebben een script geschreven dat alle shares aanmaakt en de juist gebruikers rechten geeft op de juist shares. Het script kan je vinden in op volgende link:
 
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/shares.ps1
+
+### Webserver
+
+We hebben ook een script geschreven dat IIS installeerd en een simpele webpagina aanmaakt. Het script kan gevonden worden op volgende link:
+
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/Webserver.ps1
 
 
 Bronnen: 
