@@ -93,7 +93,7 @@ Uit deze grafieken kunnen we concluderen dat onze LAMP stack problemen ervaart v
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
-TODO
+Voor deze test maken we geen gebruik van Apache JMeter, maar maken we gebruik van de plugin "Demo Data Creator" die we eerder al hebben gebruikt voor het aanmaken van bulk posts. 
 
 
 
