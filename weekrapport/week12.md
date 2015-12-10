@@ -36,7 +36,8 @@
 
 ### Nicolai
 
-* 
+* Afwerken loadtesting eenvoudige LAMP stack
+* Load testing nginx
 
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week12_toggl_nicolai.PNG)
