@@ -40,6 +40,12 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 
 Om gebruikers te bekijken: `Get-ADUser -Filter 'Enabled -eq $true'` 
 
+***Shares***
+
+1. Shares zijn aangemaakt. `Get-SmbShare | Get-SmbShareAccess`
+2. Gebruikers hebben de juist rechten op de shares. `Get-SmbShare | Get-SmbShareAccess`
+3. De shares zijn benaderbaar vanaf het werkstation.
+
 ***IIS***
 
 1. De webservice runt. `Get-Service W3SVC`
@@ -82,6 +88,12 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 2. OK
 3. OK
 4. OK
+
+***Shares***
+
+1. OK
+2. OK
+3. 
 
 ***IIS***
 
