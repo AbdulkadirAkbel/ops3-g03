@@ -93,7 +93,7 @@ Uit deze grafieken kunnen we concluderen dat onze LAMP stack problemen ervaart v
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
-TODO
+Voor deze test maken we geen gebruik van Apache JMeter, maar maken we gebruik van de plugin "Demo Data Creator" die we eerder al hebben gebruikt voor het aanmaken van bulk posts. 
 
 
 
@@ -138,7 +138,7 @@ Eens we dit test-plan hebben uitgevoerd voor 2 x 100 gebruikers te simuleren, zi
 
 ![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikers-faalt-terug-up-post.PNG)
 
-![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikerss-faalt-terug-up-wordpress.PNG)
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/100-gebruikers-faalt-terug-up-wordpress.PNG)
 
 Op het einde van deze grafiek van het memory zien we hier een sterke stijging die onze simulatie voorstelt van 2 x 100 gebruikers. We zien dat hier geen sprake is van een piek, maar het geheugen blijft namelijk heel erg hoog aanhouden. Dit houdt in dat onze Wordpress pagina niet meer beschikbaar is voor een heel korte periode bij de aanvraag van 2 x 100 gebruikers.
 
