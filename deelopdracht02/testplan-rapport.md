@@ -21,12 +21,12 @@ Auteur(s) testplan: Andy
 
 Uitvoerder(s) test: Nicolai
 
-1. 
-2. 
-3. 
-4.  
-5.
-6.
+1. Ok
+2. Ok
+3. Ok
+4. Ok  
+5. Ok
+6. Ok
 
 
 
@@ -48,9 +48,9 @@ Auteur(s) testplan: Abdülkadir
 
 Uitvoerder(s) test: Andy
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. Ok
+2. Ok
+3. Ok
+4. Ok
+5. Ok
+6. Ok
