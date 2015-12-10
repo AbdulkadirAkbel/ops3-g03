@@ -43,7 +43,7 @@ Om gebruikers te bekijken: `Get-ADUser -Filter 'Enabled -eq $true'`
 ***IIS***
 
 1. De webservice runt. `Get-Service W3SVC`
-2. De webpagina is te bereiken.
+2. De webpagina is te bereiken van op het werkstation. `http://192.168.101.11/index.html`
 
 ### Testrapport
 
