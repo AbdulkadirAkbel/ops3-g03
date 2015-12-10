@@ -40,6 +40,11 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 
 Om gebruikers te bekijken: `Get-ADUser -Filter 'Enabled -eq $true'` 
 
+***IIS***
+
+1. De webservice runt. `Get-Service W3SVC`
+2. De webpagina is te bereiken.
+
 ### Testrapport
 
 Uitvoerder(s) test: Nicolai
@@ -76,6 +81,11 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 2. OK
 3. OK
 4. OK
+
+***IIS***
+
+1. OK `Get-Service W3SVC`
+2. OK
 
 De aangemaakte gebruiker AbAkb2 kan inloggen op het werkstation.
 
