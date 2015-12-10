@@ -95,7 +95,15 @@ Uit deze grafieken kunnen we concluderen dat onze LAMP stack problemen ervaart v
 
 Voor deze test maken we geen gebruik van Apache JMeter, maar maken we gebruik van de plugin "Demo Data Creator" die we eerder al hebben gebruikt voor het aanmaken van bulk posts. 
 
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-comments-per-post.PNG)
 
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/comments-created.PNG)
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/cpu-usage.PNG)
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/disk-traffic.PNG)
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-comments-memory.PNG)
 
 **Test 4: “Slashdot”- of “Hacker News”-effect (een specifiek blogartikel wordt vermeld op een populaire nieuws-site en ineens komen er enorm veel requests binnen voor die ene pagina, naast de “normale” load voor de rest van de site.).**
 
