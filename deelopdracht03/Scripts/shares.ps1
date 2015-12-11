@@ -65,3 +65,8 @@ Block-SmbShareAccess -Name "Technical" -AccountName Everyone `
 
 Block-SmbShareAccess -Name "Sales" -AccountName Everyone `
 -Confirm:$false
+
+
+##Voor het verwijderen van een share: ##
+
+Get-SmbShare -Name fso | Remove-SmbShare -Confirm:$false
