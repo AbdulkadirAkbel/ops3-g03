@@ -27,6 +27,6 @@ wordpress_database: wordpress
 wordpress_user: admin
 wordpress_password: admin
 
-#mariadb_init_scripts:
-#  - database: wordpress
-#    script: files/init.sql
+mariadb_init_scripts:
+  - database: wordpress
+    script: files/init.sql
