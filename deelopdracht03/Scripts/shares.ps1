@@ -13,6 +13,43 @@ Grant-SmbShareAccess -Name "HR" -AccountName StHer1 `
 Grant-SmbShareAccess -Name "HR" -AccountName SvAer10 `
 -AccessRight Full -Confirm:$false
 
+Block-SmbShareAccess -Name "HR" -AccountName EvTil13 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName BePlu16 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName StVan17 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName "LeDe 18" `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName AnCop15 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName KrVan14 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName "AlDe 9" `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName StVer8 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName StWat7 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WiVan6 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName AnNel4 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName NiSeg5 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName NiSal3 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName AbAkb2 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName EvTil13 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName BePlu16 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName StVan17 `
+-Confirm:$false
+
 
 New-SmbShare -Name "Technical" -Path "C:\Technical"
 Grant-SmbShareAccess -Name "Technical" -AccountName AbAkb2 `
@@ -40,6 +77,17 @@ Grant-SmbShareAccess -Name "Technical" -AccountName "LeDe 18" `
 Grant-SmbShareAccess -Name "Technical" -AccountName WoMey19 `
 -AccessRight Full -Confirm:$false
 
+Block-SmbShareAccess -Name "Technical" -AccountName EvTil13 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Technical" -AccountName BePlu16 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Technical" -AccountName StVan17 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Technical" -AccountName SvAer10 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Technical" -AccountName StHer1 `
+-Confirm:$false
+
 
 New-SmbShare -Name "Sales" -Path "C:\Sales"
 Grant-SmbShareAccess -Name "Sales" -AccountName EvTil13 `
@@ -48,17 +96,36 @@ Grant-SmbShareAccess -Name "Sales" -AccountName BePlu16 `
 -AccessRight Full -Confirm:$false
 Grant-SmbShareAccess -Name "Sales" -AccountName StVan17 `
 -AccessRight Full -Confirm:$false
-Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+
+Block-SmbShareAccess -Name "Sales" -AccountName WoMey19 `
 -Confirm:$false
-Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+Block-SmbShareAccess -Name "Sales" -AccountName "LeDe 18" `
 -Confirm:$false
-Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+Block-SmbShareAccess -Name "Sales" -AccountName AnCop15 `
 -Confirm:$false
-Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+Block-SmbShareAccess -Name "Sales" -AccountName KrVan14 `
 -Confirm:$false
-Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
--Confirm:$falseBlock-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+Block-SmbShareAccess -Name "Sales" -AccountName "AlDe 9" `
 -Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName StVer8 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName StWat7 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName WiVan6 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName AnNel4 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName NiSeg5 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName NiSal3 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName AbAkb2 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName StHer1 `
+-Confirm:$false
+Block-SmbShareAccess -Name "Sales" -AccountName SvAer10 `
+-Confirm:$false
+
 
 
 New-SmbShare -Name "Algemeen" -Path "C:\Algemeen" -FullAccess Everyone
