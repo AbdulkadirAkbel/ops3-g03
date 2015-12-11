@@ -40,6 +40,18 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 
 Om gebruikers te bekijken: `Get-ADUser -Filter 'Enabled -eq $true'` 
 
+***Shares***
+
+1. Shares zijn aangemaakt. `Get-SmbShare | Get-SmbShareAccess`
+2. Gebruikers hebben de juist rechten op de shares. `Get-SmbShare | Get-SmbShareAccess`
+3. De shares zijn benaderbaar vanaf het werkstation.
+
+***IIS***
+
+1. De webservice runt. `Get-Service W3SVC`
+2. De webpagina is te bereiken van op het werkstation met het ip-adres. `http://192.168.101.11/index.html`
+3. De webpagina is te bereiken van op het werkstation met de domeinnaam. `http://project3.be/index.html`
+
 ### Testrapport
 
 Uitvoerder(s) test: Nicolai
@@ -77,5 +89,17 @@ Cmdlets om te testen: https://technet.microsoft.com/en-us/library/jj590751(v=wps
 3. OK
 4. OK
 
-De aangemaakte gebruiker AbAkb2 kan inloggen op het werkstation.
+***Shares***
+
+1. OK
+2. OK
+3. 
+
+***IIS***
+
+1. OK 
+2. OK
+3. OK
+
+De aangemaakte gebruiker AbAkb2 kan inloggen op het werkstation met wachtwoord `Projecten3`. 
 

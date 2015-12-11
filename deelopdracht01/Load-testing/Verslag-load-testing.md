@@ -93,9 +93,27 @@ Uit deze grafieken kunnen we concluderen dat onze LAMP stack problemen ervaart v
 
 **Test 3: sommige gebruikers geven af en toe commentaar op artikels.**
 
-Voor deze test maken we geen gebruik van Apache JMeter, maar maken we gebruik van de plugin "Demo Data Creator" die we eerder al hebben gebruikt voor het aanmaken van bulk posts. 
+Voor deze test maken we geen gebruik van Apache JMeter, maar maken we gebruik van de plugin "Demo Data Creator" die we eerder al hebben gebruikt voor het aanmaken van bulk posts. In de volgende afbeelding geven we aan dat het aantal aan te maken comments per post 50 is (het maximum).
 
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-comments-per-post.PNG)
 
+Na het drukken op de "Create comments", krijgen we na een paar seconden de boodschap dat er 2886 comments werden aangemaakt. Dit zijn dus behoorlijk wat comments op een korte tijd. We zien dus volgende afbeelding:
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/comments-created.PNG)
+
+Bij het toevoegen van comments zagen we geen verandering aan de interfaces, maar wel onder andere aan de processor. We zien namelijk dat er een piek ontstond in onderstaande afbeelding als gevolg van het aanmaken van deze comments.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/cpu-usage.PNG)
+
+Ook hebben we voor het toevoegen van comments een wijziging gezien aan de disk traffic. Ook hier zijn we opnieuw een piek (op het einde van de grafiek) als gevolg van de aanmaking van de comments.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/disk-traffic.PNG)
+
+Ten slotte zien we nog de grafiek van het geheugen als gevolg van de comments. Ook hier zien we opnieuw een stijging.
+
+![load testing](https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht01/Load-testing/load-testing-printscreens/50-comments-memory.PNG)
+
+Als conclusie kunnen we stellen dat er duidelijk een verschil te merken is wanneer er 2000+ comments worden aangemaakt op verschillende posts, maar de Wordpress-pagina vertoonde echter geen problemen qua snelheid en performantie. Hij bleef dus ook up.
 
 **Test 4: “Slashdot”- of “Hacker News”-effect (een specifiek blogartikel wordt vermeld op een populaire nieuws-site en ineens komen er enorm veel requests binnen voor die ene pagina, naast de “normale” load voor de rest van de site.).**
 

@@ -57,14 +57,23 @@ https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/DHCP.ps
 
 ### OU's en gebruikers
 
-Hiervoor hebben we het script van vorig jaar bij Projecten 2 gebruikt.
+Hiervoor hebben we het script van vorig jaar bij Projecten 2 gebruikt. Het standaad wachtwoord voor elke gebruiker is `Project3`. Dit wachtwoord moet opnieuw ingesteld worden als een gebruiker voor de eerste keer inlogd. Voor testdoeleinden geven we bij elke gebruiker die zijn wachtwoord opnieuw moet instellen volgend wachtwoord mee: `Projecten3`.
 
 Script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/OU's%20en%20gebruikers.ps1 <br/>
 CSV bestand met gebruikers: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/werknemers.csv <br/>
 Logon script: https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/logon.vbs
 
+### Shares
 
+We hebben een script geschreven dat alle shares aanmaakt en de juist gebruikers rechten geeft op de juist shares. Het script kan je vinden in op volgende link:
 
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/shares.ps1
+
+### Webserver
+
+We hebben ook een script geschreven dat IIS installeerd en een simpele webpagina aanmaakt. Het script kan gevonden worden op volgende link:
+
+https://github.com/HoGentTIN/ops3-g03/blob/master/deelopdracht03/Scripts/Webserver.ps1
 
 
 Bronnen: 

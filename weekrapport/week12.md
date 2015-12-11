@@ -30,7 +30,11 @@
 
 ### Andy
 
-* 
+* Windows Deployment: scripts shares en webserver uitgevoerd op deployment server.
+* Stappenplan en testrapport geschreven van shares en webserver scripts.
+* Test Powershell
+* Boek Powershell op orde gezet
+* Alles van deployment nog een laatste keer getest
 
 ![toggl andy](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week12_toggl_andy.PNG)
 
@@ -59,7 +63,8 @@
 
 ### Andy
 
-* 
+* Eindopdracht: IP-adressering
+* Eindopdracht: werkstation
 
 
 
