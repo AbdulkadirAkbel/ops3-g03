@@ -48,6 +48,17 @@ Grant-SmbShareAccess -Name "Sales" -AccountName BePlu16 `
 -AccessRight Full -Confirm:$false
 Grant-SmbShareAccess -Name "Sales" -AccountName StVan17 `
 -AccessRight Full -Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$false
+Block-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$falseBlock-SmbShareAccess -Name "HR" -AccountName WoMey19 `
+-Confirm:$false
 
 
 New-SmbShare -Name "Algemeen" -Path "C:\Algemeen" -FullAccess Everyone
@@ -57,14 +68,14 @@ Get-SmbShare | Get-SmbShareAccess
 
 
 
-Block-SmbShareAccess -Name "HR" -AccountName Everyone `
--Confirm:$false
+#Block-SmbShareAccess -Name "HR" -AccountName Everyone `
+#-Confirm:$false
 
-Block-SmbShareAccess -Name "Technical" -AccountName Everyone `
--Confirm:$false
+#Block-SmbShareAccess -Name "Technical" -AccountName Everyone `
+#-Confirm:$false
 
-Block-SmbShareAccess -Name "Sales" -AccountName Everyone `
--Confirm:$false
+#Block-SmbShareAccess -Name "Sales" -AccountName Everyone `
+#-Confirm:$false
 
 
 # Voor het verwijderen van een share: 
