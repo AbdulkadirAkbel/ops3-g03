@@ -42,6 +42,7 @@
 
 * Afwerken load testing eenvoudige LAMP stack
 * Load testing nginx
+* Test Powershell
 
 
 ![toggl nicolai](https://github.com/HoGentTIN/ops3-g03/blob/master/weekrapport/image/week12_toggl_nicolai.PNG)
@@ -70,7 +71,8 @@
 
 ### Nicolai
 
-* 
+* Eindopdracht: IP-adressering
+* Eindopdracht: werkstation
 
 ### Anthony Bracke
 
