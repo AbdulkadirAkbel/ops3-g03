@@ -18,7 +18,7 @@
 5.	Kies voor een server met een core.
 6.	Kies voor een aangepaste installatie.
 7.	Selecteer de gewenste harde schijf.
-8.	Maak een wachtwoord aan voor de Administrator. (wachtwoord = “Projecten3”)
+8.	Maak een wachtwoord aan voor de Administrator. (wachtwoord = “Project3”)
 9.	Log in.
 
 **Guest Additions installeren voor copy/paste:**
